@@ -1,0 +1,18 @@
+berjon.biblio = {
+"anatomy": "<a href=\"http://www.w3.org/wiki/images/c/c0/HCLSIG$$SWANSIOC$$Actions$$RhetoricalStructure$$meetings$$20100215$cwa-anatomy-nanopub-v3.pdf\">Anatomy Of A Nanopublication</a>",
+"ldb": "<a href=\"http://linkeddatabook.com/editions/1.0/\">Linked Data Book </a>",
+"valueofdata": "<a href=\"http://www.nature.com/ng/journal/v43/n4/full/ng0411-281.html\">The Value of Data </a>",
+"mapping": "<a href=\"http://www.google.co.uk/url?sa=t&rct=j&q=knoblock%20interactively%20mapping&source=web&cd=7&ved=0CEkQFjAG&url=http%3A%2F%2Fceur-ws.org%2FVol-783%2Fpaper2.pdf&ei=g7u7Tv_EBcfr8QP-8uzFBw&usg=AFQjCNG0WBlYLeeZWoKviUJOs7HAMC_mjQ&sig2=34tKSEjLoN2_FvTwnnRdsA\">Interactively Mapping Data Sources into the Semantic Web </a>",
+"textmining": "<a href=\"http://www.google.co.uk/url?sa=t&rct=j&q=representing%20text%20mining%20results%20for%20structured%20pharmacological%20queries&source=web&cd=1&ved=0CB8QFjAA&url=http%3A%2F%2Fiswc2011.semanticweb.org%2Ffileadmin%2Fiswc%2FPapers%2FPostersDemos%2Fiswc11pd_submission_19.pdf&ei=1ru7TrCWFtK28QOLno3WBw&usg=AFQjCNEp-lTmfHRB21qMp7Pj6HqFRnMe5A&sig2=tZ5FS-5QT3Tz8Rq25NGYqg\">Representing Text Mining Results for Structured Pharmacological Queries </a>",
+"biopax": "<a href=\"http://www.biopax.org/\">Biopax </a>",
+"swftwo": "<a href=\"http://workingontologist.org/\">Semantic Web For The Working Ontologist </a>",
+"cw": "<a href=\"http://conceptwiki.org/index.php/Main%20Page\">ConceptWiki </a>",
+"bioportal": "<a href=\"http://bioportal.bioontology.org/\">NCBO Bioportal </a>",
+"identifiers": "<a href=\"http://www.identifiers.org\">identifiers.org </a>",
+"sindice": "<a href=\"http://sindice.com/developers/publishing\">The Sindice guide to publishing data on the semantic web </a>",
+"mininfo": "<a href=\"http://mibbi.org/index.php/Main_Page\">MIBBI: Minimum Information for Biological and Biomedical Investigations </a>",
+"studyassay": "<a href=\"http://isa-tools.org/\">Investigation-Study-Assay </a>",
+"baseunits": "<a href=\"http://en.wikipedia.org/wiki/SI_base_unit\">Wikipedia page on SI Base Units </a>",
+"skos": "<a href=\"http://www.w3.org/2004/02/skos/\">SKOS Simple Knowledge Organization System </a>",
+"RFC2119": "<a href=\"http://www.ietf.org/rfc/rfc2119.txt\">Key words for use in RFCs to Indicate Requirement Levels</a>",
+}

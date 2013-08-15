@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- trigger regeneration by this edit-->
+<style type="text/css">
+div.figure {
+	float: center;
+	width: 75%;
+	border: thin silver solid;
+	margin: 0.5em;
+	padding: 0.5em;
+}
+
+div.figure p {
+	text-align: center;
+	font-style: italic;
+	font-size: smaller;
+	text-indent: 0;
+}
+
+td.datatable {
+	background-color: lightblue;
+}
+
+th.datatable {
+	background-color: darkblue;
+	color: white;
+	font-weight: bold;
+}
+</style>
+<title>Guidelines for Nanopublication </title>
+<meta http-equiv='Content-Type' content='text/html;charset=utf-8' />
+<!-- 
+      === NOTA BENE ===
+      For the three scripts below, if your spec resides on dev.w3 you can check them
+      out in the same tree and use relative links so that they'll work offline,
+     -->
+<!--  <script src="js/jquery/jquery-1.7.2.min.js"></script> -->
+<!--     <script src='http://github.com/cowboy/jquery-replacetext/raw/master/jquery.ba-replacetext.js'></script>
+ -->
+
+
+<script src='js/respec.js'></script>
+<!-- <script src='http://www.openphacts.org/specs/2012/WD-datadesc-20121019/js/respec.js'></script> -->
+<!--     <script src='js/jquery/jquery-1.7.2.min.js'></script> -->
+
+<script class='remove'>
+  var respecConfig = {
+		// specification status (e.g. WD, LCWD, NOTE, etc.). If in doubt use ED.
+		specStatus : "PR",
+
+		// the specification's short name, as in http://www.w3.org/TR/short-name/
+		shortName : "v1.95",
+
+		// if your specification has a subtitle that goes below the main
+		// formal title, define it here
+		// subtitle   :  "an excellent document",
+
+		// if you wish the publication date to be other than today, set this
+		// publishDate:  "2012-04-07",
+
+		// if the specification's copyright date is a range of years, specify
+		// the start date here:
+		// copyrightStart: "2009"
+
+		// if there is a previously published draft, uncomment this and set its YYYY-MM-DD date
+		// and its maturity status
+		// previousPublishDate:  "1977-03-15",
+		// previousMaturity:  "WD",
+
+		// if there a publicly available Editor's Draft, this is the link
+		edDraftURI : "http://nanopub.org/guidelines/working_draft",
+
+		// if this is a LCWD, uncomment and set the end of its review period
+		// lcEnd: "2009-08-05",
+
+		// if you want to have extra CSS, append them to this list
+		// it is recommended that the respec.css stylesheet be kept
+		extraCSS : [ "http://dev.w3.org/2009/dap/ReSpec.js/css/respec.css" ],
+
+		// editors, add as many as you like
+		// only "name" is required
+		editors : [ 
+      {name: "Erik Schultes", url: "", company:"LUMC", companyURL:"http://www.lumc.nl"},
+      {name: "Mark Thompson", url: "", company:"LUMC", companyURL:"http://www.lumc.nl"},
+      {name: "Paul Groth", url: "", company:"VU", companyURL:"http://www.vu.nl"},
+      {name: "Zuotian Tatum", url: "", company:"LUMC", companyURL:"http://www.lumc.nl"},
+    ],
+    
+    authors: [
+    { name: "Alasdair J G Gray", url: "http://www.cs.man.ac.uk/~graya",
+                company: "University of Manchester", companyURL: "http://www.manchester.ac.uk/" },
+    {name: "Christine Chichester", url: "", company:"NBIC", companyURL:"http://www.nbic.nl"},
+    {name: "Kees Burger", url: "", company:"NBIC", companyURL:"http://www.nbic.nl"},
+    {name: "Spyros Kotoulas", url: "", company:"VU", companyURL:"http://www.vu.nl"},
+    {name: "Antonis Loizou", url: "", company:"VU", companyURL:"http://www.vu.nl"},
+    {name: "Valery Tkachenko", url: "", company:"RSC", companyURL:"http://www.rsc.org"},
+    {name: "Andra Waagmeester", url: "", company:"Maastricht University", companyURL:"http://www.maastrichtuniversity.nl"},
+    {name: "Sune Askjaer", url: "", company:"Lundbeck, ", companyURL:"www.lundbeck.com"},
+    {name: "Steve Pettifer", url: "", company:"University of Manchester", companyURL:"http://www.manchester.ac.uk"},
+    {name: "Lee Harland", url: "", company:"Pfizer/CD", companyURL:"http://connecteddiscovery.com"},
+    {name: "Carina Haupt", url: "", company:"Uni Bonn / Fraunhofer", companyURL:"http://www3.uni-bonn.de/die-universitaet/events-und-veranstaltungen/deutschlandfest/angebote_stadtgebiet/fraunhofer-institute-im-b-it"},
+    {name: "Colin Batchelor", url: "", company:"RSC", companyURL:"http://www.rsc.org"},
+    {name: "MiguelVazquez", url: "", company:"CNIO", companyURL:"http://www.cnio.es"},
+    {name: "José María Fernández", url: "", company:"CNIO", companyURL:"http://www.cnio.es"},
+    {name: "Jahn Saito", url: "", company:"Maastricht University", companyURL:"http://www.maastrichtuniversity.nl/"},
+    {name: "Andrew Gibson", url: "", company:"LUMC", companyURL:"http://www.lumc.nl"},
+    {name: "Louis Wich", url: "", company:"DTU", companyURL:"http://www.dtu.dk"},
+    ],
+
+		// authors, add as many as you like. 
+		// This is optional, uncomment if you have authors as well as editors.
+		// only "name" is required. Same format as editors.
+
+		//authors:  [
+		//    { name: "Your Name", url: "http://example.org/",
+		//      company: "Your Company", companyURL: "http://example.com/" },
+		//],
+
+		// name of the WG
+		wg : "In Charge Of This Document Working Group",
+
+		// URI of the public WG page
+		wgURI : "http://example.org/really-cool-wg",
+
+		// name (without the @w3c.org) of the public mailing to which comments are due
+		wgPublicList : "spec-writers-anonymous",
+
+		// URI of the patent status for this WG, for Rec-track documents
+		// !!!! IMPORTANT !!!!
+		// This is important for Rec-track documents, do not copy a patent URI from a random
+		// document unless you know what you're doing. If in doubt ask your friendly neighbourhood
+		// Team Contact.
+		wgPatentURI : "",
+    orguri:               "www.nanopub.org/",//"http://www.openphacts.org/specs/",
+    orgicon:              "<a href='http://www.nanopub.org/'><img height='100' src='figures/CWA_logo.jpg' alt='Concept Web Alliance/Nanopub.org'/></a>",
+    customorg:            "Concept Web Alliance",
+    //customcss:            "../css/ops.css",
+    specStatus:           "WD",
+    shortName:            "/guidelines/1.8",
+    publishDate:   "2013-01-2.0",
+    previousMaturity: "WD",
+    previousPublishDate:  "2012-04-30",
+    previousURI : "http://www.nanopub.org/guidelines/1.8",
+    copyrightStart:       "2013",
+    overrideCopyright:    "<p class='copyright'>This document is licensed under a <a class='subfoot' href='http://creativecommons.org/licenses/sa-by/3.0/' rel='license'>Creative Commons ShareAlike Attribution 3.0 License</a>.</p>",
+	};
+</script>
+</head>
+<body>
+	<section id='abstract'>Abstract here</section>
+
+	<section>
+		<h3>Introduction</h3>
+                A nanopublication is the smallest unit of publishable information and is composed of a single assertion and its provenance metadata. A nanopublication is a schema (defined below) that sits on top of existing semantic web technology. Essentially, a nanopublication augments ordinary linked data with provenance annotations.<BR><BR> 
+                    
+                Creating a nanopublication requires a one-time effort to model the assertion and provenance as RDF named graphs. After submission to an open, decentralized nanopublication store, the nanopublication will be available both to humans and automated inference and discovery engines. Nanopublications are stand-alone publications, but can also augment traditional research articles.<BR><BR>
+                    
+                This document offers Concept Web Alliance (CWA) recommendations and specifications for composing, implementing, and using nanopublications. It provides definitions, good and best practice recommendations and examples to help data producers author their own nanopublications. Nanopublication infrastructure is presently administered by the CWA, and is based on open standards. We anticipate the community-driven evolution of nanopublication formats to fit the changing needs of authors and publishers.
+
+	</section>
+	<section id="conformance">
+        <!-- This includes standard text about conformance -->
+    </section>
+
+
+	<section>
+		<h3>Why Nanopublications?</h3>
+                When serialized in RDF, nanopublications are interoperable and machine readable, and need not be tethered to centralized databases or research articles for their retrieval and use. Nanopublication provenance information can help users decide about the trustworthiness of the assertion and it provides a vehicle for fine-grained attribution to authors and institutions with the intention of incentivizing the accessibility and reuse of data. Individual nanopublications can be cited and their impact tracked, creating incentives for compliance with open semantic web standards and participation in online annotation efforts.</BR></BR>
+
+                Nanopublications are a natural response to the explosion of high-quality contextual information that overwhelms the capacity of conventional research articles in scholarly communication. With nanopublications, it is possible to disseminate individual data as independent publications with or without an accompanying research article. <BR></BR> Nanopublications can be used to expose quantitative and qualitative data, experimental data as well as hypotheses, novel or legacy data and negative data that usually goes unpublished.
+	</section>
+
+	<section>
+		<h3>The OPS Nanopublication Scheme</h3>
+The nanopublication schema combines the assertion and its provenance into a single publishable and citable entity. Both the assertion and provenance are represented as RDF graphs. <BR></BR>
+
+The assertion graph of the nanopublication takes the form of one or more semantic triples (subject-predicate-object combinations). Examples... The scope of the assertion is somewhat arbitrary but as a rule of thumb, it can be limited by what the author wishes to be known for. If it is common in your domain to report evidence or error values with your assertion, then they SHOULD be included here otherwise they will appear in the provenance graph.
+<em>[Tobias: I think evidence and error values should always go into the provenance part. The actual claim or hypothesis and the
+respective error/confidence value are conceptually on different levels, and I think we shouldn't mix them. For example, to make sense
+of a large number of nanopubs, you first have to make groups of nanopubs with the same assertion (I think this has been called "cardinal
+assertion"). In this case, you don't want to put two nanopubs into different groups just because their error/confidence values are
+different.]</em>
+<BR></BR>
+
+Provenance means, ‘how this came to be’ and the provenance graph SHOULD include metadata statements for the assertion, such as the methods or parameter values used in creating the assertion, as well as attribution to authors, institutions, and funding sources (recommended publication roles…). The provenance graph SHOULD also contain a time/date stamp (using pro) and MAY contain links to DOIs and URLs. A nanopublication MUST have a provenance graph linked to the assertion (the subject being the "assertion").
+<em>[Tobias: The schema file says that the domain of hasProvenance is a Nanopublication, not an Assertion. Which one is correct?]</em>
+Additional metadata can be added to this minimal structure to accommodate a finer-grained array of evidence factors and attribution.<BR></BR>
+
+A third graph called publicationInfo, contains provenance metadata statements referring to the creation of the nanopublication itself (the subject MUST be the "nanopublicaiton") and SHOULD contain attribution and a date/time stamp.
+<em>[Tobias: What's the difference between the timestamp in the provenance graph and the one in publicationInfo?]</em>
+<BR></BR>
+
+In order to maintain flexibility there is no requirement for OWL. 
+
+These recommendations will be exemplified and elaborated upon in a library of nanopublication templates http://nanopub.org/wordpress/?page_id=8. The CWA recommended nanopblucation schema is given below and can be linked to at http://nanopub.org/nschema </BR>
+
+		<pre class='example'>
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;.
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;.
+@prefix rdfg: &lt;http://www.w3.org/2004/03/trix/rdfg-1/&gt;.
+@prefix owl: &lt;hhttp://www.w3.org/2002/07/owl#&gt;.
+@prefix np: &lt;hhttp://www.nanopub.org/nschema#&gt;.
+@prefix dc: &lt;hhttp://purl.org/dc/elements/1.1/&gt;.
+@prefix xsd: &lt;hhttp://www.w3.org/2001/XMLSchema#&gt;.
+
+&lt;http://www.nanopub.org/nschema&gt; a owl:Ontology ;
+	dc:created "2012-10-26"^^xsd:date;
+	dc:modified "2012-10-26"^^xsd:date;
+	dc:creator "Paul Groth"^^xsd:string, 
+		"Andrew Gibson"^^xsd:string;
+	dc:contributor "Zuotian Tatum"^^xsd:string;
+	owl:priorVersion &lt;http://www.nanopub.org/nschema-1.8&gt;.
+
+## A nanopublication should be associated with an assertion, publicationInfo and provenance,
+## all of which are graphs. In order to maintain flexibility we do not express this requirement
+## in OWL
+
+np:Nanopublication rdf:type owl:Class.
+np:Assertion rdfs:subClassOf rdfg:Graph.
+np:Provenance rdfs:subClassOf rdfg:Graph.
+np:PublicationInfo rdfs:subClassOf rdfg:Graph.
+
+np:hasAssertion a owl:FunctionalProperty.
+np:hasAssertion rdfs:domain np:Nanopublication.
+np:hasAssertion rdfs:range np:Assertion.
+
+np:hasProvenance a owl:FunctionalProperty.
+np:hasProvenance rdfs:domain np:Nanopublication.
+np:hasProvenance rdfs:range np:Provenance.
+
+np:hasPublicationInfo a owl:FunctionalProperty.
+np:hasPublicationInfo rdfs:domain np:Nanopublication.
+np:hasPublicationInfo rdfs:range np:PublicationInfo.
+                </pre>
+
+
+        </section>
+
+<section><h3>Integrity Key</h3>
+[Alasdair, Paul, Mark]<BR>
+-- use cases.... why have integrity keys ? <BR>
+-- in principle, integrity keys are unique to nanopubs<BR>
+-- but integrity keys are not a part of the nanopub <BR>
+-- keys are organization independent<BR>
+-- we need to recommend an algorithm (an RDF hasher)
+
+<p/>
+
+<em>[Tobias: I think integrity keys should be part of the nanopub URI. In this way, every reference to a nanopub
+comes with the possibility to check its integrity. If one nanopub cites another, the integrity key of the cited
+nanopub flows into the integrity key for the citing one. Therefore, the integrity key ensures not just the integrity of the
+respective nanopub, but also of all cited nanopub (and nanopubs cited by the cited nanopubs, etc.). This is inspired
+by how the Git versioning system uses hash values to identify commits. I started to implement this as a proof-of-concept.
+See the link below.]</em>
+
+<ul>
+<li><a href="https://github.com/tkuhn/hashrdf/tree/master/src/main/resources/examples">hashrdf:</a> integrity keys for nanopub URIs</li>
+</ul>
+
+
+
+</section>
+
+
+
+
+<section><h3>Nanopublication Compliant RDF for Large Data Sets</h3>
+Big Data & nanopublication…. [Zuotian, Erik, Alasdair]
+<br>
+To convert large existing datasets into nanopublications, we recommend using the Vocabulary of Interlinked Datasets ( VoID  http://www.w3.org/TR/void/ ) to create a nanopublication compliant RDF (ncRDF) description of the data. In this way we make each entry in the dataset (e.g. data row or sample value) referenceable, which in turn makes it possible to specify that a particular assertion was derived from a specific row of the original dataset.<BR></BR> 
+ncRDF is an intermediate step between the dataset as it is, and nanopublications. Rather than creating an extensive domain model, the RDF dataset uses a simple descriptive model. In practice this means that all data items from the original dataset are transformed (no pre-selection) and that all values remain the same (no normalization or rounding). Furthermore, simple ad-hoc ontologies can be used to provide entity and predicate descriptions: full semantic modeling is only required for the nanopublication itself. See figure. <BR></BR>
+An example of the use ncRDF in exposing a large dataset is given in the FANTOM5 nanopublictation template. Here, each row of the raw dataset is transformed to a ‘CagePeak resource’. Using the void:inDataset predicate, each CagePeak is linked back to the resource for the entire dataset. Subsequent predicates connect the CagePeak to entities that represent columns of the raw dataset.<BR></BR>
+
+<div class='figure'><img src="figures/dataToNP.png"></div>
+
+</section>
+
+<section><h3>Best & Good Practices</h3>
+[everyone.... after we practice some]<BR>
+How nanopublications relate to traditional publications…<BR></BR>
+Immutability & versions & deprecations…
+<ul>
+    <li> Nanopublications SHOULD be immutable <em>[Tobias: I would say nanopublications <strong>are</strong> immutable. With an approach like hashrdf (see link above), immutability can be enforced (because the integrity key is part of the nanopub URI).]</em>
+    <li> immutability applies only to the nanopublication itself and not to resources linked to it... but creators SHOULD choose stable URIs when possible. 
+    <li> Versioning: we use prov ‘hasRevision’
+    <li> recommendations on deprecations, retraction... ‘hasStatus’ ? 
+    <li> use of blank nodes# URIs
+    <li> # URIs... best practice for URIs (persistant & registry)   ...nanopub.og...
+</ul>
+
+Whenever possible, existing ontologies and URIs should be used in semantic markup of nanopublication information. CWA recommended ontologies are… <BR></BR>
+
+The primary challenge when nanopublishing data is to model the semantics for clarity and keep a clear separation between the actual observations (measurements) from the interpretations (scientific assertions) and mark-up this distinction in as unambiguous way as possible. Other considerations include economization of memory usage, time-efficient querying, and avoidance of logical inconsistencies. <BR></BR>
+
+Nanopublications should present as low a barrier as possible to the exposure of data. Hence nanopublications have a minimal requirement of an assertion and provenance, but are extensible. The basic idea is that a minimal nanopublication can be easily created, but the better the annotation the more likely it is that the nanopublication will be found, used and cited by others. In other words, there is strong incentive for rich annotation, but a low barrier to getting started.<BR></BR>
+</section>
+        
+<section><h3>Templates</h3>
+
+    <ul>
+        <li>statistical association [LUMC]
+        <li>genomic positions [LUMC, Christine-Oliver]
+        <li>curation: nextprot [Christine-Oliver]; chemspider [Colin]
+        <li>lots of chem-text [Colin]
+        <li>landMark [Mark]
+    </ul>
+</section>
+
+<section><h3>Implementation issues</h3>
+Repository / Store (e.g., URI control & data linking) [Rob & Marco]
+<ul>
+-- Issuing URIs (DOIs?) ... what do nanopub IDs look like ?    nanopub.org////nextprot/nanopubID
+-- concept wiki infrastructure
+-- URI creation service (CW) + linking service (Right Field)
+</ul>
+</BR>
+Registry [Erik, Mark]
+<ul>
+-- nanopu.org is an aggregator of registries like datahub (using “nanopub” tags)
+-- nanopu.org is an instance for exclusive nanopub data (ckan powers data hub)
+</ul>
+</section>
+        
+<section><h3>References</h3>
+<ul>
+ <li> Tobias Kuhn, Michael Krauthammer (2012) Underspecified Scientific Claims in Nanopublications. arXiv:1209.1483
+ <li> Andrew Gibson, Jesse C.J. van Dam, Erik A. Schultes, Marco Roos, and Barend Mons (2012) Towards Computational Evaluation of Evidence for Scientific Assertions with Nanopublications and Cardinal Assertions (2012) CEUR Workshop Proceedings 952. http://ceur-ws.org/Vol-952/paper_26.pdf
+ <li> Mark Thompson, Herman H.H.B.M. van Haagen, Barend Mons, and Erik A. Schultes (2012) Placing landMarks in the Knowledge Space: crowd-sourcing landmark publications for benchmarking text-mined predictions (2012) CEUR Workshop Proceedings 952. http://ceur-ws.org/Vol-952/paper_14.pdf
+ <li> Patrinos et al (2012): Microattribution and nanopublication as means to incentivize the placement of human genome variation data into the public domain. Hum Mutat. 33(11):1503-12. http://www.ncbi.nlm.nih.gov/pubmed/22736453
+ <li> Axton M (2011) Crowdsourcing human mutations. Nature Genetics 43: 279. http://www.nature.com/ng/journal/v43/n4/full/ng0411-279.html
+ <li> Mons B et al (2011) The value of data. Commentary, Nature Genetics 43: 281-283. http://www.nature.com/ng/journal/v43/n4/full/ng0411-281.html
+ <li> Groth P, Gibson A & Velterop J (2010) The Anatomy of a Nanopublication. Information Services & Use 30: 51-56. http://www.w3.org/wiki/images/c/c0/HCLSIG$$SWANSIOC$$Actions$$RhetoricalStructure$$meetings$$20100215$cwa-anatomy-nanopub-v3.pdf
+ <li> Barend Mons and Jan Velterop (2009) Nano-Publication in the e-science era. http://www.nbic.nl/uploads/media/Nano-Publication_BarendMons-JanVelterop.pdf
+ <li> Linked Data: http://www.w3.org/DesignIssues/LinkedData.html
+</ul>
+</section>
+
+
+</body>
+
+</html>
