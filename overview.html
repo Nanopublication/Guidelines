@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <!-- trigger regeneration by this edit-->
+    <style type="text/css">
+div.figure {
+	float: center;
+	width: 75%;
+	border: thin silver solid;
+	margin: 0.5em;
+	padding: 0.5em;
+}
+
+div.figure p {
+	text-align: center;
+	font-style: italic;
+	font-size: smaller;
+	text-indent: 0;
+}
+
+td.datatable {
+	background-color: lightblue;
+}
+
+th.datatable {
+	background-color: darkblue;
+	color: white;
+	font-weight: bold;
+}
+</style>
+    <title>Guidelines for Nanopublication </title>
+    <!-- 
+      === NOTA BENE ===      For the three scripts below, if your spec resides on dev.w3 you can check them
+      out in the same tree and use relative links so that they'll work offline,     -->
+    <!--  <script src="js/jquery/jquery-1.7.2.min.js"></script> -->
+    <!--     <script src='http://github.com/cowboy/jquery-replacetext/raw/master/jquery.ba-replacetext.js'></script>
+ -->
+    <script src="js/respec.js"></script>
+    <!-- <script src='http://www.openphacts.org/specs/2012/WD-datadesc-20121019/js/respec.js'></script> -->
+    <!--     <script src='js/jquery/jquery-1.7.2.min.js'></script> -->
+    <script class="remove">
+  var respecConfig = {
+		// specification status (e.g. WD, LCWD, NOTE, etc.). If in doubt use ED.
+		specStatus : "PR",
+
+		// the specification's short name, as in http://www.w3.org/TR/short-name/
+		shortName : "v1.95",
+
+		// if your specification has a subtitle that goes below the main
+		// formal title, define it here
+		// subtitle   :  "an excellent document",
+
+		// if you wish the publication date to be other than today, set this
+		// publishDate:  "2012-04-07",
+
+		// if the specification's copyright date is a range of years, specify
+		// the start date here:
+		// copyrightStart: "2009"
+
+		// if there is a previously published draft, uncomment this and set its YYYY-MM-DD date
+		// and its maturity status
+		// previousPublishDate:  "1977-03-15",
+		// previousMaturity:  "WD",
+
+		// if there a publicly available Editor's Draft, this is the link
+		edDraftURI : "http://nanopub.org/guidelines/working_draft",
+
+		// if this is a LCWD, uncomment and set the end of its review period
+		// lcEnd: "2009-08-05",
+
+		// if you want to have extra CSS, append them to this list
+		// it is recommended that the respec.css stylesheet be kept
+		extraCSS : [ "http://dev.w3.org/2009/dap/ReSpec.js/css/respec.css" ],
+
+		// editors, add as many as you like
+		// only "name" is required
+		editors : [ 
+      {name: "Erik Schultes", url: "", company:"LUMC", companyURL:"http://www.lumc.nl"},
+      {name: "Mark Thompson", url: "", company:"LUMC", companyURL:"http://www.lumc.nl"},
+      {name: "Paul Groth", url: "", company:"VU", companyURL:"http://www.vu.nl"},
+      {name: "Zuotian Tatum", url: "", company:"LUMC", companyURL:"http://www.lumc.nl"},
+    ],
+    
+    authors: [
+    { name: "Alasdair J G Gray", url: "http://www.cs.man.ac.uk/~graya",
+                company: "University of Manchester", companyURL: "http://www.manchester.ac.uk/" },
+    {name: "Christine Chichester", url: "", company:"NBIC", companyURL:"http://www.nbic.nl"},
+    {name: "Kees Burger", url: "", company:"NBIC", companyURL:"http://www.nbic.nl"},
+    {name: "Spyros Kotoulas", url: "", company:"VU", companyURL:"http://www.vu.nl"},
+    {name: "Antonis Loizou", url: "", company:"VU", companyURL:"http://www.vu.nl"},
+    {name: "Valery Tkachenko", url: "", company:"RSC", companyURL:"http://www.rsc.org"},
+    {name: "Andra Waagmeester", url: "", company:"Maastricht University", companyURL:"http://www.maastrichtuniversity.nl"},
+    {name: "Sune Askjaer", url: "", company:"Lundbeck, ", companyURL:"www.lundbeck.com"},
+    {name: "Steve Pettifer", url: "", company:"University of Manchester", companyURL:"http://www.manchester.ac.uk"},
+    {name: "Lee Harland", url: "", company:"Pfizer/CD", companyURL:"http://connecteddiscovery.com"},
+    {name: "Carina Haupt", url: "", company:"Uni Bonn / Fraunhofer", companyURL:"http://www3.uni-bonn.de/die-universitaet/events-und-veranstaltungen/deutschlandfest/angebote_stadtgebiet/fraunhofer-institute-im-b-it"},
+    {name: "Colin Batchelor", url: "", company:"RSC", companyURL:"http://www.rsc.org"},
+    {name: "MiguelVazquez", url: "", company:"CNIO", companyURL:"http://www.cnio.es"},
+    {name: "José María Fernández", url: "", company:"CNIO", companyURL:"http://www.cnio.es"},
+    {name: "Jahn Saito", url: "", company:"Maastricht University", companyURL:"http://www.maastrichtuniversity.nl/"},
+    {name: "Andrew Gibson", url: "", company:"LUMC", companyURL:"http://www.lumc.nl"},
+    {name: "Louis Wich", url: "", company:"DTU", companyURL:"http://www.dtu.dk"},
+    ],
+
+		// authors, add as many as you like. 
+		// This is optional, uncomment if you have authors as well as editors.
+		// only "name" is required. Same format as editors.
+
+		//authors:  [
+		//    { name: "Your Name", url: "http://example.org/",
+		//      company: "Your Company", companyURL: "http://example.com/" },
+		//],
+
+		// name of the WG
+		wg : "In Charge Of This Document Working Group",
+
+		// URI of the public WG page
+		wgURI : "http://example.org/really-cool-wg",
+
+		// name (without the @w3c.org) of the public mailing to which comments are due
+		wgPublicList : "spec-writers-anonymous",
+
+		// URI of the patent status for this WG, for Rec-track documents
+		// !!!! IMPORTANT !!!!
+		// This is important for Rec-track documents, do not copy a patent URI from a random
+		// document unless you know what you're doing. If in doubt ask your friendly neighbourhood
+		// Team Contact.
+		wgPatentURI : "",
+    orguri:               "www.nanopub.org/",//"http://www.openphacts.org/specs/",
+    orgicon:              "<a href='http://www.nanopub.org/'><img height='100' src='figures/CWA_logo.jpg' alt='Concept Web Alliance/Nanopub.org'/></a>",
+    customorg:            "Concept Web Alliance",
+    //customcss:            "../css/ops.css",
+    specStatus:           "WD",
+    shortName:            "/guidelines/1.8",
+    publishDate:   "2013-01-2.0",
+    previousMaturity: "WD",
+    previousPublishDate:  "2012-04-30",
+    previousURI : "http://www.nanopub.org/guidelines/1.8",
+    copyrightStart:       "2013",
+    overrideCopyright:    "<p class='copyright'>This document is licensed under a <a class='subfoot' href='http://creativecommons.org/licenses/sa-by/3.0/' rel='license'>Creative Commons ShareAlike Attribution 3.0 License</a>.</p>",
+	};
+</script>
+  </head>
+  <body>
+    <section id="abstract">This document lists the Nanopublication documents
+      that are being drafted.</section>
+    <section id="conformance">
+      <h3>Document overview</h3>
+      The&nbsp;following documents are planned or being drafted (tentative):<br>
+      <ul>
+        <li>Overview (this document)</li>
+        <li>The Nanopublication schema</li>
+        <ul>
+          <li>The nschema model</li>
+          <ul>
+            <li>including recommendations for assertion, provenance and
+              publication information</li>
+          </ul>
+          <li>Nanopublication schema extensions
+            <!--For instance, extension with the MINIM model to enable checklist functionality.--></li>
+          <li>Relation to the Research Object model and ISA</li>
+          <li>Use cases (nanopublication modelling issues)</li>
+        </ul>
+        <li>Nanopublication templates</li>
+        <li>Nanopublication store specification</li>
+        <ul>
+          <li>includes specification of a Nanopublication API and back-end</li>
+        </ul>
+        <li>Nanopublication primer or 'how to make nanopublications?'</li>
+        <ul>
+          <li>Proposed design patterns for assertions</li>
+        </ul>
+        <li>Nanopublication tutorial</li>
+        <li>Examples of nanopublications</li>
+        <li>Examples of nanopublication applications (including GUIs)</li>
+      </ul>
+      <br>
+    </section>
+    <br>
+  </body>
+</html>
