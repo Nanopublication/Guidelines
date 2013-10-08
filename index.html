@@ -167,16 +167,28 @@ th.datatable {
 
 	<section>
 		<h3>Why Nanopublications?</h3>
-                When serialized in RDF, nanopublications are interoperable and machine readable, and need not be tethered to centralized databases or research articles for their retrieval and use. Nanopublication provenance information can help users decide about the trustworthiness of the assertion and it provides a vehicle for fine-grained attribution to authors and institutions with the intention of incentivizing the accessibility and reuse of data. Individual nanopublications can be cited and their impact tracked, creating incentives for compliance with open semantic web standards and participation in online annotation efforts.</BR></BR>
+                <p>
+                When serialized in RDF, nanopublications are interoperable and machine readable, and need not be tethered to centralized databases or research articles for their retrieval and use. Nanopublication provenance information can help users decide about the trustworthiness of the assertion and it provides a vehicle for fine-grained attribution to authors and institutions with the intention of incentivizing the accessibility and reuse of data. Individual nanopublications can be cited and their impact tracked, creating incentives for compliance with open semantic web standards and participation in online annotation efforts.
+				</p>
 
-                Nanopublications are a natural response to the explosion of high-quality contextual information that overwhelms the capacity of conventional research articles in scholarly communication. With nanopublications, it is possible to disseminate individual data as independent publications with or without an accompanying research article. <BR></BR> Nanopublications can be used to expose quantitative and qualitative data, experimental data as well as hypotheses, novel or legacy data and negative data that usually goes unpublished.
+				<p>
+                Nanopublications are a natural response to the explosion of high-quality contextual information that overwhelms the capacity of conventional research articles in scholarly communication. With nanopublications, it is possible to disseminate individual data as independent publications with or without an accompanying research article.
+                </p>
+                
+                <p>
+                Nanopublications can be used to expose quantitative and qualitative data, experimental data as well as hypotheses, novel or legacy data and negative data that usually goes unpublished.
+                </p>
 	</section>
 
 	<section>
 		<h3>The OPS Nanopublication Scheme</h3>
-The nanopublication schema combines the assertion and its provenance into a single publishable and citable entity. Both the assertion and provenance are represented as RDF graphs. <BR></BR>
+<p>
+The nanopublication schema combines the assertion and its provenance into a single publishable and citable entity. Both the assertion and provenance are represented as RDF graphs.
+</p>
 
+<p>
 The assertion graph of the nanopublication takes the form of one or more semantic triples (subject-predicate-object combinations). Examples... The scope of the assertion is somewhat arbitrary but as a rule of thumb, it can be limited by what the author wishes to be known for. If it is common in your domain to report evidence or error values with your assertion, then they SHOULD be included here otherwise they will appear in the provenance graph.
+</p>
 
 <p class="note"><strong>Tobias:</strong> I think evidence and error values should always go into the provenance part. The actual claim or hypothesis and the
 respective error/confidence value are conceptually on different levels, and I think we shouldn't mix them. For example, to make sense
@@ -185,19 +197,24 @@ assertion"). In this case, you don't want to put two nanopubs into different gro
 different.
 </p>
 
-<BR></BR>
-
+<p>
 Provenance means, ‘how this came to be’ and the provenance graph SHOULD include metadata statements for the assertion, such as the methods or parameter values used in creating the assertion, as well as attribution to authors, institutions, and funding sources (recommended publication roles…). The provenance graph SHOULD also contain a time/date stamp (using pro) and MAY contain links to DOIs and URLs. A nanopublication MUST have a provenance graph linked to the assertion (the subject being the "assertion").
-<p class="note"><strong>Tobias:</strong> The schema file says that the domain of hasProvenance is a Nanopublication, not an Assertion. Which one is correct?</p>
-Additional metadata can be added to this minimal structure to accommodate a finer-grained array of evidence factors and attribution.<BR></BR>
+</p>
 
+<p class="note"><strong>Tobias:</strong> The schema file says that the domain of hasProvenance is a Nanopublication, not an Assertion. Which one is correct?</p>
+
+<p>
+Additional metadata can be added to this minimal structure to accommodate a finer-grained array of evidence factors and attribution.
+</p>
+
+<p>
 A third graph called publicationInfo, contains provenance metadata statements referring to the creation of the nanopublication itself (the subject MUST be the "nanopublicaiton") and SHOULD contain attribution and a date/time stamp.
 <p class="note"><strong>Tobias:</strong> What's the difference between the timestamp in the provenance graph and the one in publicationInfo?</p>
-<BR></BR>
+<p>
 
 In order to maintain flexibility there is no requirement for OWL. 
 
-These recommendations will be exemplified and elaborated upon in a library of nanopublication templates http://nanopub.org/wordpress/?page_id=8. The CWA recommended nanopblucation schema is given below and can be linked to at http://nanopub.org/nschema </BR>
+These recommendations will be exemplified and elaborated upon in a library of nanopublication templates http://nanopub.org/wordpress/?page_id=8. The CWA recommended nanopblucation schema is given below and can be linked to at http://nanopub.org/nschema
 
 		<pre class='example'>
 @prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;.
@@ -307,20 +324,39 @@ See the link below.</p>
 
 
 <section><h3>Nanopublication Compliant RDF for Large Data Sets</h3>
+<p>
 Big Data & nanopublication…. [Zuotian, Erik, Alasdair]
-<br>
-To convert large existing datasets into nanopublications, we recommend using the Vocabulary of Interlinked Datasets ( VoID  http://www.w3.org/TR/void/ ) to create a nanopublication compliant RDF (ncRDF) description of the data. In this way we make each entry in the dataset (e.g. data row or sample value) referenceable, which in turn makes it possible to specify that a particular assertion was derived from a specific row of the original dataset.<BR></BR> 
-ncRDF is an intermediate step between the dataset as it is, and nanopublications. Rather than creating an extensive domain model, the RDF dataset uses a simple descriptive model. In practice this means that all data items from the original dataset are transformed (no pre-selection) and that all values remain the same (no normalization or rounding). Furthermore, simple ad-hoc ontologies can be used to provide entity and predicate descriptions: full semantic modeling is only required for the nanopublication itself. See figure. <BR></BR>
-An example of the use ncRDF in exposing a large dataset is given in the FANTOM5 nanopublictation template. Here, each row of the raw dataset is transformed to a ‘CagePeak resource’. Using the void:inDataset predicate, each CagePeak is linked back to the resource for the entire dataset. Subsequent predicates connect the CagePeak to entities that represent columns of the raw dataset.<BR></BR>
+</p>
 
-<div class='figure'><img src="figures/dataToNP.png"></div>
+<p>
+To convert large existing datasets into nanopublications, we recommend using the Vocabulary of Interlinked Datasets ( VoID  http://www.w3.org/TR/void/ ) to create a nanopublication compliant RDF (ncRDF) description of the data. In this way we make each entry in the dataset (e.g. data row or sample value) referenceable, which in turn makes it possible to specify that a particular assertion was derived from a specific row of the original dataset.
+</p>
+
+<p>
+ncRDF is an intermediate step between the dataset as it is, and nanopublications. Rather than creating an extensive domain model, the RDF dataset uses a simple descriptive model. In practice this means that all data items from the original dataset are transformed (no pre-selection) and that all values remain the same (no normalization or rounding). Furthermore, simple ad-hoc ontologies can be used to provide entity and predicate descriptions: full semantic modeling is only required for the nanopublication itself. See figure.
+</p>
+
+<p>
+An example of the use ncRDF in exposing a large dataset is given in the FANTOM5 nanopublictation template. Here, each row of the raw dataset is transformed to a ‘CagePeak resource’. Using the void:inDataset predicate, each CagePeak is linked back to the resource for the entire dataset. Subsequent predicates connect the CagePeak to entities that represent columns of the raw dataset.
+</p>
+
+<div class='figure'><img src="figures/dataToNP.png" alt="Data to Nanopublication"></div>
 
 </section>
 
 <section><h3>Best & Good Practices</h3>
-[everyone.... after we practice some]<BR>
-How nanopublications relate to traditional publications…<BR></BR>
+
+<p>
+[everyone.... after we practice some]
+</p>
+
+<p>
+How nanopublications relate to traditional publications…
+</p>
+
+<p>
 Immutability & versions & deprecations…
+</p>
 <ul>
     <li> Nanopublications SHOULD be immutable
     <li> immutability applies only to the nanopublication itself and not to resources linked to it... but creators SHOULD choose stable URIs when possible. 
@@ -332,11 +368,18 @@ Immutability & versions & deprecations…
 
 <p class="note"><strong>Tobias:</strong> I would say nanopublications <strong>ARE</strong> immutable. With an approach like hashrdf (see link above), immutability can be enforced (because the integrity key is part of the nanopub URI).</p>
 
-Whenever possible, existing ontologies and URIs should be used in semantic markup of nanopublication information. CWA recommended ontologies are… <BR></BR>
+<p>
+Whenever possible, existing ontologies and URIs should be used in semantic markup of nanopublication information. CWA recommended ontologies are…
+</p>
 
-The primary challenge when nanopublishing data is to model the semantics for clarity and keep a clear separation between the actual observations (measurements) from the interpretations (scientific assertions) and mark-up this distinction in as unambiguous way as possible. Other considerations include economization of memory usage, time-efficient querying, and avoidance of logical inconsistencies. <BR></BR>
+<p>
+The primary challenge when nanopublishing data is to model the semantics for clarity and keep a clear separation between the actual observations (measurements) from the interpretations (scientific assertions) and mark-up this distinction in as unambiguous way as possible. Other considerations include economization of memory usage, time-efficient querying, and avoidance of logical inconsistencies.
+</p>
 
-Nanopublications should present as low a barrier as possible to the exposure of data. Hence nanopublications have a minimal requirement of an assertion and provenance, but are extensible. The basic idea is that a minimal nanopublication can be easily created, but the better the annotation the more likely it is that the nanopublication will be found, used and cited by others. In other words, there is strong incentive for rich annotation, but a low barrier to getting started.<BR></BR>
+<p>
+Nanopublications should present as low a barrier as possible to the exposure of data. Hence nanopublications have a minimal requirement of an assertion and provenance, but are extensible. The basic idea is that a minimal nanopublication can be easily created, but the better the annotation the more likely it is that the nanopublication will be found, used and cited by others. In other words, there is strong incentive for rich annotation, but a low barrier to getting started.
+</p>
+
 </section>
         
 <section><h3>Templates</h3>
@@ -357,7 +400,6 @@ Repository / Store (e.g., URI control & data linking) [Rob & Marco]
 <li> concept wiki infrastructure</li>
 <li> URI creation service (CW) + linking service (Right Field)</li>
 </ul>
-</BR>
 Registry [Erik, Mark]
 <ul>
 <li> nanopu.org is an aggregator of registries like datahub (using “nanopub” tags)</li>
