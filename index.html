@@ -106,6 +106,7 @@ th.datatable {
     {name: "Jahn Saito", url: "", company:"Maastricht University", companyURL:"http://www.maastrichtuniversity.nl/"},
     {name: "Andrew Gibson", url: "", company:"LUMC", companyURL:"http://www.lumc.nl"},
     {name: "Louis Wich", url: "", company:"DTU", companyURL:"http://www.dtu.dk"},
+    {name: "Tobias Kuhn", url: "http://www.tkuhn.ch/", company: "ETH Zurich", companyURL: "http://www.ethz.ch/" },
     ],
 
 		// authors, add as many as you like. 
@@ -241,14 +242,16 @@ np:hasPublicationInfo rdfs:range np:PublicationInfo.
         </section>
 
 <section><h3>Integrity Key</h3>
-[Alasdair, Paul, Mark]<BR>
--- use cases.... why have integrity keys ? <BR>
--- in principle, integrity keys are unique to nanopubs<BR>
--- but integrity keys are not a part of the nanopub <BR>
--- keys are organization independent<BR>
--- we need to recommend an algorithm (an RDF hasher)
 
-<p/>
+[Alasdair, Paul, Mark]
+
+<ul>
+<li> use cases.... why have integrity keys?</li>
+<li> in principle, integrity keys are unique to nanopubs</li>
+<li> but integrity keys are not a part of the nanopub</li>
+<li> keys are organization independent</li>
+<li> we need to recommend an algorithm (an RDF hasher)</li>
+</ul>
 
 <p class="note"><strong>Tobias:</strong> I think integrity keys should be part of the nanopub URI. In this way, every reference to a nanopub
 comes with the possibility to check its integrity. If one nanopub cites another, the integrity key of the cited
@@ -315,15 +318,15 @@ Nanopublications should present as low a barrier as possible to the exposure of 
 <section><h3>Implementation issues</h3>
 Repository / Store (e.g., URI control & data linking) [Rob & Marco]
 <ul>
--- Issuing URIs (DOIs?) ... what do nanopub IDs look like ?    nanopub.org////nextprot/nanopubID
--- concept wiki infrastructure
--- URI creation service (CW) + linking service (Right Field)
+<li> Issuing URIs (DOIs?) ... what do nanopub IDs look like ?    nanopub.org////nextprot/nanopubID</li>
+<li> concept wiki infrastructure</li>
+<li> URI creation service (CW) + linking service (Right Field)</li>
 </ul>
 </BR>
 Registry [Erik, Mark]
 <ul>
--- nanopu.org is an aggregator of registries like datahub (using “nanopub” tags)
--- nanopu.org is an instance for exclusive nanopub data (ckan powers data hub)
+<li> nanopu.org is an aggregator of registries like datahub (using “nanopub” tags)</li>
+<li> nanopu.org is an instance for exclusive nanopub data (ckan powers data hub)</li>
 </ul>
 </section>
         
