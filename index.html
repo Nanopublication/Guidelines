@@ -176,19 +176,22 @@ th.datatable {
 The nanopublication schema combines the assertion and its provenance into a single publishable and citable entity. Both the assertion and provenance are represented as RDF graphs. <BR></BR>
 
 The assertion graph of the nanopublication takes the form of one or more semantic triples (subject-predicate-object combinations). Examples... The scope of the assertion is somewhat arbitrary but as a rule of thumb, it can be limited by what the author wishes to be known for. If it is common in your domain to report evidence or error values with your assertion, then they SHOULD be included here otherwise they will appear in the provenance graph.
-<em>[Tobias: I think evidence and error values should always go into the provenance part. The actual claim or hypothesis and the
+
+<p class="note"><strong>Tobias:</strong> I think evidence and error values should always go into the provenance part. The actual claim or hypothesis and the
 respective error/confidence value are conceptually on different levels, and I think we shouldn't mix them. For example, to make sense
 of a large number of nanopubs, you first have to make groups of nanopubs with the same assertion (I think this has been called "cardinal
 assertion"). In this case, you don't want to put two nanopubs into different groups just because their error/confidence values are
-different.]</em>
+different.
+</p>
+
 <BR></BR>
 
 Provenance means, ‘how this came to be’ and the provenance graph SHOULD include metadata statements for the assertion, such as the methods or parameter values used in creating the assertion, as well as attribution to authors, institutions, and funding sources (recommended publication roles…). The provenance graph SHOULD also contain a time/date stamp (using pro) and MAY contain links to DOIs and URLs. A nanopublication MUST have a provenance graph linked to the assertion (the subject being the "assertion").
-<em>[Tobias: The schema file says that the domain of hasProvenance is a Nanopublication, not an Assertion. Which one is correct?]</em>
+<p class="note"><strong>Tobias:</strong> The schema file says that the domain of hasProvenance is a Nanopublication, not an Assertion. Which one is correct?</p>
 Additional metadata can be added to this minimal structure to accommodate a finer-grained array of evidence factors and attribution.<BR></BR>
 
 A third graph called publicationInfo, contains provenance metadata statements referring to the creation of the nanopublication itself (the subject MUST be the "nanopublicaiton") and SHOULD contain attribution and a date/time stamp.
-<em>[Tobias: What's the difference between the timestamp in the provenance graph and the one in publicationInfo?]</em>
+<p class="note"><strong>Tobias:</strong> What's the difference between the timestamp in the provenance graph and the one in publicationInfo?</p>
 <BR></BR>
 
 In order to maintain flexibility there is no requirement for OWL. 
@@ -247,12 +250,12 @@ np:hasPublicationInfo rdfs:range np:PublicationInfo.
 
 <p/>
 
-<em>[Tobias: I think integrity keys should be part of the nanopub URI. In this way, every reference to a nanopub
+<p class="note"><strong>Tobias: I think integrity keys should be part of the nanopub URI. In this way, every reference to a nanopub
 comes with the possibility to check its integrity. If one nanopub cites another, the integrity key of the cited
 nanopub flows into the integrity key for the citing one. Therefore, the integrity key ensures not just the integrity of the
 respective nanopub, but also of all cited nanopub (and nanopubs cited by the cited nanopubs, etc.). This is inspired
 by how the Git versioning system uses hash values to identify commits. I started to implement this as a proof-of-concept.
-See the link below.]</em>
+See the link below.</p>
 
 <ul>
 <li><a href="https://github.com/tkuhn/hashuri-java/tree/master/src/main/resources/examples">hashuri-java:</a> integrity keys for nanopub URIs</li>
@@ -281,13 +284,15 @@ An example of the use ncRDF in exposing a large dataset is given in the FANTOM5 
 How nanopublications relate to traditional publications…<BR></BR>
 Immutability & versions & deprecations…
 <ul>
-    <li> Nanopublications SHOULD be immutable <em>[Tobias: I would say nanopublications <strong>are</strong> immutable. With an approach like hashrdf (see link above), immutability can be enforced (because the integrity key is part of the nanopub URI).]</em>
+    <li> Nanopublications SHOULD be immutable
     <li> immutability applies only to the nanopublication itself and not to resources linked to it... but creators SHOULD choose stable URIs when possible. 
     <li> Versioning: we use prov ‘hasRevision’
     <li> recommendations on deprecations, retraction... ‘hasStatus’ ? 
     <li> use of blank nodes# URIs
     <li> # URIs... best practice for URIs (persistant & registry)   ...nanopub.og...
 </ul>
+
+<p class="note"><strong>Tobias:</strong> I would say nanopublications <strong>ARE</strong> immutable. With an approach like hashrdf (see link above), immutability can be enforced (because the integrity key is part of the nanopub URI).</p>
 
 Whenever possible, existing ontologies and URIs should be used in semantic markup of nanopublication information. CWA recommended ontologies are… <BR></BR>
 
