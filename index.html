@@ -201,8 +201,6 @@ different.
 Provenance means, ‘how this came to be’ and the provenance graph SHOULD include metadata statements for the assertion, such as the methods or parameter values used in creating the assertion, as well as attribution to authors, institutions, and funding sources (recommended publication roles…). The provenance graph SHOULD also contain a time/date stamp (using pro) and MAY contain links to DOIs and URLs. A nanopublication MUST have a provenance graph linked to the assertion (the subject being the "assertion").
 </p>
 
-<p class="note"><strong>Tobias:</strong> The schema file says that the domain of hasProvenance is a Nanopublication, not an Assertion. Which one is correct?</p>
-
 <p>
 Additional metadata can be added to this minimal structure to accommodate a finer-grained array of evidence factors and attribution.
 </p>
@@ -288,6 +286,25 @@ well-formed nanopublication:</p>
   different</li>
 <li>All triples have to belong to head, assertion, provenance, publication info, or one of their
   subgraphs; triples that have a graph URI that is different from these are not allowed</li>
+</ul>
+
+<p class="note"><strong>Tobias:</strong>
+Below are some more criteria that reflect the outcome of the discussion that Mark Wilkinson
+initiated with some additional thoughts:
+</p>
+
+<ul>
+<li>The head URI [H] and the nanopublication URI [N] have to be the same</li>
+<li>Apart from the four triples '[N] rdf:type np:Nanopublication', '[N] hasAssertion [A]',
+  '[N] hasProvenance [P]', and '[N] hasPublicationInfo [I]', only triples of the form
+  '[X] rdfg:subgraphof [Y]' are allowed in the head graph; these can be used to define
+  supergraphs and subgraphs of head, assertion, provenance, and publication info
+  (exception: no subgraphs for head)</li>
+<li>The triples of the provenance graph should refer to the assertion graph or a supergraph
+  thereof; in certain cases, they might also refer to the nanopub URI (= head URI) or a supergraph
+  thereof; supergraphs have to be defined in the head of the given nanopub</li>
+<li>The triples of the publication info graph should refer to the nanopub URI (= head URI) or a
+  supergraph thereof (if the supergraph is defined in the head)</li>
 </ul>
 
 </section>
