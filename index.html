@@ -28,7 +28,7 @@ th.datatable {
 	font-weight: bold;
 }
 </style>
-<title>Guidelines for Nanopublication </title>
+<title>Nanopublication Guidelines</title>
 <meta http-equiv='Content-Type' content='text/html;charset=utf-8' />
 <!-- 
       === NOTA BENE ===
@@ -107,6 +107,7 @@ th.datatable {
     {name: "Andrew Gibson", url: "", company:"LUMC", companyURL:"http://www.lumc.nl"},
     {name: "Louis Wich", url: "", company:"DTU", companyURL:"http://www.dtu.dk"},
     {name: "Tobias Kuhn", url: "http://www.tkuhn.ch/", company: "ETH Zurich", companyURL: "http://www.ethz.ch/" },
+	{name: "Michel Dumontier", url: "http://dumontierlab.com", company: "Stanford University", companyURL: "http://stanford.edu" },
     ],
 
 		// authors, add as many as you like. 
@@ -149,15 +150,17 @@ th.datatable {
 </script>
 </head>
 <body>
-	<section id='abstract'>Abstract here</section>
+	<section id='abstract'></section>
 
 	<section>
-		<h3>Introduction</h3>
-                A nanopublication is the smallest unit of publishable information and is composed of a single assertion and its provenance metadata. A nanopublication is a schema (defined below) that sits on top of existing semantic web technology. Essentially, a nanopublication augments ordinary linked data with provenance annotations.<BR><BR> 
-                    
-                Creating a nanopublication requires a one-time effort to model the assertion and provenance as RDF named graphs. After submission to an open, decentralized nanopublication store, the nanopublication will be available both to humans and automated inference and discovery engines. Nanopublications are stand-alone publications, but can also augment traditional research articles.<BR><BR>
-                    
-                This document offers Concept Web Alliance (CWA) recommendations and specifications for composing, implementing, and using nanopublications. It provides definitions, good and best practice recommendations and examples to help data producers author their own nanopublications. Nanopublication infrastructure is presently administered by the CWA, and is based on open standards. We anticipate the community-driven evolution of nanopublication formats to fit the changing needs of authors and publishers.
+		<h3>Abstract</h3>
+<p>
+ Good descriptions of data are essential to finding, understanding and ultimately reusing data. However, data is all too often published without adequate descriptions of its provenance. A
+<br><br>  
+ Here, we describe nanopublications, a community-driven approach to representing structured data along with its provenance into a single publishable and citable entity. A nanopublication minimally consists of an assertion, the provenance of the assertion, and the provenance of the nanopublication. The nanopublication is represented with and may be queried using Semantic Web technologies (RDF, OWL, SPARQL). Nanopublications also feature a mechanism to ensure the integrity of data and its provenance. Access to provenance enables users to assess the trustworthiness of data and provides a mechanism by which authors and institutions may be acknowledged for their contribution to the global knowledge graph. Nanopublications may be used to expose quantitative and qualitative data, as well as hypotheses, claims, and negative results that usually goes unpublished. With nanopublications, it is possible to disseminate individual data as independent publications with or without an accompanying research article.
+ <br><br>
+ This document describes the structure of nanopublications and offers guidelines in their composition, implementation and use. It was produced by members of the Concept Web Alliance (CWA), an open collaborative community that is actively addressing the challenges associated with the production, management, interoperability and analysis of unprecedented volumes of data. 
+ </p>
 
 	</section>
 	<section id="conformance">
@@ -166,152 +169,72 @@ th.datatable {
 
 
 	<section>
-		<h3>Why Nanopublications?</h3>
-                <p>
-                When serialized in RDF, nanopublications are interoperable and machine readable, and need not be tethered to centralized databases or research articles for their retrieval and use. Nanopublication provenance information can help users decide about the trustworthiness of the assertion and it provides a vehicle for fine-grained attribution to authors and institutions with the intention of incentivizing the accessibility and reuse of data. Individual nanopublications can be cited and their impact tracked, creating incentives for compliance with open semantic web standards and participation in online annotation efforts.
-				</p>
-
-				<p>
-                Nanopublications are a natural response to the explosion of high-quality contextual information that overwhelms the capacity of conventional research articles in scholarly communication. With nanopublications, it is possible to disseminate individual data as independent publications with or without an accompanying research article.
-                </p>
-                
-                <p>
-                Nanopublications can be used to expose quantitative and qualitative data, experimental data as well as hypotheses, novel or legacy data and negative data that usually goes unpublished.
-                </p>
-	</section>
-
-	<section>
-		<h3>The OPS Nanopublication Scheme</h3>
+		<h3>Primer</h3>
 <p>
-The nanopublication schema combines the assertion and its provenance into a single publishable and citable entity. Both the assertion and provenance are represented as RDF graphs.
+Nanopublications combines an assertion, the provenance of the assertion, and the provenance of the nanopublication into a single publishable and citable entity. Both the assertion and provenance are represented as RDF graphs.
 </p>
 
 <p>
-The assertion graph of the nanopublication takes the form of one or more semantic triples (subject-predicate-object combinations). Examples... The scope of the assertion is somewhat arbitrary but as a rule of thumb, it can be limited by what the author wishes to be known for. If it is common in your domain to report evidence or error values with your assertion, then they SHOULD be included here otherwise they will appear in the provenance graph.
-</p>
+The <strong>assertion graph</strong> of the nanopublication contains an assertion that is comprised of one or more RDF triples (subject-predicate-object tuples). An assertion is a proposition that is falsifiable, that is to say we can test whether the proposition is true or false. Examples of assertions include 
 
-<p class="note"><strong>Tobias:</strong> I think evidence and error values should always go into the provenance part. The actual claim or hypothesis and the
-respective error/confidence value are conceptually on different levels, and I think we shouldn't mix them. For example, to make sense
-of a large number of nanopubs, you first have to make groups of nanopubs with the same assertion (I think this has been called "cardinal
-assertion"). In this case, you don't want to put two nanopubs into different groups just because their error/confidence values are
-different.
+<trastuzumab, is-indicated-for, breast-cancer>
+{
+ <BRCA1-gene, is-involved-in, breast-cancer>,
+ <BRCA1-gene, encodes, BRCA1-protein>
+ <BRCA1-protein, is-expressed-in, breast>
+}
+ </p>
+ 
+<p>
+The <strong>provenance graph</strong> of the nanopublication contains one or more RDF triples that provide information about the <strong>assertion</strong>. A nanopublication MUST have a provenance graph identifier linked to the assertion graph identifier. Provenance means, ‘how this came to be’, and may include any statement that discusses how the assertion was generated, who generated it, when was it generated, where was the assertion obtained from, and any other similar information. Examples of assertional provenance include
+
+{
+<assertion, prov:wasGeneratedAt, x>
+<assertion, ..., y>
+}
 </p>
 
 <p>
-Provenance means, ‘how this came to be’ and the provenance graph SHOULD include metadata statements for the assertion, such as the methods or parameter values used in creating the assertion, as well as attribution to authors, institutions, and funding sources (recommended publication roles…). The provenance graph SHOULD also contain a time/date stamp (using pro) and MAY contain links to DOIs and URLs. A nanopublication MUST have a provenance graph linked to the assertion (the subject being the "assertion").
-</p>
+The <strong>publicationInfo graph</strong> contains one or more RDF triples that offer provenance information regarding the nanopublication itself. In this case, the subject of the triples in the publicationInfo graph MUST be the nanopublication URI and SHOULD contain attribution and timestamp. Examples of the nanopublication provenance include: 
 
+{
+<:np, dc:creator, "Paul Groth"^^xsd:string>
+<:np, dc:created, "2012-10-26T12:45:00Z"^^xsd:dateTime>
+}
 <p>
-Additional metadata can be added to this minimal structure to accommodate a finer-grained array of evidence factors and attribution.
-</p>
-
-<p>
-A third graph called publicationInfo, contains provenance metadata statements referring to the creation of the nanopublication itself (the subject MUST be the "nanopublicaiton") and SHOULD contain attribution and a date/time stamp.
-<p class="note"><strong>Tobias:</strong> What's the difference between the timestamp in the provenance graph and the one in publicationInfo?</p>
-<p>
-
-In order to maintain flexibility there is no requirement for OWL. 
-
-These recommendations will be exemplified and elaborated upon in a library of nanopublication templates http://nanopub.org/wordpress/?page_id=8. The CWA recommended nanopblucation schema is given below and can be linked to at http://nanopub.org/nschema
-
-		<pre class='example'>
-@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;.
-@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;.
-@prefix rdfg: &lt;http://www.w3.org/2004/03/trix/rdfg-1/&gt;.
-@prefix owl: &lt;hhttp://www.w3.org/2002/07/owl#&gt;.
-@prefix np: &lt;hhttp://www.nanopub.org/nschema#&gt;.
-@prefix dc: &lt;hhttp://purl.org/dc/elements/1.1/&gt;.
-@prefix xsd: &lt;hhttp://www.w3.org/2001/XMLSchema#&gt;.
-
-&lt;http://www.nanopub.org/nschema&gt; a owl:Ontology ;
-	dc:created "2012-10-26"^^xsd:date;
-	dc:modified "2012-10-26"^^xsd:date;
-	dc:creator "Paul Groth"^^xsd:string, 
-		"Andrew Gibson"^^xsd:string;
-	dc:contributor "Zuotian Tatum"^^xsd:string;
-	owl:priorVersion &lt;http://www.nanopub.org/nschema-1.8&gt;.
-
-## A nanopublication should be associated with an assertion, publicationInfo and provenance,
-## all of which are graphs. In order to maintain flexibility we do not express this requirement
-## in OWL
-
-np:Nanopublication rdf:type owl:Class.
-np:Assertion rdfs:subClassOf rdfg:Graph.
-np:Provenance rdfs:subClassOf rdfg:Graph.
-np:PublicationInfo rdfs:subClassOf rdfg:Graph.
-
-np:hasAssertion a owl:FunctionalProperty.
-np:hasAssertion rdfs:domain np:Nanopublication.
-np:hasAssertion rdfs:range np:Assertion.
-
-np:hasProvenance a owl:FunctionalProperty.
-np:hasProvenance rdfs:domain np:Nanopublication.
-np:hasProvenance rdfs:range np:Provenance.
-
-np:hasPublicationInfo a owl:FunctionalProperty.
-np:hasPublicationInfo rdfs:domain np:Nanopublication.
-np:hasPublicationInfo rdfs:range np:PublicationInfo.
-                </pre>
-
-
-        </section>
+</section>
 
 
 <section>
-<h3>Formal Structure of a Nanopublication</h3>
+<h3>Specification</h3>
 
 <p class="note"><strong>Tobias:</strong>
 These criteria are taken from <a href="https://github.com/tkuhn/nanopub-java">nanopub-java</a>,
 and are up for discussion.
 </p>
 
-<p>A nanopublication MUST comply with all of the following criteria to be considered a
-well-formed nanopublication:</p>
+<p>A nanopublication MUST comply with all of the following criteria to be considered well-formed:</p>
 
 <ul>
-<li>A nanopublication consists of a set of RDF quads (i.e. triples with a context URI)</li>
-<li>The context (i.e. graph) of each triple has to be specified (no null values)</li>
-<li>There is exactly one quad of the form '[N] rdf:type np:Nanopublication [H]', whereby [N] is
-  identified as the nanopublication URI and [H] as the head URI (these two may be the same URI)</li>
-<li>There is exactly one quad of the form '[N] hasAssertion [A] [H]', where [N] and [H] are the
-  nanopublication and head URIs, respectively, and whereby [A] is identified as the assertion URI</li>
-<li>In the same way, there is exactly one quad of the form '[N] hasProvenance [P] [H]', whereby
-  [P] is identified as the provenance URI</li>
-<li>In the same way, there is exactly one quad of the form '[N] hasPublicationInfo [I] [H]',
-  whereby [I] is identified as the publication info URI</li>
-<li>Quads of the form '[S] rdfg:subgraphof [G] [H]' where [H] is the head URI and [G] is one
-  of assertion, provenance, or publication info URI define a subgraph [S] of the respective
-  graph</li>
-<li>The URIs for head, assertion, provenance, publication info, and their subgraphs have to be all
-  different</li>
-<li>All triples have to belong to head, assertion, provenance, publication info, or one of their
-  subgraphs; triples that have a graph URI that is different from these are not allowed</li>
+<li>A nanopublication consists of a set of RDF quads (i.e. subject-predicate-object + context)</li>
+<li>The context (i.e. graph) of each triple has to be specified as a valid URI (i.e. no null values)</li>
+<li>There is exactly one quad of the form '[N] rdf:type np:Nanopublication [C]', where [N] is the nanopublication URI, and [C] is the context URI</li>
+<li>There is exactly one quad of the form '[N] np:hasAssertion [A] [C]', where [N] is the nanopublication URI, [A] is the assertion URI, and [C] is the context URI</li>
+<li>There is exactly one quad of the form '[N] np:hasProvenance [P] [C]', where [N] is the nanopublication URI, [P] is the provenance URI, and [C] is the context URI</li>
+<li>There is exactly one quad of the form '[N] np:hasPublicationInfo [I] [C]', [N] is the nanopublication URI, [I] is the nanopublication information URI, and [C] is the context URI</li>
+<li>There are zero or more quads of the form '[S] rdfg:subGraphOf [G] [C]', where [C] is the context URI and [S] is one of [N] or [A] or [P]</li>
+<li>The URIs for [N] and [C] may be the same.</li>
+<li>The URIs for [A], [P], [I], and [S] must all be different</li>
+<li>Triples must be placed in one of [N] or [A] or [P] or [I] or [C]</li>
+<li>Triples in [A] or [P] or [I] must have the respective graph as their context URI [C].</li>
+<li>Triples in [P] must refer to [A] or a supergraph of [A].</li>
+<li>Triples in [I] must refer to [N] or a supergraph of [N].</li>
 </ul>
-
-<p class="note"><strong>Tobias:</strong>
-Below are some more criteria that reflect the outcome of the discussion that Mark Wilkinson
-initiated with some additional thoughts:
-</p>
-
-<ul>
-<li>The head URI [H] and the nanopublication URI [N] have to be the same</li>
-<li>Apart from the four triples '[N] rdf:type np:Nanopublication', '[N] hasAssertion [A]',
-  '[N] hasProvenance [P]', and '[N] hasPublicationInfo [I]', only triples of the form
-  '[X] rdfg:subgraphof [Y]' are allowed in the head graph; these can be used to define
-  supergraphs and subgraphs of head, assertion, provenance, and publication info
-  (exception: no subgraphs for head)</li>
-<li>The triples of the provenance graph should refer to the assertion graph or a supergraph
-  thereof; in certain cases, they might also refer to the nanopub URI (= head URI) or a supergraph
-  thereof; supergraphs have to be defined in the head of the given nanopub</li>
-<li>The triples of the publication info graph should refer to the nanopub URI (= head URI) or a
-  supergraph thereof (if the supergraph is defined in the head)</li>
-</ul>
-
 </section>
 
 
-<section><h3>Integrity Key</h3>
-
+<section>
+<h3>Integrity Key</h3>
 [Alasdair, Paul, Mark]
 
 <ul>
@@ -328,17 +251,12 @@ nanopub flows into the integrity key for the citing one. Therefore, the integrit
 respective nanopub, but also of all cited nanopub (and nanopubs cited by the cited nanopubs, etc.). This is inspired
 by how the Git versioning system uses hash values to identify commits. I started to implement this as a proof-of-concept.
 See the link below.</p>
-
+<p class="note"><strong>Michel:</strong>Agree with Tobias - it's a major advance to include integrity checks.</p>
 <ul>
 <li><a href="https://github.com/tkuhn/hashuri-java/tree/master/src/main/resources/examples">hashuri-java:</a> integrity keys for nanopub URIs</li>
 </ul>
 
-
-
 </section>
-
-
-
 
 <section><h3>Nanopublication Compliant RDF for Large Data Sets</h3>
 <p>
@@ -423,7 +341,55 @@ Registry [Erik, Mark]
 <li> nanopu.org is an instance for exclusive nanopub data (ckan powers data hub)</li>
 </ul>
 </section>
-        
+
+<section>
+<h3>Nanopublication Ontology</h3>
+The nanopublication ontology is specified using the Web Ontology Language (OWL).
+
+		<pre class='example'>
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;.
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;.
+@prefix rdfg: &lt;http://www.w3.org/2004/03/trix/rdfg-1/&gt;.
+@prefix owl: &lt;hhttp://www.w3.org/2002/07/owl#&gt;.
+@prefix np: &lt;hhttp://www.nanopub.org/nschema#&gt;.
+@prefix dc: &lt;hhttp://purl.org/dc/elements/1.1/&gt;.
+@prefix xsd: &lt;hhttp://www.w3.org/2001/XMLSchema#&gt;.
+
+&lt;http://www.nanopub.org/nschema&gt; a owl:Ontology ;
+	dc:created "2012-10-26"^^xsd:date;
+	dc:modified "2012-10-26"^^xsd:date;
+	dc:creator "Paul Groth"^^xsd:string, 
+		"Andrew Gibson"^^xsd:sftring;
+	dc:contributor "Zuotian Tatum"^^xsd:string;
+	owl:priorVersion &lt;http://www.nanopub.org/nschema-1.8&gt;.
+
+## A nanopublication should be associated with at most one assertion,
+## provenance of assertion, and provenance of the nanopublication (publicationInfo)
+
+np:Nanopublication rdf:type owl:Class.
+np:Assertion rdfs:subClassOf rdfg:Graph.
+np:Provenance rdfs:subClassOf rdfg:Graph.
+np:PublicationInfo rdfs:subClassOf rdfg:Graph.
+
+np:hasAssertion a owl:FunctionalProperty.
+np:hasAssertion rdfs:domain np:Nanopublication.
+np:hasAssertion rdfs:range np:Assertion.
+
+np:hasProvenance a owl:FunctionalProperty.
+np:hasProvenance rdfs:domain np:Nanopublication.
+np:hasProvenance rdfs:range np:Provenance.
+
+np:hasPublicationInfo a owl:FunctionalProperty.
+np:hasPublicationInfo rdfs:domain np:Nanopublication.
+np:hasPublicationInfo rdfs:range np:PublicationInfo. 
+</pre>
+<p class="note"><strong>Michel:</strong>I suggest renaming np:PublicationInfo to np:NanopublicationInfo</p>
+</section>
+
+<section><h3>Further Information</h3>
+These recommendations will be exemplified and elaborated upon in a library of nanopublication templates http://nanopub.org/wordpress/?page_id=8. The CWA recommended nanopublication schema is given below and can be linked to at http://nanopub.org/nschema
+</section>
+
 <section><h3>References</h3>
 <ul>
  <li> Tobias Kuhn, Michael Krauthammer (2012) Underspecified Scientific Claims in Nanopublications. arXiv:1209.1483
