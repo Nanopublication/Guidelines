@@ -291,15 +291,16 @@ The current ontology is loss in its specification to encourage adoption. We thus
 <ul>
 <li>A nanopublication consists of a set of RDF quads (i.e. subject-predicate-object + context)</li>
 <li>The context (i.e. graph) of each triple has to be specified as a valid URI (i.e. no null values)</li>
-<li>There is exactly one quad of the form '[N] rdf:type np:Nanopublication [C]', where [N] is the nanopublication URI, and [C] is the context URI</li>
-<li>There is exactly one quad of the form '[N] np:hasAssertion [A] [C]', where [N] is the nanopublication URI, [A] is the assertion URI, and [C] is the context URI</li>
-<li>There is exactly one quad of the form '[N] np:hasProvenance [P] [C]', where [N] is the nanopublication URI, [P] is the provenance URI, and [C] is the context URI</li>
-<li>There is exactly one quad of the form '[N] np:hasPublicationInfo [I] [C]', [N] is the nanopublication URI, [I] is the nanopublication information URI, and [C] is the context URI</li>
-<li>There are zero or more quads of the form '[S] rdfg:subGraphOf [G] [C]', where [C] is the context URI and [S] is one of [N] or [A] or [P]</li>
-<li>The URIs for [N] and [C] may be the same.</li>
-<li>The URIs for [A], [P], [I], and [S] must all be different</li>
-<li>Triples must be placed in one of [N] or [A] or [P] or [I] or [C]</li>
-<li>Triples in [A] or [P] or [I] must have the respective graph as their context URI [C].</li>
+<li>There is exactly one quad of the form '[N] rdf:type np:Nanopublication [H]', where [N] is the nanopublication URI, and [H] is the head URI</li>
+<li>There is exactly one quad of the form '[N] np:hasAssertion [A] [H]', where [N] is the nanopublication URI, [A] is the assertion URI, and [H] is the head URI</li>
+<li>There is exactly one quad of the form '[N] np:hasProvenance [P] [H]', where [N] is the nanopublication URI, [P] is the provenance URI, and [H] is the head URI</li>
+<li>There is exactly one quad of the form '[N] np:hasPublicationInfo [I] [H]', [N] is the nanopublication URI, [I] is the nanopublication information URI, and [H] is the head URI</li>
+<li>There are zero or more quads of the form '[S] rdfg:subGraphOf [G] [H]' introducing a super-graph [G], where [H] is the head URI and [S] is one of [H] or [A] or [P] or [I]</li>
+<li>There are zero or more quads of the form '[G] rdfg:subGraphOf [S] [H]' introducing a sub-graph [G], where [H] is the head URI and [S] is one of [A] or [P] or [I]</li>
+<li>There are no other quads in the context [H]</li>
+<li>The URIs for [N] and [H] may be the same.</li>
+<li>The URIs for [H], [A], [P], [I], and the introduced sub-graphs must all be different</li>
+<li>Triples must be placed in one of [H] or [A] or [P] or [I] or one of the introduced sub-graphs</li>
 <li>Triples in [P] must refer to [A] or a supergraph of [A].</li>
 <li>Triples in [I] must refer to [N] or a supergraph of [N].</li>
 </ul>
