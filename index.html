@@ -147,6 +147,10 @@ th.datatable {
     overrideCopyright:    "<p class='copyright'>This document is licensed under a <a class='subfoot' href='http://creativecommons.org/licenses/sa-by/3.0/' rel='license'>Creative Commons ShareAlike Attribution 3.0 License</a>.</p>",
 	};
 </script>
+<script type="text/turtle">
+@prefix prov: <http://www.w3.org/ns/prov#> .
+<http://www.nanopub.org/2013/WD-guidelines-20131215/> prov:wasDerivedFrom <https://github.com/Nanopublication/Guidelines>.
+</script>
 </head>
 
 <body>
@@ -180,13 +184,13 @@ The <strong>assertion graph</strong> of the nanopublication contains an assertio
 </p>
 <pre class='example'>
  :assertion {
-    :trastuzumab, :is-indicated-for, :breast-cancer .
+    :trastuzumab :is-indicated-for :breast-cancer .
  }
 </pre>
 <pre class='example'>
  :assertion {
-  :BRCA1-gene :is-involved-in, :breast-cancer .
-  :BRCA1-gene :encodes, :BRCA1-protein .
+  :BRCA1-gene :is-involved-in :breast-cancer .
+  :BRCA1-gene :encodes :BRCA1-protein .
   :BRCA1-protein :is-expressed-in, :breast .
  }
 </pre>
@@ -202,7 +206,7 @@ The <strong>provenance graph</strong> of the nanopublication contains one or mor
 <pre class='example'>
 :provenance {
     :assertion prov:generatedAtTime "2012-02-03T14:38:00Z"^^xsd:dateTime  .
-    :assertion prov:wasDerivedFrom, :experiment . 
+    :assertion prov:wasDerivedFrom :experiment . 
     :assertion prov:wasAttributedTo :experimentScientist .
 }
 </pre>
@@ -214,7 +218,7 @@ The <strong>publicationInfo graph</strong> contains one or more RDF triples that
 <pre class='example'>
 :pubInfo {
  :nanopubEx prov:wasAttributedTo :paul .
- :nanopubEx prov:generatedAtTime "2012-10-26T12:45:00Z"^^xsd:dateTime
+ :nanopubEx prov:generatedAtTime "2012-10-26T12:45:00Z"^^xsd:dateTime .
 }
 </pre>
 <p>
@@ -304,11 +308,63 @@ The current ontology is loss in its specification to encourage adoption. We thus
 <li>Triples in [P] must refer to [A] or a supergraph of [A].</li>
 <li>Triples in [I] must refer to [N] or a supergraph of [N].</li>
 </ul>
+
+<pre class="example">
+@prefix : &lthttp://www.example.org/pubs#&gt .
+@prefix np:  &lthttp://www.nanopub.org/nschema#&gt .
+@prefix prov: &lthttp://www.w3.org/ns/prov#&gt . 
+@prefix xsd:  &lthttp://www.w3.org/2001/XMLSchema#&gt .
+
+:nanopubEx {
+     :nanopubEx a np:Nanopublication .
+     :nanopubEx np:hasAssertion :assertion .
+     :nanopubEx np:hasProvenance :provenance .
+     :nanopubEx np:hasPublicationInfo :pubInfo .
+}
+
+:assertion {
+    :trastuzumab :is-indicated-for :breast-cancer .
+    :assertion a np:Assertion .
+}
+
+:provenance {
+    :assertion prov:generatedAtTime "2012-02-03T14:38:00Z"^^xsd:dateTime  .
+    :assertion prov:wasDerivedFrom :experiment . 
+    :assertion prov:wasAttributedTo :experimentScientist .
+    :provenance a np:Provenance .
+}
+
+:pubInfo {
+ :nanopubEx prov:wasAttributedTo :paul .
+ :nanopubEx prov:generatedAtTime "2012-10-26T12:45:00Z"^^xsd:dateTime .
+ :pubInfo a np:PublicationInfo .
+}
+
+
+</pre>
+
+<pre class="example">
+# The same example above in NQUADS 
+&lthttp://www.example.org/pubs#nanopubEx&gt &lthttp://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt &lthttp://www.nanopub.org/nschema#Nanopublication&gt &lthttp://www.example.org/pubs#nanopubEx&gt .
+&lthttp://www.example.org/pubs#nanopubEx&gt &lthttp://www.nanopub.org/nschema#hasAssertion&gt &lthttp://www.example.org/pubs#assertion&gt &lthttp://www.example.org/pubs#nanopubEx&gt .
+&lthttp://www.example.org/pubs#nanopubEx&gt &lthttp://www.nanopub.org/nschema#hasProvenance&gt &lthttp://www.example.org/pubs#provenance&gt &lthttp://www.example.org/pubs#nanopubEx&gt .
+&lthttp://www.example.org/pubs#nanopubEx&gt &lthttp://www.nanopub.org/nschema#hasPublicationInfo&gt &lthttp://www.example.org/pubs#pubInfo&gt &lthttp://www.example.org/pubs#nanopubEx&gt .
+&lthttp://www.example.org/pubs#trastuzumab&gt &lthttp://www.example.org/pubs#is-indicated-for&gt &lthttp://www.example.org/pubs#breast-cancer&gt &lthttp://www.example.org/pubs#assertion&gt .
+&lthttp://www.example.org/pubs#assertion&gt &lthttp://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt &lthttp://www.nanopub.org/nschema#Assertion&gt &lthttp://www.example.org/pubs#assertion&gt .
+&lthttp://www.example.org/pubs#assertion&gt &lthttp://www.w3.org/ns/prov#generatedAtTime&gt "2012-02-03T14:38:00Z"^^&lthttp://www.w3.org/2001/XMLSchema#dateTime&gt &lthttp://www.example.org/pubs#provenance&gt .
+&lthttp://www.example.org/pubs#assertion&gt &lthttp://www.w3.org/ns/prov#wasDerivedFrom&gt &lthttp://www.example.org/pubs#experiment&gt &lthttp://www.example.org/pubs#provenance&gt .
+&lthttp://www.example.org/pubs#assertion&gt &lthttp://www.w3.org/ns/prov#wasAttributedTo&gt &lthttp://www.example.org/pubs#experimentScientist&gt &lthttp://www.example.org/pubs#provenance&gt .
+&lthttp://www.example.org/pubs#provenance&gt &lthttp://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt &lthttp://www.nanopub.org/nschema#Provenance&gt &lthttp://www.example.org/pubs#provenance&gt .
+&lthttp://www.example.org/pubs#nanopubEx&gt &lthttp://www.w3.org/ns/prov#wasAttributedTo&gt &lthttp://www.example.org/pubs#paul&gt &lthttp://www.example.org/pubs#pubInfo&gt .
+&lthttp://www.example.org/pubs#nanopubEx&gt &lthttp://www.w3.org/ns/prov#generatedAtTime&gt "2012-10-26T12:45:00Z"^^&lthttp://www.w3.org/2001/XMLSchema#dateTime&gt &lthttp://www.example.org/pubs#pubInfo&gt .
+&lthttp://www.example.org/pubs#pubInfo&gt &lthttp://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt &lthttp://www.nanopub.org/nschema#PublicationInfo&gt &lthttp://www.example.org/pubs#pubInfo&gt .
+
 </section>
 
 
 <section>
 <h3>Integrity Key</h3>
+<p class="note"><strong>Paul</strong> Integrity keys are being actively defined and will appear in the next specification.</p>
 The goal of the integrity key is to establish an identity for a nanopublication that can be used to check if a nanopublication has changed. Thus, preserving the immutability of a nanopublication. Indeed, nanopublications SHOULD be treated as immutable. 
 
 <p class="note"><strong>Tobias:</strong> I think integrity keys should be part of the nanopub URI. In this way, every reference to a nanopub
@@ -343,7 +399,7 @@ An example of the use ncRDF in exposing a large dataset is given in the FANTOM5 
 </section>
 
 <section><h3>Best & Good Practices</h3>
-<p class="note"><strong>Paul</strong> There is quite a bit of material here that should be included. Future versions will include these suggestions. </p>
+<p class="note"><strong>Paul</strong>Future versions may not include a best practice guide and will forward to updating pages. We include these here to help users to get started. </p>
 
 <ul>
 
