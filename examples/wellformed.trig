@@ -1,0 +1,30 @@
+@prefix : <http://www.example.org/pubs#> .
+@prefix np:  <http://www.nanopub.org/nschema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> . 
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+:nanopubEx {
+     :nanopubEx a np:Nanopublication .
+     :nanopubEx np:hasAssertion :assertion .
+     :nanopubEx np:hasProvenance :provenance .
+     :nanopubEx np:hasPublicationInfo :pubInfo .
+     
+}
+
+:assertion {
+    :trastuzumab :is-indicated-for :breast-cancer .
+    :assertion a np:Assertion .
+}
+
+:provenance {
+    :assertion prov:generatedAtTime "2012-02-03T14:38:00Z"^^xsd:dateTime  .
+    :assertion prov:wasDerivedFrom :experiment . 
+    :assertion prov:wasAttributedTo :experimentScientist .
+    :provenance a np:Provenance .
+}
+
+:pubInfo {
+ :nanopubEx prov:wasAttributedTo :paul .
+ :nanopubEx prov:generatedAtTime "2012-10-26T12:45:00Z"^^xsd:dateTime .
+ :pubInfo a np:PublicationInfo .
+}
