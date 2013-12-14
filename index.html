@@ -203,6 +203,8 @@ The <strong>assertion graph</strong> of the nanopublication contains an assertio
 <p>
 The <strong>provenance graph</strong> of the nanopublication contains one or more RDF triples that provide information about the <strong>assertion</strong>. A nanopublication MUST have a provenance graph identifier linked to the assertion graph identifier. Provenance means, ‘how this came to be’, and may include any statement that discusses how the assertion was generated, who generated it, when was it generated, where was the assertion obtained from, and any other similar information. Examples of assertional provenance include:
 
+</p>
+
 <pre class='example'>
 :provenance {
     :assertion prov:generatedAtTime "2012-02-03T14:38:00Z"^^xsd:dateTime  .
@@ -210,10 +212,10 @@ The <strong>provenance graph</strong> of the nanopublication contains one or mor
     :assertion prov:wasAttributedTo :experimentScientist .
 }
 </pre>
-</p>
 
 <p>
 The <strong>publicationInfo graph</strong> contains one or more RDF triples that offer provenance information regarding the nanopublication itself. In this case, the subject of the triples in the publicationInfo graph MUST be the nanopublication URI and SHOULD contain attribution and timestamp. Examples of the nanopublication provenance include: 
+</p>
 
 <pre class='example'>
 :pubInfo {
@@ -310,10 +312,10 @@ The current ontology is loss in its specification to encourage adoption. We thus
 </ul>
 
 <pre class="example">
-@prefix : &lthttp://www.example.org/pubs#&gt .
-@prefix np:  &lthttp://www.nanopub.org/nschema#&gt .
-@prefix prov: &lthttp://www.w3.org/ns/prov#&gt . 
-@prefix xsd:  &lthttp://www.w3.org/2001/XMLSchema#&gt .
+@prefix : &lt;http://www.example.org/pubs#&gt; .
+@prefix np:  &lt;http://www.nanopub.org/nschema#&gt; .
+@prefix prov: &lt;http://www.w3.org/ns/prov#&gt; . 
+@prefix xsd:  &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
 :nanopubEx {
      :nanopubEx a np:Nanopublication .
@@ -345,20 +347,20 @@ The current ontology is loss in its specification to encourage adoption. We thus
 
 <pre class="example">
 # The same example above in NQUADS 
-&lthttp://www.example.org/pubs#nanopubEx&gt &lthttp://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt &lthttp://www.nanopub.org/nschema#Nanopublication&gt &lthttp://www.example.org/pubs#nanopubEx&gt .
-&lthttp://www.example.org/pubs#nanopubEx&gt &lthttp://www.nanopub.org/nschema#hasAssertion&gt &lthttp://www.example.org/pubs#assertion&gt &lthttp://www.example.org/pubs#nanopubEx&gt .
-&lthttp://www.example.org/pubs#nanopubEx&gt &lthttp://www.nanopub.org/nschema#hasProvenance&gt &lthttp://www.example.org/pubs#provenance&gt &lthttp://www.example.org/pubs#nanopubEx&gt .
-&lthttp://www.example.org/pubs#nanopubEx&gt &lthttp://www.nanopub.org/nschema#hasPublicationInfo&gt &lthttp://www.example.org/pubs#pubInfo&gt &lthttp://www.example.org/pubs#nanopubEx&gt .
-&lthttp://www.example.org/pubs#trastuzumab&gt &lthttp://www.example.org/pubs#is-indicated-for&gt &lthttp://www.example.org/pubs#breast-cancer&gt &lthttp://www.example.org/pubs#assertion&gt .
-&lthttp://www.example.org/pubs#assertion&gt &lthttp://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt &lthttp://www.nanopub.org/nschema#Assertion&gt &lthttp://www.example.org/pubs#assertion&gt .
-&lthttp://www.example.org/pubs#assertion&gt &lthttp://www.w3.org/ns/prov#generatedAtTime&gt "2012-02-03T14:38:00Z"^^&lthttp://www.w3.org/2001/XMLSchema#dateTime&gt &lthttp://www.example.org/pubs#provenance&gt .
-&lthttp://www.example.org/pubs#assertion&gt &lthttp://www.w3.org/ns/prov#wasDerivedFrom&gt &lthttp://www.example.org/pubs#experiment&gt &lthttp://www.example.org/pubs#provenance&gt .
-&lthttp://www.example.org/pubs#assertion&gt &lthttp://www.w3.org/ns/prov#wasAttributedTo&gt &lthttp://www.example.org/pubs#experimentScientist&gt &lthttp://www.example.org/pubs#provenance&gt .
-&lthttp://www.example.org/pubs#provenance&gt &lthttp://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt &lthttp://www.nanopub.org/nschema#Provenance&gt &lthttp://www.example.org/pubs#provenance&gt .
-&lthttp://www.example.org/pubs#nanopubEx&gt &lthttp://www.w3.org/ns/prov#wasAttributedTo&gt &lthttp://www.example.org/pubs#paul&gt &lthttp://www.example.org/pubs#pubInfo&gt .
-&lthttp://www.example.org/pubs#nanopubEx&gt &lthttp://www.w3.org/ns/prov#generatedAtTime&gt "2012-10-26T12:45:00Z"^^&lthttp://www.w3.org/2001/XMLSchema#dateTime&gt &lthttp://www.example.org/pubs#pubInfo&gt .
-&lthttp://www.example.org/pubs#pubInfo&gt &lthttp://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt &lthttp://www.nanopub.org/nschema#PublicationInfo&gt &lthttp://www.example.org/pubs#pubInfo&gt .
-
+&lt;http://www.example.org/pubs#nanopubEx&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://www.nanopub.org/nschema#Nanopublication&gt; &lt;http://www.example.org/pubs#nanopubEx&gt; .
+&lt;http://www.example.org/pubs#nanopubEx&gt; &lt;http://www.nanopub.org/nschema#hasAssertion&gt; &lt;http://www.example.org/pubs#assertion&gt; &lt;http://www.example.org/pubs#nanopubEx&gt; .
+&lt;http://www.example.org/pubs#nanopubEx&gt; &lt;http://www.nanopub.org/nschema#hasProvenance&gt; &lt;http://www.example.org/pubs#provenance&gt; &lt;http://www.example.org/pubs#nanopubEx&gt; .
+&lt;http://www.example.org/pubs#nanopubEx&gt; &lt;http://www.nanopub.org/nschema#hasPublicationInfo&gt; &lt;http://www.example.org/pubs#pubInfo&gt; &lt;http://www.example.org/pubs#nanopubEx&gt; .
+&lt;http://www.example.org/pubs#trastuzumab&gt; &lt;http://www.example.org/pubs#is-indicated-for&gt; &lt;http://www.example.org/pubs#breast-cancer&gt; &lt;http://www.example.org/pubs#assertion&gt; .
+&lt;http://www.example.org/pubs#assertion&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://www.nanopub.org/nschema#Assertion&gt; &lt;http://www.example.org/pubs#assertion&gt; .
+&lt;http://www.example.org/pubs#assertion&gt; &lt;http://www.w3.org/ns/prov#generatedAtTime&gt; "2012-02-03T14:38:00Z"^^&lt;http://www.w3.org/2001/XMLSchema#dateTime&gt; &lt;http://www.example.org/pubs#provenance&gt; .
+&lt;http://www.example.org/pubs#assertion&gt; &lt;http://www.w3.org/ns/prov#wasDerivedFrom&gt; &lt;http://www.example.org/pubs#experiment&gt; &lt;http://www.example.org/pubs#provenance&gt; .
+&lt;http://www.example.org/pubs#assertion&gt; &lt;http://www.w3.org/ns/prov#wasAttributedTo&gt; &lt;http://www.example.org/pubs#experimentScientist&gt; &lt;http://www.example.org/pubs#provenance&gt; .
+&lt;http://www.example.org/pubs#provenance&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://www.nanopub.org/nschema#Provenance&gt; &lt;http://www.example.org/pubs#provenance&gt; .
+&lt;http://www.example.org/pubs#nanopubEx&gt; &lt;http://www.w3.org/ns/prov#wasAttributedTo&gt; &lt;http://www.example.org/pubs#paul&gt; &lt;http://www.example.org/pubs#pubInfo&gt; .
+&lt;http://www.example.org/pubs#nanopubEx&gt; &lt;http://www.w3.org/ns/prov#generatedAtTime&gt; "2012-10-26T12:45:00Z"^^&lt;http://www.w3.org/2001/XMLSchema#dateTime&gt; &lt;http://www.example.org/pubs#pubInfo&gt; .
+&lt;http://www.example.org/pubs#pubInfo&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://www.nanopub.org/nschema#PublicationInfo&gt; &lt;http://www.example.org/pubs#pubInfo&gt; .
+</pre>
 </section>
 
 
@@ -399,11 +401,10 @@ An example of the use ncRDF in exposing a large dataset is given in the FANTOM5 
 </section>
 
 <section><h3>Best & Good Practices</h3>
-<p class="note"><strong>Paul</strong>Future versions may not include a best practice guide and will forward to updating pages. We include these here to help users to get started. </p>
+<p class="note"><strong>Paul</strong>Future versions may not include a best practice guide and will forward to updating pages. We include these here to help users to get started and as a reminder to update these. </p>
 
 <ul>
 
-</li>
 <li>The primary challenge when nanopublishing data is to model the semantics for clarity and keep a clear separation between the actual observations (measurements) from the interpretations (scientific assertions) and mark-up this distinction in as unambiguous way as possible. Other considerations include economization of memory usage, time-efficient querying, and avoidance of logical inconsistencies.
 </li>
 <li>Nanopublications should present as low a barrier as possible to the exposure of data. Hence nanopublications have a minimal requirement of an assertion and provenance, but are extensible. The basic idea is that a minimal nanopublication can be easily created, but the better the annotation the more likely it is that the nanopublication will be found, used and cited by others. In other words, there is strong incentive for rich annotation, but a low barrier to getting started.
