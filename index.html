@@ -185,16 +185,16 @@ The <strong>assertion graph</strong> of the nanopublication contains an assertio
 
 </p>
 <pre class='example'>
- :assertion {
-    :trastuzumab :is-indicated-for :breast-cancer .
- }
+:assertion {
+    ex:trastuzumab ex:is-indicated-for ex:breast-cancer .
+}
 </pre>
 <pre class='example'>
- :assertion {
-  :BRCA1-gene :is-involved-in :breast-cancer .
-  :BRCA1-gene :encodes :BRCA1-protein .
-  :BRCA1-protein :is-expressed-in, :breast .
- }
+:assertion {
+    ex:BRCA1-gene ex:is-involved-in ex:breast-cancer .
+    ex:BRCA1-gene ex:encodes ex:BRCA1-protein .
+    ex:BRCA1-protein ex:is-expressed-in ex:breast .
+}
 </pre>
 
 <p class="note"><strong>Paul:</strong> Michel suggests adding the following to explain assertion "An assertion is a proposition that is falsifiable, that is to say we can test whether the proposition is true or false." - this is under discussion.
@@ -221,8 +221,8 @@ The <strong>publicationInfo graph</strong> contains one or more RDF triples that
 
 <pre class='example'>
 :pubInfo {
- :nanopubEx prov:wasAttributedTo :paul .
- :nanopubEx prov:generatedAtTime "2012-10-26T12:45:00Z"^^xsd:dateTime .
+    ex:pub1 prov:wasAttributedTo ex:paul .
+    ex:pub1 prov:generatedAtTime "2012-10-26T12:45:00Z"^^xsd:dateTime .
 }
 </pre>
 <p>
@@ -230,10 +230,12 @@ The <strong>publicationInfo graph</strong> contains one or more RDF triples that
 The nanopublication itself receives its own identifier and refers to its parts.
 
 <pre class='example'>
-:nanopubEx np:hasAssertion :assertion .
-:nanopubEx np:hasProvenance :provenance .
-:nanopubEx np:hasPublicationInfo :pubInfo .
-
+ex:pub1 {
+    ex:pub1 a np:Nanopublication .
+    ex:pub1 np:hasAssertion :assertion .
+    ex:pub1 np:hasProvenance :provenance .
+    ex:pub1 np:hasPublicationInfo :pubInfo .
+}
 </pre>
 
 </section>
@@ -308,68 +310,71 @@ The current ontology is loss in its specification to encourage adoption. We thus
 <li>Triples in [I] must refer to [N] or a supergraph of [N].</li>
 </ul>
 
+<p>
+This is an example of a well-formed nanopublication in TriG notation:
+</p>
+
 <pre class="example">
-@prefix : &lt;http://www.example.org/pubs#&gt; .
+@prefix : &lt;http://example.org/pub1#&gt; .
+@prefix ex: &lt;http://example.org/&gt; .
 @prefix np:  &lt;http://www.nanopub.org/nschema#&gt; .
 @prefix prov: &lt;http://www.w3.org/ns/prov#&gt; . 
 @prefix xsd:  &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-:nanopubEx {
-     :nanopubEx a np:Nanopublication .
-     :nanopubEx np:hasAssertion :assertion .
-     :nanopubEx np:hasProvenance :provenance .
-     :nanopubEx np:hasPublicationInfo :pubInfo .
+ex:pub1 {
+    ex:pub1 a np:Nanopublication .
+    ex:pub1 np:hasAssertion :assertion .
+    ex:pub1 np:hasProvenance :provenance .
+    ex:pub1 np:hasPublicationInfo :pubInfo .
 }
 
 :assertion {
-    :trastuzumab :is-indicated-for :breast-cancer .
-    :assertion a np:Assertion .
+    ex:trastuzumab ex:is-indicated-for ex:breast-cancer .
 }
 
 :provenance {
     :assertion prov:generatedAtTime "2012-02-03T14:38:00Z"^^xsd:dateTime  .
     :assertion prov:wasDerivedFrom :experiment . 
     :assertion prov:wasAttributedTo :experimentScientist .
-    :provenance a np:Provenance .
 }
 
 :pubInfo {
- :nanopubEx prov:wasAttributedTo :paul .
- :nanopubEx prov:generatedAtTime "2012-10-26T12:45:00Z"^^xsd:dateTime .
- :pubInfo a np:PublicationInfo .
+    ex:pub1 prov:wasAttributedTo ex:paul .
+    ex:pub1 prov:generatedAtTime "2012-10-26T12:45:00Z"^^xsd:dateTime .
 }
-
-
 </pre>
+
+<p>
+And the same example in the N-Quads format:
+</p>
 
 <pre class="example">
-# The same example above in NQUADS 
-&lt;http://www.example.org/pubs#nanopubEx&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://www.nanopub.org/nschema#Nanopublication&gt; &lt;http://www.example.org/pubs#nanopubEx&gt; .
-&lt;http://www.example.org/pubs#nanopubEx&gt; &lt;http://www.nanopub.org/nschema#hasAssertion&gt; &lt;http://www.example.org/pubs#assertion&gt; &lt;http://www.example.org/pubs#nanopubEx&gt; .
-&lt;http://www.example.org/pubs#nanopubEx&gt; &lt;http://www.nanopub.org/nschema#hasProvenance&gt; &lt;http://www.example.org/pubs#provenance&gt; &lt;http://www.example.org/pubs#nanopubEx&gt; .
-&lt;http://www.example.org/pubs#nanopubEx&gt; &lt;http://www.nanopub.org/nschema#hasPublicationInfo&gt; &lt;http://www.example.org/pubs#pubInfo&gt; &lt;http://www.example.org/pubs#nanopubEx&gt; .
-&lt;http://www.example.org/pubs#trastuzumab&gt; &lt;http://www.example.org/pubs#is-indicated-for&gt; &lt;http://www.example.org/pubs#breast-cancer&gt; &lt;http://www.example.org/pubs#assertion&gt; .
-&lt;http://www.example.org/pubs#assertion&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://www.nanopub.org/nschema#Assertion&gt; &lt;http://www.example.org/pubs#assertion&gt; .
-&lt;http://www.example.org/pubs#assertion&gt; &lt;http://www.w3.org/ns/prov#generatedAtTime&gt; "2012-02-03T14:38:00Z"^^&lt;http://www.w3.org/2001/XMLSchema#dateTime&gt; &lt;http://www.example.org/pubs#provenance&gt; .
-&lt;http://www.example.org/pubs#assertion&gt; &lt;http://www.w3.org/ns/prov#wasDerivedFrom&gt; &lt;http://www.example.org/pubs#experiment&gt; &lt;http://www.example.org/pubs#provenance&gt; .
-&lt;http://www.example.org/pubs#assertion&gt; &lt;http://www.w3.org/ns/prov#wasAttributedTo&gt; &lt;http://www.example.org/pubs#experimentScientist&gt; &lt;http://www.example.org/pubs#provenance&gt; .
-&lt;http://www.example.org/pubs#provenance&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://www.nanopub.org/nschema#Provenance&gt; &lt;http://www.example.org/pubs#provenance&gt; .
-&lt;http://www.example.org/pubs#nanopubEx&gt; &lt;http://www.w3.org/ns/prov#wasAttributedTo&gt; &lt;http://www.example.org/pubs#paul&gt; &lt;http://www.example.org/pubs#pubInfo&gt; .
-&lt;http://www.example.org/pubs#nanopubEx&gt; &lt;http://www.w3.org/ns/prov#generatedAtTime&gt; "2012-10-26T12:45:00Z"^^&lt;http://www.w3.org/2001/XMLSchema#dateTime&gt; &lt;http://www.example.org/pubs#pubInfo&gt; .
-&lt;http://www.example.org/pubs#pubInfo&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://www.nanopub.org/nschema#PublicationInfo&gt; &lt;http://www.example.org/pubs#pubInfo&gt; .
+&lt;http://example.org/pub1&gt; &lt;http://www.nanopub.org/nschema#hasAssertion&gt; &lt;http://example.org/pub1#assertion&gt; &lt;http://example.org/pub1&gt; .
+&lt;http://example.org/pub1&gt; &lt;http://www.nanopub.org/nschema#hasProvenance&gt; &lt;http://example.org/pub1#provenance&gt; &lt;http://example.org/pub1&gt; .
+&lt;http://example.org/pub1&gt; &lt;http://www.nanopub.org/nschema#hasPublicationInfo&gt; &lt;http://example.org/pub1#pubInfo&gt; &lt;http://example.org/pub1&gt; .
+&lt;http://example.org/pub1&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://www.nanopub.org/nschema#Nanopublication&gt; &lt;http://example.org/pub1&gt; .
+&lt;http://example.org/trastuzumab&gt; &lt;http://example.org/is-indicated-for&gt; &lt;http://example.org/breast-cancer&gt; &lt;http://example.org/pub1#assertion&gt; .
+&lt;http://example.org/pub1#assertion&gt; &lt;http://www.w3.org/ns/prov#generatedAtTime&gt; "2012-02-03T14:38:00Z"^^&lt;http://www.w3.org/2001/XMLSchema#dateTime&gt; &lt;http://example.org/pub1#provenance&gt; .
+&lt;http://example.org/pub1#assertion&gt; &lt;http://www.w3.org/ns/prov#wasAttributedTo&gt; &lt;http://example.org/pub1#experimentScientist&gt; &lt;http://example.org/pub1#provenance&gt; .
+&lt;http://example.org/pub1#assertion&gt; &lt;http://www.w3.org/ns/prov#wasDerivedFrom&gt; &lt;http://example.org/pub1#experiment&gt; &lt;http://example.org/pub1#provenance&gt; .
+&lt;http://example.org/pub1&gt; &lt;http://www.w3.org/ns/prov#generatedAtTime&gt; "2012-10-26T12:45:00Z"^^&lt;http://www.w3.org/2001/XMLSchema#dateTime&gt; &lt;http://example.org/pub1#pubInfo&gt; .
+&lt;http://example.org/pub1&gt; &lt;http://www.w3.org/ns/prov#wasAttributedTo&gt; &lt;http://example.org/paul&gt; &lt;http://example.org/pub1#pubInfo&gt; .
 </pre>
+
 </section>
 
 
 <section>
 <h3>Query Templates</h3>
 
+<p>
 To extract an entire nanopublication from a triple store, the following SPARQL query template can be used:
+</p>
 
 <pre class="example">
-prefix np: &lthttp://www.nanopub.org/nschema#&gt
-prefix rdfg: &lthttp://www.w3.org/2004/03/trix/rdfg-1/&gt
-prefix : &lt...&gt
+prefix np: &lt;http://www.nanopub.org/nschema#&gt;
+prefix rdfg: &lt;http://www.w3.org/2004/03/trix/rdfg-1/&gt;
+prefix : &lt;...&gt;
 select ?G ?S ?P ?O where {
   {graph ?G {: a np:Nanopublication}} union
   {graph ?H {: a np:Nanopublication {: np:hasAssertion ?G} union {: np:hasProvenance ?G} union {: np:hasPublicationInfo ?G}}} union
@@ -378,11 +383,13 @@ select ?G ?S ?P ?O where {
 }
 </pre>
 
+<p>
 "..." has to be replaced by the URI of the nanopublication to be retrieved. If no subgraphs are used, the template can be simplified to:
+</p>
 
 <pre class="example">
-prefix np: &lthttp://www.nanopub.org/nschema#&gt
-prefix : &lt...&gt
+prefix np: &lt;http://www.nanopub.org/nschema#&gt;
+prefix : &lt;...&gt;
 select ?G ?S ?P ?O where {
   {graph ?G {: a np:Nanopublication}} union
   {graph ?H {: a np:Nanopublication {: np:hasAssertion ?G} union {: np:hasProvenance ?G} union {: np:hasPublicationInfo ?G}}}
@@ -408,6 +415,41 @@ respective nanopub, but also of all cited nanopub (and nanopubs cited by the cit
 by how the Git versioning system uses hash values to identify commits, and is implemented by our proposal of
 <em>trusty URIs</em> [10].</p>
 <p class="note"><strong>Michel:</strong> Agree with Tobias - it's a major advance to include integrity checks.</p>
+
+<p>
+This is the exemplary nanopublication from Section 5 after generating and attaching a trusty URI:
+</p>
+
+<pre class="example">
+@prefix this: &lt;http://example.org/pub1.RAMpNCWcf06zJ90J94bAqVy-4LNfsWPJK3s7xKCC6QEaE&gt; .
+@prefix sub: &lt;http://example.org/pub1.RAMpNCWcf06zJ90J94bAqVy-4LNfsWPJK3s7xKCC6QEaE#&gt; .
+@prefix ex: &lt;http://example.org/&gt; .
+@prefix np:  &lt;http://www.nanopub.org/nschema#&gt; .
+@prefix prov: &lt;http://www.w3.org/ns/prov#&gt; . 
+@prefix xsd:  &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+this: {
+    this: a np:Nanopublication .
+    this: np:hasAssertion sub:assertion .
+    this: np:hasProvenance sub:provenance .
+    this: np:hasPublicationInfo sub:pubInfo .		
+}
+
+sub:assertion {
+    ex:trastuzumab ex:is-indicated-for ex:breast-cancer .
+}
+
+sub:provenance {
+    sub:assertion prov:generatedAtTime "2012-02-03T14:38:00Z"^^xsd:dateTime .
+    sub:assertion prov:wasAttributedTo sub:experimentScientist .
+    sub:assertion prov:wasDerivedFrom sub:experiment .
+}
+
+sub:pubInfo {
+    this: prov:wasAttributedTo ex:paul .
+    this: prov:generatedAtTime "2012-10-26T12:45:00Z"^^xsd:dateTime .
+}
+</pre>
 
 </section>
 
