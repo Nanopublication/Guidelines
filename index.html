@@ -362,6 +362,38 @@ The current ontology is loss in its specification to encourage adoption. We thus
 
 
 <section>
+<h3>Query Templates</h3>
+
+To extract an entire nanopublication from a triple store, the following SPARQL query template can be used:
+
+<pre class="example">
+prefix np: &lthttp://www.nanopub.org/nschema#&gt
+prefix rdfg: &lthttp://www.w3.org/2004/03/trix/rdfg-1/&gt
+prefix : &lt...&gt
+select ?G ?S ?P ?O where {
+  {graph ?G {: a np:Nanopublication}} union
+  {graph ?H {: a np:Nanopublication {: np:hasAssertion ?G} union {: np:hasProvenance ?G} union {: np:hasPublicationInfo ?G}}} union
+  {graph ?H {: a np:Nanopublication . ?G rdfg:subGraphOf ?I {: np:hasAssertion ?I} union {: np:hasProvenance ?I} union {: np:hasPublicationInfo ?I}}}
+  graph ?G {?S ?P ?O}
+}
+</pre>
+
+"..." has to be replaced by the URI of the nanopublication to be retrieved. If no subgraphs are used, the template can be simplified to:
+
+<pre class="example">
+prefix np: &lthttp://www.nanopub.org/nschema#&gt
+prefix : &lt...&gt
+select ?G ?S ?P ?O where {
+  {graph ?G {: a np:Nanopublication}} union
+  {graph ?H {: a np:Nanopublication {: np:hasAssertion ?G} union {: np:hasProvenance ?G} union {: np:hasPublicationInfo ?G}}}
+  graph ?G {?S ?P ?O}
+}
+</pre>
+
+</section>
+
+
+<section>
 <h3>Integrity Key</h3>
 <p class="note"><strong>Paul:</strong> Integrity keys are being actively defined and will appear in the next specification.</p>
 
