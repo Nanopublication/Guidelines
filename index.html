@@ -225,9 +225,10 @@ The <strong>publicationInfo graph</strong> contains one or more RDF triples that
     ex:pub1 prov:generatedAtTime "2012-10-26T12:45:00Z"^^xsd:dateTime .
 }
 </pre>
-<p>
 
+<p>
 The nanopublication itself receives its own identifier and refers to its parts.
+</p>
 
 <pre class='example'>
 ex:pub1 {
@@ -237,6 +238,10 @@ ex:pub1 {
     ex:pub1 np:hasPublicationInfo :pubInfo .
 }
 </pre>
+
+<p>
+As far as applicable, provenance and publication info SHOULD use the provenance ontology <a href="http://www.w3.org/TR/prov-o/">PROV-O</a> and/or ontologies that have a mapping to it, including Dublin Core and PAV.
+</p>
 
 </section>
 
@@ -296,18 +301,17 @@ The current ontology is loss in its specification to encourage adoption. We thus
 <ul>
 <li>A nanopublication consists of a set of RDF quads (i.e. subject-predicate-object + context)</li>
 <li>The context (i.e. graph) of each triple has to be specified as a valid URI (i.e. no null values)</li>
-<li>There is exactly one quad of the form '[N] rdf:type np:Nanopublication [H]', where [N] is the nanopublication URI, and [H] is the head URI</li>
-<li>There is exactly one quad of the form '[N] np:hasAssertion [A] [H]', where [N] is the nanopublication URI, [A] is the assertion URI, and [H] is the head URI</li>
-<li>There is exactly one quad of the form '[N] np:hasProvenance [P] [H]', where [N] is the nanopublication URI, [P] is the provenance URI, and [H] is the head URI</li>
-<li>There is exactly one quad of the form '[N] np:hasPublicationInfo [I] [H]', [N] is the nanopublication URI, [I] is the nanopublication information URI, and [H] is the head URI</li>
-<li>There are zero or more quads of the form '[S] rdfg:subGraphOf [G] [H]' introducing a super-graph [G], where [H] is the head URI and [S] is one of [H] or [A] or [P] or [I]</li>
-<li>There are zero or more quads of the form '[G] rdfg:subGraphOf [S] [H]' introducing a sub-graph [G], where [H] is the head URI and [S] is one of [A] or [P] or [I]</li>
+<li>There is exactly one quad of the form '[N] rdf:type np:Nanopublication [H]', which identifies [N] as the nanopublication URI, and [H] as the head URI</li>
+<li>Given the nanopublication URI [N] and its head URI [H], there is exactly one quad of the form '[N] np:hasAssertion [A] [H]', which identifies [A] as the assertion URI</li>
+<li>Given the nanopublication URI [N] and its head URI [H], there is exactly one quad of the form '[N] np:hasProvenance [P] [H]', which identifies [P] as the provenance URI</li>
+<li>Given the nanopublication URI [N] and its head URI [H], there is exactly one quad of the form '[N] np:hasPublicationInfo [I] [H]', which identifies [I] as the publication information URI</li>
+<li>Given the head URI [H], there are zero or more quads of the form '[S] rdfg:subGraphOf [G] [H]' introducing a super-graph [G], where [S] is one of [H] or [A] or [P] or [I]</li>
+<li>Given the head URI [H], there are zero or more quads of the form '[G] rdfg:subGraphOf [S] [H]' introducing a sub-graph [G], where [S] is one of [A] or [P] or [I]</li>
 <li>There are no other quads in the context [H]</li>
-<li>The URIs for [N] and [H] may be the same.</li>
-<li>The URIs for [H], [A], [P], [I], and the introduced sub-graphs must all be different</li>
-<li>Triples must be placed in one of [H] or [A] or [P] or [I] or one of the introduced sub-graphs</li>
-<li>Triples in [P] must refer to [A] or a supergraph of [A].</li>
-<li>Triples in [I] must refer to [N] or a supergraph of [N].</li>
+<li>The URIs for [N], [H], [A], [P], [I], and the introduced sub-graphs must all be different</li>
+<li>All triples must be placed in one of [H] or [A] or [P] or [I] or one of the introduced sub-graphs</li>
+<li>Triples in [P] must refer to [A] or one of the introduced super-graph/sub-graph of [A].</li>
+<li>Triples in [I] must refer to [N] or one of the introduced super-graph/sub-graph of [N].</li>
 </ul>
 
 <p>
