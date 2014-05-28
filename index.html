@@ -85,6 +85,7 @@ th.datatable {
       {name: "Mark Thompson", url: "", company:"LUMC", companyURL:"http://www.lumc.nl"},  
       {name: "Zuotian Tatum", url: "", company:"LUMC", companyURL:"http://www.lumc.nl"},
           {name: "Michel Dumontier", url: "http://dumontierlab.com", company: "Stanford University", companyURL: "http://stanford.edu" },
+      {name: "Tobias Kuhn", url: "http://www.tkuhn.ch/", company: "ETH Zurich", companyURL: "http://www.ethz.ch/" },
     ],
     
     authors: [
@@ -106,7 +107,6 @@ th.datatable {
     {name: "Jahn Saito", url: "", company:"Maastricht University", companyURL:"http://www.maastrichtuniversity.nl/"},
     {name: "Andrew Gibson", url: "", company:"LUMC", companyURL:"http://www.lumc.nl"},
     {name: "Louis Wich", url: "", company:"DTU", companyURL:"http://www.dtu.dk"},
-    {name: "Tobias Kuhn", url: "http://www.tkuhn.ch/", company: "ETH Zurich", companyURL: "http://www.ethz.ch/" },
     {name: "Jesse van Dam", url: "", company: "Wageningen UR", companyURL: "https://www.wageningenur.nl/" },
     ],
 
@@ -196,10 +196,6 @@ The <strong>assertion graph</strong> of the nanopublication contains an assertio
     ex:BRCA1-protein ex:is-expressed-in ex:breast .
 }
 </pre>
-
-<p class="note"><strong>Paul:</strong> Michel suggests adding the following to explain assertion "An assertion is a proposition that is falsifiable, that is to say we can test whether the proposition is true or false." - this is under discussion.
-</p>
-
 
  
 <p>
@@ -305,12 +301,10 @@ The current ontology is loss in its specification to encourage adoption. We thus
 <li>Given the nanopublication URI [N] and its head URI [H], there is exactly one quad of the form '[N] np:hasAssertion [A] [H]', which identifies [A] as the assertion URI</li>
 <li>Given the nanopublication URI [N] and its head URI [H], there is exactly one quad of the form '[N] np:hasProvenance [P] [H]', which identifies [P] as the provenance URI</li>
 <li>Given the nanopublication URI [N] and its head URI [H], there is exactly one quad of the form '[N] np:hasPublicationInfo [I] [H]', which identifies [I] as the publication information URI</li>
-<li>Given the head URI [H], there are zero or more quads of the form '[S] rdfg:subGraphOf [G] [H]' introducing a sub-graph [S], where [G] is one of [A] or [P] or [I]</li>
-<li>There are no other quads in the context [H]</li>
-<li>The URIs for [N], [H], [A], [P], [I], and the introduced sub-graphs must all be different</li>
-<li>All triples must be placed in one of [H] or [A] or [P] or [I] or one of the introduced sub-graphs</li>
-<li>Triples in [P] must refer to [A]</li>
-<li>Triples in [I] must refer to [N]</li>
+<li>The URIs for [N], [H], [A], [P], [I] must all be different</li>
+<li>All triples must be placed in one of [H] or [A] or [P] or [I]</li>
+<li>Triples in [P] have at least one reference to [A]</li>
+<li>Triples in [I] have at least one reference to [N]</li>
 </ul>
 
 <p>
@@ -368,26 +362,10 @@ And the same example in the N-Quads format:
 
 
 <section>
-<h3>Query Templates</h3>
+<h3>Query Template</h3>
 
 <p>
 To extract an entire nanopublication from a triple store, the following SPARQL query template can be used:
-</p>
-
-<pre class="example">
-prefix np: &lt;http://www.nanopub.org/nschema#&gt;
-prefix rdfg: &lt;http://www.w3.org/2004/03/trix/rdfg-1/&gt;
-prefix : &lt;...&gt;
-select ?G ?S ?P ?O where {
-  {graph ?G {: a np:Nanopublication}} union
-  {graph ?H {: a np:Nanopublication {: np:hasAssertion ?G} union {: np:hasProvenance ?G} union {: np:hasPublicationInfo ?G}}} union
-  {graph ?H {: a np:Nanopublication . ?G rdfg:subGraphOf ?I {: np:hasAssertion ?I} union {: np:hasProvenance ?I} union {: np:hasPublicationInfo ?I}}}
-  graph ?G {?S ?P ?O}
-}
-</pre>
-
-<p>
-"..." has to be replaced by the URI of the nanopublication to be retrieved. If no subgraphs are used, the template can be simplified to:
 </p>
 
 <pre class="example">
