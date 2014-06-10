@@ -383,21 +383,10 @@ select ?G ?S ?P ?O where {
 
 <section>
 <h3>Integrity Key</h3>
-<p class="note"><strong>Paul:</strong> Integrity keys are being actively defined and will appear in the next specification.</p>
-
-The goal of the integrity key is to establish an identity for a nanopublication that can be used to check if a nanopublication has changed, thus preserving the immutability of a nanopublication.
-
-Trusty URIs [10] are a concrete proposal of how to assign integrity keys to nanopublications.
-
-<p class="note"><strong>Tobias:</strong> I think integrity keys should be part of the nanopub URI. In this way, every reference to a nanopub
-comes with the possibility to check its integrity. If one nanopub cites another, the integrity key of the cited
-nanopub flows into the integrity key for the citing one. Therefore, the integrity key ensures not just the integrity of the
-respective nanopub, but also of all cited nanopub (and nanopubs cited by the cited nanopubs, etc.). This is inspired
-by how the Git versioning system uses hash values to identify commits, and is implemented by our proposal of
-<em>trusty URIs</em> [10].</p>
-<p class="note"><strong>Michel:</strong> Agree with Tobias - it's a major advance to include integrity checks.</p>
 
 <p>
+The goal of the integrity key is to establish an identifier that can be used to check if a nanopublication has changed, thus enforcing the immutability of nanopublications.
+Trusty URIs [10] are the recommended way of assigning integrity keys to nanopublications.
 This is the exemplary nanopublication from Section 5 after generating and attaching a trusty URI:
 </p>
 
@@ -481,7 +470,7 @@ Please check <a href="http://www.nanopub.org">http://www.nanopub.org</a> for fur
 
 <section><h3>References</h3>
 <ul>
- <li> [1] Tobias Kuhn, Paolo Emilio Barbano, Mate Levente Nagy, and Michael Krauthammer. <a href="http://www.tkuhn.ch/pub/kuhn2013eswc.pdf">Broadening the Scope of Nanopublications</a>. In Proceedings of the 10th Extended Semantic Web Conference (ESWC). 2013.
+ <li> [1] Tobias Kuhn, Paolo Emilio Barbano, Mate Levente Nagy, and Michael Krauthammer. <a href="http://www.tkuhn.ch/pub/kuhn2013eswc.pdf">Broadening the Scope of Nanopublications</a>. In Proceedings of the 10th Extended Semantic Web Conference (ESWC). Springer, 2013.
  <li> [2] Andrew Gibson, Jesse C.J. van Dam, Erik A. Schultes, Marco Roos, and Barend Mons (2012) Towards Computational Evaluation of Evidence for Scientific Assertions with Nanopublications and Cardinal Assertions (2012) CEUR Workshop Proceedings 952. http://ceur-ws.org/Vol-952/paper_26.pdf
  <li> [3] Mark Thompson, Herman H.H.B.M. van Haagen, Barend Mons, and Erik A. Schultes (2012) Placing landMarks in the Knowledge Space: crowd-sourcing landmark publications for benchmarking text-mined predictions (2012) CEUR Workshop Proceedings 952. http://ceur-ws.org/Vol-952/paper_14.pdf
  <li> [4] Patrinos et al (2012): Microattribution and nanopublication as means to incentivize the placement of human genome variation data into the public domain. Hum Mutat. 33(11):1503-12. http://www.ncbi.nlm.nih.gov/pubmed/22736453
@@ -490,7 +479,7 @@ Please check <a href="http://www.nanopub.org">http://www.nanopub.org</a> for fur
  <li> [7] Groth P, Gibson A & Velterop J (2010) The Anatomy of a Nanopublication. Information Services & Use 30: 51-56. http://www.w3.org/wiki/images/c/c0/HCLSIG$$SWANSIOC$$Actions$$RhetoricalStructure$$meetings$$20100215$cwa-anatomy-nanopub-v3.pdf
  <li> [8] Barend Mons and Jan Velterop (2009) Nano-Publication in the e-science era. http://www.nbic.nl/uploads/media/Nano-Publication_BarendMons-JanVelterop.pdf
  <li> [9] Linked Data: http://www.w3.org/DesignIssues/LinkedData.html
- <li> [10] Tobias Kuhn and Michel Dumontier. <a href="http://arxiv.org/pdf/1401.5775v2">Trusty URIs: Verifiable, Immutable, and Permanent Digital Artifacts for Linked Data</a>. In Proceedings of the 11th Extended Semantic Web Conference (ESWC). 2014, to appear.
+ <li> [10] Tobias Kuhn and Michel Dumontier. <a href="http://arxiv.org/abs/1401.5775">Trusty URIs: Verifiable, Immutable, and Permanent Digital Artifacts for Linked Data</a>. In Proceedings of the 11th Extended Semantic Web Conference (ESWC). Springer, 2014.
 </ul>
 </section>
 
