@@ -423,46 +423,6 @@ sub:pubInfo {
 
 </section>
 
-<section><h3>Nanopublication Compliant RDF for Large Data Sets</h3>
-
-<p>
-To convert large existing datasets into nanopublications, we recommend using the Vocabulary of Interlinked Datasets ( VoID  http://www.w3.org/TR/void/ ) to create a nanopublication compliant RDF (ncRDF) description of the data. In this way we make each entry in the dataset (e.g. data row or sample value) referenceable, which in turn makes it possible to specify that a particular assertion was derived from a specific row of the original dataset.
-</p>
-
-<p>
-ncRDF is an intermediate step between the dataset as it is, and nanopublications. Rather than creating an extensive domain model, the RDF dataset uses a simple descriptive model. In practice this means that all data items from the original dataset are transformed (no pre-selection) and that all values remain the same (no normalization or rounding). Furthermore, simple ad-hoc ontologies can be used to provide entity and predicate descriptions: full semantic modeling is only required for the nanopublication itself. See figure.
-</p>
-
-<p>
-An example of the use ncRDF in exposing a large dataset is given in the FANTOM5 nanopublictation template. Here, each row of the raw dataset is transformed to a ‘CagePeak resource’. Using the void:inDataset predicate, each CagePeak is linked back to the resource for the entire dataset. Subsequent predicates connect the CagePeak to entities that represent columns of the raw dataset.
-</p>
-
-<div class='figure'><img src="figures/dataToNP.png" alt="Data to Nanopublication"></div>
-
-</section>
-
-<section><h3>Best & Good Practices</h3>
-<p class="note"><strong>Paul:</strong> Future versions may not include a best practice guide and will forward to updating pages. We include these here to help users to get started and as a reminder to update these. </p>
-
-<ul>
-
-<li>The primary challenge when nanopublishing data is to model the semantics for clarity and keep a clear separation between the actual observations (measurements) from the interpretations (scientific assertions) and mark-up this distinction in as unambiguous way as possible. Other considerations include economization of memory usage, time-efficient querying, and avoidance of logical inconsistencies.
-</li>
-<li>Nanopublications should present as low a barrier as possible to the exposure of data. Hence nanopublications have a minimal requirement of an assertion and provenance, but are extensible. The basic idea is that a minimal nanopublication can be easily created, but the better the annotation the more likely it is that the nanopublication will be found, used and cited by others. In other words, there is strong incentive for rich annotation, but a low barrier to getting started.
-</li>
-<li> Suggested ontologies:
-<ul> 
-<li> <a href="http://code.google.com/p/semanticscience/wiki/SIO">Semanticscience Integrated Ontology</a></li>
-<li> <a href="http://www.w3.org/TR/hcls-swan/">Semantic Web Applications in Neuroscience (SWAN) Ontology</a></li>
-<li> <a href="http://www.w3.org/TR/prov-o/">PROV-O: The PROV Ontology for provenance</a></li>
-<li> <a href="http://schema.org/docs/meddocs.html">Schema.org health and medial types</a>
-<li> Ontologies registered at <a href="http://bioportal.bioontology.org">NCBO BioPortal</a>.
-</ul>
-</ul>
-
-</section>
-
-
 
 <section><h3>Further Information</h3>
 Please check <a href="http://www.nanopub.org">http://www.nanopub.org</a> for further guides and community information. 
