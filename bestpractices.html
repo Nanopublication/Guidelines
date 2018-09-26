@@ -208,6 +208,99 @@ An example of the use ncRDF in exposing a large dataset is given in the FANTOM5 
 </section>
 
 
+<section>
+<h3>Nanopublication Collections</h3>
+
+<i>(this is work in progress and under discussion; the schema has to be adapted to support this)</i>
+
+<p>
+In some cases, in particular when exporting from existing datasets, a large number of nanopublications may have exactly the same provenance and publication information. In such cases, they can be represented more concisely as a <i>nanopublication collection</i>. A nanopublication collection has the same general structure as a nanopublication but with the following differences:
+</p>
+
+<ul>
+<li>There are more than one assertion graph, each representing a separate nanopublication.</li>
+<li>All assertion graph URIs have to end with either <code>?assertion</code> or <code>?a</code>, where <code>?</code> stands for a non-letter character (i.e. a number or a special character).</li>
+<li>The URI of the collection is typed as a <code>NanopublicationCollection</code> (instead of <code>Nanopublication</code>) in the head graph.</li>
+<li>Instead of a <code>hasAssertion</code>-relation referring to a single assertion graph, there is a <code>hasAssertionSet</code>-relation to a URI that represents the <i>set of assertion graphs</i>.</li>
+<li><code>hasCollectionProvenance</code> and <code>hasCollectionPubInfo</code> are used to refer to the provenance and publication information from the head graph, instead of <code>hasProvenance</code> and <code>hasPublicationInfo</code></li>
+<li>The assertion set URI is linked to all assertion URIs in the head graph with the relation <code>hasMember</code>.</li>
+</ul>
+
+<p>
+This is an example of a nanopublication collection:
+</p>
+
+<pre class="example">
+@prefix : &lt;http://example.org/dataset1#&gt; .
+@prefix ex: &lt;http://example.org/&gt; .
+@prefix np:  &lt;http://www.nanopub.org/nschema#&gt; .
+@prefix prov: &lt;http://www.w3.org/ns/prov#&gt; . 
+@prefix xsd:  &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+:head {
+    ex:dataset1 a np:NanopublicationCollection ; np:hasAssertionSet :assertionSet ;
+        np:hasCollectionProvenance :provenance ; np:hasCollectionPubInfo :pubInfo .
+    :assertionSet np:hasMember :1a, :2a, :3a .
+}
+
+:1a { ex:thingA ex:is-related-to ex:thingX }
+
+:2a { ex:thingB ex:is-related-to ex:thingX }
+
+:3a { ex:thingC ex:is-related-to ex:thingX }
+
+:provenance {
+    :assertionSet prov:wasDerivedFrom :experimentXYZ .
+}
+
+:pubInfo {
+    ex:dataset1 prov:wasAttributedTo ex:paul .
+    ex:dataset1 prov:generatedAtTime "2015-02-03T12:14:00Z"^^xsd:dateTime .
+}
+</pre>
+
+<p>
+Collections are basically just a shorthand for representing nanopublications.
+The individual nanopublications can be extracted from a collection by applying the following well-defined rules for each of the assertion URIs:
+</p>
+
+<ul>
+<li>The nanopublication URI equals the assertion URI after removing the final <code>a</code> or <code>assertion</code>, and after removing the last character of the resulting string if this last character is either a hash sign (<code>#</code>) or a dot (<code>.</code>).</li>
+<li>The head URI of the nanopublication equals the assertion URI with the final <code>a</code> or <code>assertion</code> replaced by <code>head</code>, and analogously for the provenance and publication information URI with <code>prov</code> and <code>info</code>.</li>
+<li>The head graph contains the four mandatory triples, typing it as an <code>Nanopublication</code> and linking to the assertion, provenance, and publication information graphs.</li>
+<li>The assertion graph is identical to the respective assertion graph of the collection (and has therefore the same URI).</li>
+<li>The provenance graph contains all triples of the collection's provenance graph plus an additional triple "[assertion set URI] <code>hasMember</code> [assertion URI]".</li>
+<li>The publication information graph contains all triples of the collection's publication information graph plus an additional triple "[collection URI] <code>hasMember</code> [nanopublication URI]".</li>
+</ul>
+
+<p>
+The second nanopublication of the above example would therefore look as follows:
+</p>
+
+<pre class="example">
+:2head {
+    :2 a np:Nanopublication ; np:hasAssertion :2a ;
+        np:hasProvenance :2prov ; np:hasPublicationInfo :2info .
+}
+
+:2a { ex:thingB ex:is-related-to ex:thingX }
+
+:2prov {
+    :assertionSet prov:wasDerivedFrom :experimentXYZ .
+    :assertionSet np:hasMember :2a .
+}
+
+:2info {
+    ex:dataset1 prov:wasAttributedTo ex:paul .
+    ex:dataset1 prov:generatedAtTime "2015-02-03T12:14:00Z"^^xsd:dateTime .
+    ex:dataset1 np:hasMember :2 .
+}
+</pre>
+
+
+</section>
+
+
 </body>
 
 </html>
