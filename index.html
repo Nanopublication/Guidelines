@@ -165,7 +165,7 @@ th.datatable {
 		<h3>Introduction</h3>
 <p>
 Good descriptions of data are essential to finding, understanding and ultimately reusing data.
-Here, we describe nanopublications, a community-driven approach to representing structured data along with its provenance as small self-contained and citable entities. A nanopublication consists of an assertion, the provenance of the assertion (simply called "provenance"), and the provenance of the whole nanopublication (called "publication info"). Nanopublication are implemented in and aligned with Semantic Web technologies, such as RDF, OWL, and SPARQL. The different levels of provenance enable users to assess the trustworthiness of data and provides a mechanism by which authors and institutions may be acknowledged for their contribution to the global knowledge graph. Nanopublications may be used to expose quantitative and qualitative data, as well as hypotheses, claims, negative results, and opinions that usually go unpublished. With nanopublications, it is possible to disseminate individual data as independent publications with or without an accompanying research article.
+Here, we describe nanopublications [1,2,3], a community-driven approach to representing structured data along with its provenance as small self-contained and citable entities. A nanopublication consists of an assertion, the provenance of the assertion (simply called "provenance"), and the provenance of the whole nanopublication (called "publication info"). Nanopublication are implemented in and aligned with Semantic Web technologies, such as RDF, OWL, and SPARQL. The different levels of provenance enable users to assess the trustworthiness of data and provides a mechanism by which authors and institutions may be acknowledged for their contribution to the global knowledge graph. Nanopublications may be used to expose quantitative and qualitative data, as well as hypotheses, claims, negative results, and opinions that usually go unpublished. With nanopublications, it is possible to disseminate individual data as independent publications with or without an accompanying research article.
 </p>
 
 <p>
@@ -178,16 +178,19 @@ This document describes the structure of a nanopublication. It offers guidelines
     </section>
 
 
-	<section>
-		<h3>Primer</h3>
-<p>
-Each of the three parts of a nanopublication (i.e. the assertion, provenance, and publication info) is represented as an <a href="https://www.w3.org/RDF/">RDF</a> graph. An RDF graph is a collection of RDF triples, which comprise of subject-predicate-object tuples.
-The <strong>assertion graph</strong> of the nanopublication contains such statements that form the main claim of the nanopublications. Examples of assertions include: 
+<section>
 
+<h3>Basic Elements</h3>
+
+<p>
+Each of the three parts of a nanopublication (i.e. the assertion, provenance, and publication info) is represented as an <a href="https://www.w3.org/RDF/">RDF</a> graph [4]. An RDF graph is a collection of RDF triples, which comprise of subject-predicate-object tuples.
+We recommend using <a href="http://www.w3.org/TR/trig/">TriG</a> syntax for writing nanopublications. 
+The <strong>assertion graph</strong> of the nanopublication contains such statements that form the main claim of the nanopublications. Examples of assertions include: 
 </p>
+
 <pre class='example'>
 :assertion {
-    ex:trastuzumab ex:is-indicated-for ex:breast-cancer .
+  ex:trastuzumab ex:is-indicated-for ex:breast-cancer .
 }
 </pre>
 <pre class='example'>
@@ -207,7 +210,7 @@ The <strong>provenance graph</strong> of the nanopublication contains one or mor
 <pre class='example'>
 :provenance {
   :assertion prov:wasDerivedFrom :experiment . 
-  :assertion prov:wasAttributedTo :experimentScientist .
+  :assertion prov:wasAttributedTo orcid:0000-0003-3934-0072 .
 }
 </pre>
 
@@ -223,7 +226,7 @@ The <strong>publication information graph</strong> contains one or more RDF trip
 </pre>
 
 <p>
-The nanopublication itself has its own identifier (here denote by <code>:</code>) and is linked to its parts via triples in an additional <strong>head graph</strong>:
+The nanopublication itself has its own identifier (here denote by :) and is linked to its parts via triples in an additional <strong>head graph</strong>:
 </p>
 
 <pre class='example'>
@@ -242,7 +245,7 @@ The nanopublication itself has its own identifier (here denote by <code>:</code>
 <h3>Nanopublication Ontology</h3>
 
 <p>
-The structure of a nanopublication is defined by the following ontology using the Web Ontology Language (OWL).  The namespace <code><a href="http://www.nanopub.org/nschema">http://www.nanopub.org/nschema</a></code>. Our namespace policy is that the current version of the ontology is always at this url. We suggest using <a href="http://www.w3.org/TR/trig/">TriG</a> syntax for writing nanopublications. 
+The structure of a nanopublication is defined by the following ontology using the Web Ontology Language (OWL).  The namespace <code><a href="http://www.nanopub.org/nschema">http://www.nanopub.org/nschema</a></code>.
 </p>
 
 <pre>
@@ -251,14 +254,6 @@ The structure of a nanopublication is defined by the following ontology using th
 @prefix rdfg: &lt;http://www.w3.org/2004/03/trix/rdfg-1/&gt;.
 @prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt;.
 @prefix np: &lt;http://www.nanopub.org/nschema#&gt;.
-@prefix dc: &lt;http://purl.org/dc/elements/1.1/&gt;.
-@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;.
-
-&lt;http://www.nanopub.org/nschema&gt; a owl:Ontology ;
-	dc:created "2012-10-26"^^xsd:date;
-	dc:modified "2013-10-23"^^xsd:date;
-	dc:description &lt;http://www.nanopub.org/2013/WD-guidelines-20131215/&gt; ;
-	owl:priorVersion &lt;http://www.nanopub.org/nschema-1.9&gt; .
 
 np:Nanopublication rdf:type owl:Class.
 np:Assertion rdfs:subClassOf rdfg:Graph.
@@ -284,8 +279,6 @@ np:hasPublicationInfo rdfs:range np:PublicationInfo.
 <section>
 <h3>Well-formed Nanopublications</h3>
 
-The current ontology is loose in its specification to encourage adoption. We thus define an additional set of criteria to further constraint the usage of the ontology. These criteria may be adopted into further versions of the ontology. 
-
 <p>A nanopublication MUST comply with all of the following criteria to be considered well-formed:</p>
 
 <ul>
@@ -306,56 +299,41 @@ This is an example of a well-formed nanopublication in TriG notation:
 </p>
 
 <pre class="example">
-@prefix : &lt;http://example.org/pub1#&gt; .
+@prefix : &lt;http://example.org/pub1/&gt; .
 @prefix ex: &lt;http://example.org/&gt; .
-@prefix np:  &lt;http://www.nanopub.org/nschema#&gt; .
-@prefix prov: &lt;http://www.w3.org/ns/prov#&gt; . 
-@prefix xsd:  &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+@prefix np: &lt;http://www.nanopub.org/nschema#&gt; .
+@prefix prov: &lt;http://www.w3.org/ns/prov#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+@prefix dct: &lt;http://purl.org/dc/terms/&gt; .
+@prefix orcid: &lt;https://orcid.org/&gt; .
 
 :Head {
-    ex:pub1 a np:Nanopublication .
-    ex:pub1 np:hasAssertion :assertion .
-    ex:pub1 np:hasProvenance :provenance .
-    ex:pub1 np:hasPublicationInfo :pubinfo .
+  : a np:Nanopublication .
+  : np:hasAssertion :assertion .
+  : np:hasProvenance :provenance .
+  : np:hasPublicationInfo :pubinfo .
 }
 
 :assertion {
-    ex:trastuzumab ex:is-indicated-for ex:breast-cancer .
+  ex:trastuzumab ex:is-indicated-for ex:breast-cancer .
 }
 
 :provenance {
-    :assertion prov:generatedAtTime "2012-02-03T14:38:00Z"^^xsd:dateTime .
-    :assertion prov:wasDerivedFrom :experiment .
-    :assertion prov:wasAttributedTo :experimentScientist .
+  :assertion prov:wasDerivedFrom :experiment . 
+  :assertion prov:wasAttributedTo orcid:0000-0003-3934-0072 .
 }
 
 :pubinfo {
-    ex:pub1 prov:wasAttributedTo ex:paul .
-    ex:pub1 prov:generatedAtTime "2012-10-26T12:45:00Z"^^xsd:dateTime .
+  : dct:creator orcid:0000-0003-0183-6910 .
+  : dct:created "2020-07-10T10:20:22.382+02:00"^^xsd:dateTime  .
 }
-</pre>
-
-<p>
-And the same example in the N-Quads format:
-</p>
-
-<pre class="example">
-&lt;http://example.org/pub1&gt; &lt;http://www.nanopub.org/nschema#hasAssertion&gt; &lt;http://example.org/pub1#assertion&gt; &lt;http://example.org/pub1#head&gt; .
-&lt;http://example.org/pub1&gt; &lt;http://www.nanopub.org/nschema#hasProvenance&gt; &lt;http://example.org/pub1#provenance&gt; &lt;http://example.org/pub1#head&gt; .
-&lt;http://example.org/pub1&gt; &lt;http://www.nanopub.org/nschema#hasPublicationInfo&gt; &lt;http://example.org/pub1#pubinfo&gt; &lt;http://example.org/pub1#head&gt; .
-&lt;http://example.org/pub1&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://www.nanopub.org/nschema#Nanopublication&gt; &lt;http://example.org/pub1#head&gt; .
-&lt;http://example.org/trastuzumab&gt; &lt;http://example.org/is-indicated-for&gt; &lt;http://example.org/breast-cancer&gt; &lt;http://example.org/pub1#assertion&gt; .
-&lt;http://example.org/pub1#assertion&gt; &lt;http://www.w3.org/ns/prov#generatedAtTime&gt; "2012-02-03T14:38:00Z"^^&lt;http://www.w3.org/2001/XMLSchema#dateTime&gt; &lt;http://example.org/pub1#provenance&gt; .
-&lt;http://example.org/pub1#assertion&gt; &lt;http://www.w3.org/ns/prov#wasAttributedTo&gt; &lt;http://example.org/pub1#experimentScientist&gt; &lt;http://example.org/pub1#provenance&gt; .
-&lt;http://example.org/pub1#assertion&gt; &lt;http://www.w3.org/ns/prov#wasDerivedFrom&gt; &lt;http://example.org/pub1#experiment&gt; &lt;http://example.org/pub1#provenance&gt; .
-&lt;http://example.org/pub1&gt; &lt;http://www.w3.org/ns/prov#generatedAtTime&gt; "2012-10-26T12:45:00Z"^^&lt;http://www.w3.org/2001/XMLSchema#dateTime&gt; &lt;http://example.org/pub1#pubinfo&gt; .
-&lt;http://example.org/pub1&gt; &lt;http://www.w3.org/ns/prov#wasAttributedTo&gt; &lt;http://example.org/paul&gt; &lt;http://example.org/pub1#pubinfo&gt; .
 </pre>
 
 </section>
 
 
 <section>
+
 <h3>Query Template</h3>
 
 <p>
@@ -380,38 +358,39 @@ select ?G ?S ?P ?O where {
 
 <p>
 The goal of the integrity key is to establish an identifier that can be used to check if a nanopublication has changed, thus enforcing the immutability of nanopublications.
-Trusty URIs [10] are the recommended way of assigning integrity keys to nanopublications.
+Trusty URIs [5] are the recommended way of assigning integrity keys to nanopublications.
 This is the exemplary nanopublication from Section 5 after generating and attaching a trusty URI:
 </p>
 
 <pre class="example">
-@prefix this: &lt;http://example.org/pub1.RAvVDzee5-fpWEFAvoa4Y3_7m9qIXJoKDTdBNbvWwnCiQ&gt; .
-@prefix sub: &lt;http://example.org/pub1.RAvVDzee5-fpWEFAvoa4Y3_7m9qIXJoKDTdBNbvWwnCiQ#&gt; .
+@prefix this: &lt;http://example.org/pub1/RA-0Yc_l8rK3_Ts8y7kPuZvg6FqzaOSSq0yMSS9Sg4R9I&gt; .
+@prefix sub: &lt;http://example.org/pub1/RA-0Yc_l8rK3_Ts8y7kPuZvg6FqzaOSSq0yMSS9Sg4R9I#&gt; .
 @prefix ex: &lt;http://example.org/&gt; .
-@prefix np:  &lt;http://www.nanopub.org/nschema#&gt; .
+@prefix np: &lt;http://www.nanopub.org/nschema#&gt; .
 @prefix prov: &lt;http://www.w3.org/ns/prov#&gt; . 
-@prefix xsd:  &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+@prefix dct: &lt;http://purl.org/dc/terms/&gt; .
+@prefix orcid: &lt;https://orcid.org/&gt; .
 
 sub:Head {
-	this: np:hasAssertion sub:assertion ;
-		np:hasProvenance sub:provenance ;
-		np:hasPublicationInfo sub:pubinfo ;
-		a np:Nanopublication .
+  this: np:hasAssertion sub:assertion;
+    np:hasProvenance sub:provenance;
+    np:hasPublicationInfo sub:pubinfo;
+    a np:Nanopublication .
 }
 
 sub:assertion {
-	ex:trastuzumab ex:is-indicated-for ex:breast-cancer .
+  ex:trastuzumab ex:is-indicated-for ex:breast-cancer .
 }
 
 sub:provenance {
-	sub:assertion prov:generatedAtTime "2012-02-03T14:38:00Z"^^xsd:dateTime ;
-		prov:wasAttributedTo sub:experimentScientist ;
-		prov:wasDerivedFrom sub:experiment .
+  sub:assertion prov:wasAttributedTo orcid:0000-0003-3934-0072;
+    prov:wasDerivedFrom sub:experiment .
 }
 
 sub:pubinfo {
-	this: prov:generatedAtTime "2012-10-26T12:45:00Z"^^xsd:dateTime ;
-		prov:wasAttributedTo ex:paul .
+  this: dct:created "2020-07-10T10:20:22.382+02:00"^^xsd:dateTime;
+    dct:creator orcid:0000-0003-0183-6910 .
 }
 </pre>
 
@@ -424,16 +403,11 @@ Please check <a href="http://www.nanopub.org">http://www.nanopub.org</a> for fur
 
 <section><h3>References</h3>
 <ul>
- <li> [1] Tobias Kuhn, Paolo Emilio Barbano, Mate Levente Nagy, and Michael Krauthammer. <a href="http://www.tkuhn.ch/pub/kuhn2013eswc.pdf">Broadening the Scope of Nanopublications</a>. In Proceedings of the 10th Extended Semantic Web Conference (ESWC). Springer, 2013.
- <li> [2] Andrew Gibson, Jesse C.J. van Dam, Erik A. Schultes, Marco Roos, and Barend Mons (2012) Towards Computational Evaluation of Evidence for Scientific Assertions with Nanopublications and Cardinal Assertions (2012) CEUR Workshop Proceedings 952. http://ceur-ws.org/Vol-952/paper_26.pdf
- <li> [3] Mark Thompson, Herman H.H.B.M. van Haagen, Barend Mons, and Erik A. Schultes (2012) Placing landMarks in the Knowledge Space: crowd-sourcing landmark publications for benchmarking text-mined predictions (2012) CEUR Workshop Proceedings 952. http://ceur-ws.org/Vol-952/paper_14.pdf
- <li> [4] Patrinos et al (2012): Microattribution and nanopublication as means to incentivize the placement of human genome variation data into the public domain. Hum Mutat. 33(11):1503-12. http://www.ncbi.nlm.nih.gov/pubmed/22736453
- <li> [5] Axton M (2011) Crowdsourcing human mutations. Nature Genetics 43: 279. http://www.nature.com/ng/journal/v43/n4/full/ng0411-279.html
- <li> [6] Mons B et al (2011) The value of data. Commentary, Nature Genetics 43: 281-283. http://www.nature.com/ng/journal/v43/n4/full/ng0411-281.html
- <li> [7] Groth P, Gibson A & Velterop J (2010) The Anatomy of a Nanopublication. Information Services & Use 30: 51-56. http://www.w3.org/wiki/images/c/c0/HCLSIG$$SWANSIOC$$Actions$$RhetoricalStructure$$meetings$$20100215$cwa-anatomy-nanopub-v3.pdf
- <li> [8] Barend Mons and Jan Velterop (2009) Nano-Publication in the e-science era. http://www.nbic.nl/uploads/media/Nano-Publication_BarendMons-JanVelterop.pdf
- <li> [9] Linked Data: http://www.w3.org/DesignIssues/LinkedData.html
- <li> [10] Tobias Kuhn and Michel Dumontier. <a href="http://arxiv.org/abs/1401.5775">Trusty URIs: Verifiable, Immutable, and Permanent Digital Artifacts for Linked Data</a>. In Proceedings of the 11th Extended Semantic Web Conference (ESWC). Springer, 2014.
+<li>[1] Paul Groth, Andrew Gibson, and Jan Velterop. <a href="https://doi.org/10.3233/ISU-2010-0613">The Anatomy of a Nanopublication</a>. Information Services & Use 30: 51-56. 2010.
+<li>[2] Barend Mons et al. <a href="https://doi.org/10.1038/ng0411-281">The value of data</a>. Commentary, Nature Genetics 43: 281-283. 2011.
+<li>[3] Tobias Kuhn, Paolo Emilio Barbano, Mate Levente Nagy, and Michael Krauthammer. <a href="http://www.tkuhn.ch/pub/kuhn2013eswc.pdf">Broadening the Scope of Nanopublications</a>. In Proceedings of the 10th Extended Semantic Web Conference (ESWC). Springer, 2013.
+<li>[4] Jeremy J. Carroll, Christian Bizer, Pat Hayes, and Patrick Stickler. <a href="https://doi.org/10.1145/1060745.1060835">Named graphs, provenance and trust</a>. Proceedings of the 14th international conference on World Wide Web. 2005.
+<li>[5] Tobias Kuhn and Michel Dumontier. <a href="https://doi.org/10.1007/978-3-319-07443-6_27">Trusty URIs: Verifiable, Immutable, and Permanent Digital Artifacts for Linked Data</a>. In Proceedings of the 11th Extended Semantic Web Conference (ESWC). Springer, 2014.
 </ul>
 </section>
 
