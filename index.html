@@ -192,23 +192,22 @@ The <strong>assertion graph</strong> of the nanopublication contains such statem
 </pre>
 <pre class='example'>
 :assertion {
-    ex:BRCA1-gene ex:is-involved-in ex:breast-cancer .
-    ex:BRCA1-gene ex:encodes ex:BRCA1-protein .
-    ex:BRCA1-protein ex:is-expressed-in ex:breast .
+  ex:BRCA1-gene ex:is-involved-in ex:breast-cancer .
+  ex:BRCA1-gene ex:encodes ex:BRCA1-protein .
+  ex:BRCA1-protein ex:is-expressed-in ex:breast .
 }
 </pre>
 
  
 <p>
-The <strong>provenance graph</strong> of the nanopublication contains one or more RDF triples that provide information about the <strong>assertion</strong>. A nanopublication MUST have a provenance graph identifier linked to the assertion graph identifier. Provenance means, ‘how this came to be’, and may include any statement that discusses how the assertion was generated, who generated it, when was it generated, where was the assertion obtained from, and any other similar information. Examples of assertional provenance include:
+The <strong>provenance graph</strong> of the nanopublication contains one or more RDF triples that provide information about the <strong>assertion</strong>. The provenance graph of a nanopublication MUST contain a link to the assertion graph identifier. Provenance means "how this came to be" and may include any statement that discusses how the assertion was generated, who generated it, when was it generated, where was the assertion obtained from, and any other similar information. Examples of assertional provenance include:
 
 </p>
 
 <pre class='example'>
 :provenance {
-    :assertion prov:generatedAtTime "2012-02-03T14:38:00Z"^^xsd:dateTime  .
-    :assertion prov:wasDerivedFrom :experiment . 
-    :assertion prov:wasAttributedTo :experimentScientist .
+  :assertion prov:wasDerivedFrom :experiment . 
+  :assertion prov:wasAttributedTo :experimentScientist .
 }
 </pre>
 
@@ -218,40 +217,35 @@ The <strong>publication information graph</strong> contains one or more RDF trip
 
 <pre class='example'>
 :pubinfo {
-    ex:pub1 prov:wasAttributedTo ex:paul .
-    ex:pub1 prov:generatedAtTime "2012-10-26T12:45:00Z"^^xsd:dateTime .
+  : dct:creator orcid:0000-0003-0183-6910 .
+  : dct:created "2020-07-10T10:20:22.382+02:00"^^xsd:dateTime  .
 }
 </pre>
 
 <p>
-As far as applicable, provenance and publication info SHOULD use the provenance ontology <a href="http://www.w3.org/TR/prov-o/">PROV-O</a> and/or ontologies that have a mapping to it, including Dublin Core and PAV.
-</p>
-
-<p>
-The nanopublication itself receives its own identifier and refers to its parts via triples in the <strong>head graph</strong>:
+The nanopublication itself has its own identifier (here denote by <code>:</code>) and is linked to its parts via triples in an additional <strong>head graph</strong>:
 </p>
 
 <pre class='example'>
 :Head {
-    ex:pub1 a np:Nanopublication .
-    ex:pub1 np:hasAssertion :assertion .
-    ex:pub1 np:hasProvenance :provenance .
-    ex:pub1 np:hasPublicationInfo :pubinfo .
+  : a np:Nanopublication .
+  : np:hasAssertion :assertion .
+  : np:hasProvenance :provenance .
+  : np:hasPublicationInfo :pubinfo .
 }
 </pre>
-
-<p>
-Note that the head URI is different from the nanopublication URI. The head URI represents for the four triples shown above, whereas the nanopublication URI stands for the four graphs taken together (including the head graph).
-</p>
 
 </section>
 
 <section>
-<h3>Nanopublication Ontology</h3>
-The structure of a nanopublication is defined by the following ontology using the Web Ontology Language (OWL).  The namespace <code><a href="http://www.nanopub.org/nschema">http://www.nanopub.org/nschema</a></code>. Our namespace policy is that the current version of the ontology is always at this url. We suggest using <a href="http://www.w3.org/TR/trig/">TriG</a> syntax for writing nanopublications. 
 
-<hr>
-		<pre>
+<h3>Nanopublication Ontology</h3>
+
+<p>
+The structure of a nanopublication is defined by the following ontology using the Web Ontology Language (OWL).  The namespace <code><a href="http://www.nanopub.org/nschema">http://www.nanopub.org/nschema</a></code>. Our namespace policy is that the current version of the ontology is always at this url. We suggest using <a href="http://www.w3.org/TR/trig/">TriG</a> syntax for writing nanopublications. 
+</p>
+
+<pre>
 @prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;.
 @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;.
 @prefix rdfg: &lt;http://www.w3.org/2004/03/trix/rdfg-1/&gt;.
@@ -265,11 +259,6 @@ The structure of a nanopublication is defined by the following ontology using th
 	dc:modified "2013-10-23"^^xsd:date;
 	dc:description &lt;http://www.nanopub.org/2013/WD-guidelines-20131215/&gt; ;
 	owl:priorVersion &lt;http://www.nanopub.org/nschema-1.9&gt; .
-
-## A nanopublication should be associated with at most one assertion,
-## provenance of assertion, and provenance of the nanopublication (publicationInfo)
-## We use rdfg:Graph to denote a graph as used in the RDF 1.1. Trig syntax. 
-## Each sub class of rdfg:Graph should be separate Named Graph
 
 np:Nanopublication rdf:type owl:Class.
 np:Assertion rdfs:subClassOf rdfg:Graph.
@@ -288,7 +277,7 @@ np:hasPublicationInfo a owl:FunctionalProperty.
 np:hasPublicationInfo rdfs:domain np:Nanopublication.
 np:hasPublicationInfo rdfs:range np:PublicationInfo. 
 </pre>
-<hr>
+
 </section>
 
 
