@@ -181,7 +181,7 @@ This document describes the structure of a nanopublication. It offers guidelines
 	<section>
 		<h3>Primer</h3>
 <p>
-All three parts of a nanopublications (i.e. the assertion, provenance, and publication info) are each represented as an RDF graph. An RDF graph is a collection of RDF triples, which comprise of subject-predicate-object tuples.
+Each of the three parts of a nanopublication (i.e. the assertion, provenance, and publication info) is represented as an <a href="https://www.w3.org/RDF/">RDF</a> graph. An RDF graph is a collection of RDF triples, which comprise of subject-predicate-object tuples.
 The <strong>assertion graph</strong> of the nanopublication contains such statements that form the main claim of the nanopublications. Examples of assertions include: 
 
 </p>
@@ -217,7 +217,7 @@ The <strong>publication information graph</strong> contains one or more RDF trip
 </p>
 
 <pre class='example'>
-:pubInfo {
+:pubinfo {
     ex:pub1 prov:wasAttributedTo ex:paul .
     ex:pub1 prov:generatedAtTime "2012-10-26T12:45:00Z"^^xsd:dateTime .
 }
@@ -232,11 +232,11 @@ The nanopublication itself receives its own identifier and refers to its parts v
 </p>
 
 <pre class='example'>
-:head {
+:Head {
     ex:pub1 a np:Nanopublication .
     ex:pub1 np:hasAssertion :assertion .
     ex:pub1 np:hasProvenance :provenance .
-    ex:pub1 np:hasPublicationInfo :pubInfo .
+    ex:pub1 np:hasPublicationInfo :pubinfo .
 }
 </pre>
 
@@ -323,11 +323,11 @@ This is an example of a well-formed nanopublication in TriG notation:
 @prefix prov: &lt;http://www.w3.org/ns/prov#&gt; . 
 @prefix xsd:  &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-:head {
+:Head {
     ex:pub1 a np:Nanopublication .
     ex:pub1 np:hasAssertion :assertion .
     ex:pub1 np:hasProvenance :provenance .
-    ex:pub1 np:hasPublicationInfo :pubInfo .
+    ex:pub1 np:hasPublicationInfo :pubinfo .
 }
 
 :assertion {
@@ -340,7 +340,7 @@ This is an example of a well-formed nanopublication in TriG notation:
     :assertion prov:wasAttributedTo :experimentScientist .
 }
 
-:pubInfo {
+:pubinfo {
     ex:pub1 prov:wasAttributedTo ex:paul .
     ex:pub1 prov:generatedAtTime "2012-10-26T12:45:00Z"^^xsd:dateTime .
 }
@@ -353,14 +353,14 @@ And the same example in the N-Quads format:
 <pre class="example">
 &lt;http://example.org/pub1&gt; &lt;http://www.nanopub.org/nschema#hasAssertion&gt; &lt;http://example.org/pub1#assertion&gt; &lt;http://example.org/pub1#head&gt; .
 &lt;http://example.org/pub1&gt; &lt;http://www.nanopub.org/nschema#hasProvenance&gt; &lt;http://example.org/pub1#provenance&gt; &lt;http://example.org/pub1#head&gt; .
-&lt;http://example.org/pub1&gt; &lt;http://www.nanopub.org/nschema#hasPublicationInfo&gt; &lt;http://example.org/pub1#pubInfo&gt; &lt;http://example.org/pub1#head&gt; .
+&lt;http://example.org/pub1&gt; &lt;http://www.nanopub.org/nschema#hasPublicationInfo&gt; &lt;http://example.org/pub1#pubinfo&gt; &lt;http://example.org/pub1#head&gt; .
 &lt;http://example.org/pub1&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://www.nanopub.org/nschema#Nanopublication&gt; &lt;http://example.org/pub1#head&gt; .
 &lt;http://example.org/trastuzumab&gt; &lt;http://example.org/is-indicated-for&gt; &lt;http://example.org/breast-cancer&gt; &lt;http://example.org/pub1#assertion&gt; .
 &lt;http://example.org/pub1#assertion&gt; &lt;http://www.w3.org/ns/prov#generatedAtTime&gt; "2012-02-03T14:38:00Z"^^&lt;http://www.w3.org/2001/XMLSchema#dateTime&gt; &lt;http://example.org/pub1#provenance&gt; .
 &lt;http://example.org/pub1#assertion&gt; &lt;http://www.w3.org/ns/prov#wasAttributedTo&gt; &lt;http://example.org/pub1#experimentScientist&gt; &lt;http://example.org/pub1#provenance&gt; .
 &lt;http://example.org/pub1#assertion&gt; &lt;http://www.w3.org/ns/prov#wasDerivedFrom&gt; &lt;http://example.org/pub1#experiment&gt; &lt;http://example.org/pub1#provenance&gt; .
-&lt;http://example.org/pub1&gt; &lt;http://www.w3.org/ns/prov#generatedAtTime&gt; "2012-10-26T12:45:00Z"^^&lt;http://www.w3.org/2001/XMLSchema#dateTime&gt; &lt;http://example.org/pub1#pubInfo&gt; .
-&lt;http://example.org/pub1&gt; &lt;http://www.w3.org/ns/prov#wasAttributedTo&gt; &lt;http://example.org/paul&gt; &lt;http://example.org/pub1#pubInfo&gt; .
+&lt;http://example.org/pub1&gt; &lt;http://www.w3.org/ns/prov#generatedAtTime&gt; "2012-10-26T12:45:00Z"^^&lt;http://www.w3.org/2001/XMLSchema#dateTime&gt; &lt;http://example.org/pub1#pubinfo&gt; .
+&lt;http://example.org/pub1&gt; &lt;http://www.w3.org/ns/prov#wasAttributedTo&gt; &lt;http://example.org/paul&gt; &lt;http://example.org/pub1#pubinfo&gt; .
 </pre>
 
 </section>
@@ -403,10 +403,10 @@ This is the exemplary nanopublication from Section 5 after generating and attach
 @prefix prov: &lt;http://www.w3.org/ns/prov#&gt; . 
 @prefix xsd:  &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-sub:head {
+sub:Head {
 	this: np:hasAssertion sub:assertion ;
 		np:hasProvenance sub:provenance ;
-		np:hasPublicationInfo sub:pubInfo ;
+		np:hasPublicationInfo sub:pubinfo ;
 		a np:Nanopublication .
 }
 
@@ -420,7 +420,7 @@ sub:provenance {
 		prov:wasDerivedFrom sub:experiment .
 }
 
-sub:pubInfo {
+sub:pubinfo {
 	this: prov:generatedAtTime "2012-10-26T12:45:00Z"^^xsd:dateTime ;
 		prov:wasAttributedTo ex:paul .
 }
