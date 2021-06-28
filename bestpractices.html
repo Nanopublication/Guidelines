@@ -1,211 +1,285 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<!-- trigger regeneration by this edit-->
-<title>Nanopublications: Best Practices</title>
-<meta http-equiv='Content-Type' content='text/html;charset=utf-8' />
-<!-- 
-      === NOTA BENE ===
-      For the three scripts below, if your spec resides on dev.w3 you can check them
-      out in the same tree and use relative links so that they'll work offline,
+    <!-- trigger regeneration by this edit-->
+    <title>Nanopublications: Best Practices</title>
+    <meta http-equiv='Content-Type' content='text/html;charset=utf-8'/>
+    <!--
+          === NOTA BENE ===
+          For the three scripts below, if your spec resides on dev.w3 you can check them
+          out in the same tree and use relative links so that they'll work offline,
+         -->
+    <!--  <script src="js/jquery/jquery-1.7.2.min.js"></script> -->
+    <!--     <script src='http://github.com/cowboy/jquery-replacetext/raw/master/jquery.ba-replacetext.js'></script>
      -->
-<!--  <script src="js/jquery/jquery-1.7.2.min.js"></script> -->
-<!--     <script src='http://github.com/cowboy/jquery-replacetext/raw/master/jquery.ba-replacetext.js'></script>
- -->
 
 
-<script src='js/respec.js'></script>
-<!-- <script src='http://www.openphacts.org/specs/2012/WD-datadesc-20121019/js/respec.js'></script> -->
-<!--     <script src='js/jquery/jquery-1.7.2.min.js'></script> -->
+    <script src='js/respec.js'></script>
+    <!-- <script src='http://www.openphacts.org/specs/2012/WD-datadesc-20121019/js/respec.js'></script> -->
+    <!--     <script src='js/jquery/jquery-1.7.2.min.js'></script> -->
 
-<script class='remove'>
-  var respecConfig = {
-    // specification status (e.g. WD, LCWD, NOTE, etc.). If in doubt use ED.
+    <script class='remove'>
+        var respecConfig = {
+            // specification status (e.g. WD, LCWD, NOTE, etc.). If in doubt use ED.
 
-    // the specification's short name, as in http://www.w3.org/TR/short-name/
-    //shortName : "v1.95",
+            // the specification's short name, as in http://www.w3.org/TR/short-name/
+            //shortName : "v1.95",
 
-    // if your specification has a subtitle that goes below the main
-    // formal title, define it here
-    // subtitle   :  "an excellent document",
+            // if your specification has a subtitle that goes below the main
+            // formal title, define it here
+            // subtitle   :  "an excellent document",
 
-    // if you wish the publication date to be other than today, set this
-    // publishDate:  "2012-04-07",
+            // if you wish the publication date to be other than today, set this
+            // publishDate:  "2012-04-07",
 
-    // if the specification's copyright date is a range of years, specify
-    // the start date here:
-    // copyrightStart: "2009"
+            // if the specification's copyright date is a range of years, specify
+            // the start date here:
+            // copyrightStart: "2009"
 
-    // if there is a previously published draft, uncomment this and set its YYYY-MM-DD date
-    // and its maturity status
-    // previousPublishDate:  "1977-03-15",
-    // previousMaturity:  "WD",
+            // if there is a previously published draft, uncomment this and set its YYYY-MM-DD date
+            // and its maturity status
+            // previousPublishDate:  "1977-03-15",
+            // previousMaturity:  "WD",
 
-    // if there a publicly available Editor's Draft, this is the link
-    edDraftURI : "http://nanopub.org/guidelines/working_draft",
+            // if there a publicly available Editor's Draft, this is the link
+            edDraftURI: "http://nanopub.org/guidelines/working_draft",
 
-    // if this is a LCWD, uncomment and set the end of its review period
-    // lcEnd: "2009-08-05",
+            // if this is a LCWD, uncomment and set the end of its review period
+            // lcEnd: "2009-08-05",
 
-    // if you want to have extra CSS, append them to this list
-    // it is recommended that the respec.css stylesheet be kept
-      extraCSS : [ "http://dev.w3.org/2009/dap/ReSpec.js/css/respec.css",
-                       "css/common.css"],
+            // if you want to have extra CSS, append them to this list
+            // it is recommended that the respec.css stylesheet be kept
+            extraCSS: ["http://dev.w3.org/2009/dap/ReSpec.js/css/respec.css",
+                "css/common.css"],
 
-    // editors, add as many as you like
-    // only "name" is required
-    editors : [ 
-      {name: "Paul Groth", url: "http://www.few.vu.nl/~pgroth/", company:"VU University Amsterdam", companyURL:"http://www.vu.nl"},
-      {name: "Erik Schultes", url: "", company:"LUMC", companyURL:"http://www.lumc.nl"},
-      {name: "Mark Thompson", url: "", company:"LUMC", companyURL:"http://www.lumc.nl"},  
-      {name: "Zuotian Tatum", url: "", company:"LUMC", companyURL:"http://www.lumc.nl"},
-          {name: "Michel Dumontier", url: "http://dumontierlab.com", company: "Stanford University", companyURL: "http://stanford.edu" },
-      {name: "Tobias Kuhn", url: "http://www.tkuhn.ch/", company: "ETH Zurich", companyURL: "http://www.ethz.ch/" },
-    ],
-    
-    authors: [
-    { name: "Alasdair J G Gray", url: "http://www.cs.man.ac.uk/~graya",
-                company: "University of Manchester", companyURL: "http://www.manchester.ac.uk/" },
-    {name: "Christine Chichester", url: "", company:"NBIC", companyURL:"http://www.nbic.nl"},
-    {name: "Kees Burger", url: "", company:"NBIC", companyURL:"http://www.nbic.nl"},
-    {name: "Spyros Kotoulas", url: "", company:"VU University Amsterdam", companyURL:"http://www.vu.nl"},
-    {name: "Antonis Loizou", url: "", company:"VU University Amsterdam", companyURL:"http://www.vu.nl"},
-    {name: "Valery Tkachenko", url: "", company:"RSC", companyURL:"http://www.rsc.org"},
-    {name: "Andra Waagmeester", url: "", company:"Maastricht University", companyURL:"http://www.maastrichtuniversity.nl"},
-    {name: "Sune Askjaer", url: "", company:"Lundbeck, ", companyURL:"www.lundbeck.com"},
-    {name: "Steve Pettifer", url: "", company:"University of Manchester", companyURL:"http://www.manchester.ac.uk"},
-    {name: "Lee Harland", url: "", company:"Pfizer/CD", companyURL:"http://connecteddiscovery.com"},
-    {name: "Carina Haupt", url: "", company:"Uni Bonn / Fraunhofer", companyURL:"http://www3.uni-bonn.de/die-universitaet/events-und-veranstaltungen/deutschlandfest/angebote_stadtgebiet/fraunhofer-institute-im-b-it"},
-    {name: "Colin Batchelor", url: "", company:"RSC", companyURL:"http://www.rsc.org"},
-    {name: "Miguel Vazquez", url: "", company:"CNIO", companyURL:"http://www.cnio.es"},
-    {name: "José María Fernández", url: "", company:"CNIO", companyURL:"http://www.cnio.es"},
-    {name: "Jahn Saito", url: "", company:"Maastricht University", companyURL:"http://www.maastrichtuniversity.nl/"},
-    {name: "Andrew Gibson", url: "", company:"LUMC", companyURL:"http://www.lumc.nl"},
-    {name: "Louis Wich", url: "", company:"DTU", companyURL:"http://www.dtu.dk"},
-    {name: "Jesse van Dam", url: "", company: "Wageningen UR", companyURL: "https://www.wageningenur.nl/" },
-    ],
+            // editors, add as many as you like
+            // only "name" is required
+            editors: [
+                {
+                    name: "Paul Groth",
+                    url: "http://www.few.vu.nl/~pgroth/",
+                    company: "VU University Amsterdam",
+                    companyURL: "http://www.vu.nl"
+                },
+                {name: "Erik Schultes", url: "", company: "LUMC", companyURL: "http://www.lumc.nl"},
+                {name: "Mark Thompson", url: "", company: "LUMC", companyURL: "http://www.lumc.nl"},
+                {name: "Zuotian Tatum", url: "", company: "LUMC", companyURL: "http://www.lumc.nl"},
+                {
+                    name: "Michel Dumontier",
+                    url: "http://dumontierlab.com",
+                    company: "Stanford University",
+                    companyURL: "http://stanford.edu"
+                },
+                {
+                    name: "Tobias Kuhn",
+                    url: "http://www.tkuhn.ch/",
+                    company: "ETH Zurich",
+                    companyURL: "http://www.ethz.ch/"
+                },
+            ],
+
+            authors: [
+                {
+                    name: "Alasdair J G Gray", url: "http://www.cs.man.ac.uk/~graya",
+                    company: "University of Manchester", companyURL: "http://www.manchester.ac.uk/"
+                },
+                {name: "Christine Chichester", url: "", company: "NBIC", companyURL: "http://www.nbic.nl"},
+                {name: "Kees Burger", url: "", company: "NBIC", companyURL: "http://www.nbic.nl"},
+                {name: "Spyros Kotoulas", url: "", company: "VU University Amsterdam", companyURL: "http://www.vu.nl"},
+                {name: "Antonis Loizou", url: "", company: "VU University Amsterdam", companyURL: "http://www.vu.nl"},
+                {name: "Valery Tkachenko", url: "", company: "RSC", companyURL: "http://www.rsc.org"},
+                {
+                    name: "Andra Waagmeester",
+                    url: "",
+                    company: "Maastricht University",
+                    companyURL: "http://www.maastrichtuniversity.nl"
+                },
+                {name: "Sune Askjaer", url: "", company: "Lundbeck, ", companyURL: "www.lundbeck.com"},
+                {
+                    name: "Steve Pettifer",
+                    url: "",
+                    company: "University of Manchester",
+                    companyURL: "http://www.manchester.ac.uk"
+                },
+                {name: "Lee Harland", url: "", company: "Pfizer/CD", companyURL: "http://connecteddiscovery.com"},
+                {
+                    name: "Carina Haupt",
+                    url: "",
+                    company: "Uni Bonn / Fraunhofer",
+                    companyURL: "http://www3.uni-bonn.de/die-universitaet/events-und-veranstaltungen/deutschlandfest/angebote_stadtgebiet/fraunhofer-institute-im-b-it"
+                },
+                {name: "Colin Batchelor", url: "", company: "RSC", companyURL: "http://www.rsc.org"},
+                {name: "Miguel Vazquez", url: "", company: "CNIO", companyURL: "http://www.cnio.es"},
+                {name: "José María Fernández", url: "", company: "CNIO", companyURL: "http://www.cnio.es"},
+                {
+                    name: "Jahn Saito",
+                    url: "",
+                    company: "Maastricht University",
+                    companyURL: "http://www.maastrichtuniversity.nl/"
+                },
+                {name: "Andrew Gibson", url: "", company: "LUMC", companyURL: "http://www.lumc.nl"},
+                {name: "Louis Wich", url: "", company: "DTU", companyURL: "http://www.dtu.dk"},
+                {name: "Jesse van Dam", url: "", company: "Wageningen UR", companyURL: "https://www.wageningenur.nl/"},
+            ],
 
 
-    // authors, add as many as you like. 
-    // This is optional, uncomment if you have authors as well as editors.
-    // only "name" is required. Same format as editors.
+            // authors, add as many as you like.
+            // This is optional, uncomment if you have authors as well as editors.
+            // only "name" is required. Same format as editors.
 
-    //authors:  [
-    //    { name: "Your Name", url: "http://example.org/",
-    //      company: "Your Company", companyURL: "http://example.com/" },
-    //],
+            //authors:  [
+            //    { name: "Your Name", url: "http://example.org/",
+            //      company: "Your Company", companyURL: "http://example.com/" },
+            //],
 
-    // name of the WG
-    //wg : "In Charge Of This Document Working Group",
+            // name of the WG
+            //wg : "In Charge Of This Document Working Group",
 
-    // URI of the public WG page
-    //wgURI : "http://example.org/really-cool-wg",
+            // URI of the public WG page
+            //wgURI : "http://example.org/really-cool-wg",
 
-    // name (without the @w3c.org) of the public mailing to which comments are due
-    wgPublicList : "spec-writers-anonymous",
+            // name (without the @w3c.org) of the public mailing to which comments are due
+            wgPublicList: "spec-writers-anonymous",
 
-    // URI of the patent status for this WG, for Rec-track documents
-    // !!!! IMPORTANT !!!!
-    // This is important for Rec-track documents, do not copy a patent URI from a random
-    // document unless you know what you're doing. If in doubt ask your friendly neighbourhood
-    // Team Contact.
-    wgPatentURI : "",
-    orguri:               "http://www.nanopub.org/",//"http://www.openphacts.org/specs/",
-    orgicon:              "<a href='http://www.nanopub.org/'><img height='100' src='figures/CWA_logo.jpg' alt='Concept Web Alliance/Nanopub.org'/></a>",
-    customorg:            "Concept Web Alliance",
-    customcss:            "./css/ops.css",
-    specStatus:           "WD",
-    shortName:            "guidelines",
-    publishDate:   "2013-12-15",
-    previousMaturity: "WD",
-    previousPublishDate:  "2012-04-30",
-    previousURI : "http://www.nanopub.org/guidelines/1.8",
-    copyrightStart:       "2013",
-    overrideCopyright:    "<p class='copyright'>This document is licensed under a <a class='subfoot' href='http://creativecommons.org/licenses/sa-by/3.0/' rel='license'>Creative Commons ShareAlike Attribution 3.0 License</a>.</p>",
-  };
-</script>
-<script type="text/turtle">
+            // URI of the patent status for this WG, for Rec-track documents
+            // !!!! IMPORTANT !!!!
+            // This is important for Rec-track documents, do not copy a patent URI from a random
+            // document unless you know what you're doing. If in doubt ask your friendly neighbourhood
+            // Team Contact.
+            wgPatentURI: "",
+            orguri: "http://www.nanopub.org/",//"http://www.openphacts.org/specs/",
+            orgicon: "<a href='http://www.nanopub.org/'><img height='100' src='figures/CWA_logo.jpg' alt='Concept Web Alliance/Nanopub.org'/></a>",
+            customorg: "Concept Web Alliance",
+            customcss: "./css/ops.css",
+            specStatus: "WD",
+            shortName: "guidelines",
+            publishDate: "2013-12-15",
+            previousMaturity: "WD",
+            previousPublishDate: "2012-04-30",
+            previousURI: "http://www.nanopub.org/guidelines/1.8",
+            copyrightStart: "2013",
+            overrideCopyright: "<p class='copyright'>This document is licensed under a <a class='subfoot' href='http://creativecommons.org/licenses/sa-by/3.0/' rel='license'>Creative Commons ShareAlike Attribution 3.0 License</a>.</p>",
+        };
+    </script>
+    <script type="text/turtle">
 @prefix prov: <http://www.w3.org/ns/prov#> .
 <http://www.nanopub.org/2013/WD-guidelines-20131215/> prov:wasDerivedFrom <https://github.com/Nanopublication/Guidelines/commit/6d7ec9f4b87f6dcc6694fbe0b87146c142c76bb5>.
-</script>
+
+    
+    </script>
 </head>
 
 <body>
-  <section id='abstract'></section>
+<section id='abstract'></section>
 
-  <section>
+<section>
     <h3>Abstract</h3>
-<p class="note"><strong>Tobias:</strong> This document contains parts of a previous version of the <a href="http://nanopub.org/guidelines/working_draft/">Nanopublication Guidelines</a>. These parts are more general and require more attention. Discussing this with Paul at ESWC 2014, we came to agree that these parts should go into a separate document. (Let us know if you disagree!)</p>
+    <p class="note"><strong>Tobias:</strong> This document contains parts of a previous version of the <a
+            href="http://nanopub.org/guidelines/working_draft/">Nanopublication Guidelines</a>. These parts are more
+        general and require more attention. Discussing this with Paul at ESWC 2014, we came to agree that these parts
+        should go into a separate document. (Let us know if you disagree!)</p>
 
-  </section>
-  <section id="conformance">
-        <!-- This includes standard text about conformance -->
-    </section>
-
+</section>
+<section id="conformance">
+    <!-- This includes standard text about conformance -->
+</section>
 
 
 <section><h3>Nanopublication Compliant RDF for Large Data Sets</h3>
 
-<p>
-To convert large existing datasets into nanopublications, we recommend using the Vocabulary of Interlinked Datasets ( VoID  http://www.w3.org/TR/void/ ) to create a nanopublication compliant RDF (ncRDF) description of the data. In this way we make each entry in the dataset (e.g. data row or sample value) referenceable, which in turn makes it possible to specify that a particular assertion was derived from a specific row of the original dataset.
-</p>
+    <p>
+        To convert large existing datasets into nanopublications, we recommend using the Vocabulary of Interlinked
+        Datasets ( VoID http://www.w3.org/TR/void/ ) to create a nanopublication compliant RDF (ncRDF) description of
+        the data. In this way we make each entry in the dataset (e.g. data row or sample value) referenceable, which in
+        turn makes it possible to specify that a particular assertion was derived from a specific row of the original
+        dataset.
+    </p>
 
-<p>
-ncRDF is an intermediate step between the dataset as it is, and nanopublications. Rather than creating an extensive domain model, the RDF dataset uses a simple descriptive model. In practice this means that all data items from the original dataset are transformed (no pre-selection) and that all values remain the same (no normalization or rounding). Furthermore, simple ad-hoc ontologies can be used to provide entity and predicate descriptions: full semantic modeling is only required for the nanopublication itself. See figure.
-</p>
+    <p>
+        ncRDF is an intermediate step between the dataset as it is, and nanopublications. Rather than creating an
+        extensive domain model, the RDF dataset uses a simple descriptive model. In practice this means that all data
+        items from the original dataset are transformed (no pre-selection) and that all values remain the same (no
+        normalization or rounding). Furthermore, simple ad-hoc ontologies can be used to provide entity and predicate
+        descriptions: full semantic modeling is only required for the nanopublication itself. See figure.
+    </p>
 
-<p>
-An example of the use ncRDF in exposing a large dataset is given in the FANTOM5 nanopublictation template. Here, each row of the raw dataset is transformed to a ‘CagePeak resource’. Using the void:inDataset predicate, each CagePeak is linked back to the resource for the entire dataset. Subsequent predicates connect the CagePeak to entities that represent columns of the raw dataset.
-</p>
+    <p>
+        An example of the use ncRDF in exposing a large dataset is given in the FANTOM5 nanopublictation template. Here,
+        each row of the raw dataset is transformed to a ‘CagePeak resource’. Using the void:inDataset predicate, each
+        CagePeak is linked back to the resource for the entire dataset. Subsequent predicates connect the CagePeak to
+        entities that represent columns of the raw dataset.
+    </p>
 
-<div class='figure'><img src="figures/dataToNP.png" alt="Data to Nanopublication"></div>
+    <div class='figure'><img src="figures/dataToNP.png" alt="Data to Nanopublication"></div>
 
 </section>
 
 <section><h3>Best & Good Practices</h3>
 
-<ul>
+    <ul>
 
-<li>The primary challenge when nanopublishing data is to model the semantics for clarity and keep a clear separation between the actual observations (measurements) from the interpretations (scientific assertions) and mark-up this distinction in as unambiguous way as possible. Other considerations include economization of memory usage, time-efficient querying, and avoidance of logical inconsistencies.
-</li>
-<li>Nanopublications should present as low a barrier as possible to the exposure of data. Hence nanopublications have a minimal requirement of an assertion and provenance, but are extensible. The basic idea is that a minimal nanopublication can be easily created, but the better the annotation the more likely it is that the nanopublication will be found, used and cited by others. In other words, there is strong incentive for rich annotation, but a low barrier to getting started.
-</li>
-<li> Suggested ontologies:
-<ul> 
-<li> <a href="http://code.google.com/p/semanticscience/wiki/SIO">Semanticscience Integrated Ontology</a></li>
-<li> <a href="http://www.w3.org/TR/hcls-swan/">Semantic Web Applications in Neuroscience (SWAN) Ontology</a></li>
-<li> <a href="http://www.w3.org/TR/prov-o/">PROV-O: The PROV Ontology for provenance</a></li>
-<li> <a href="http://schema.org/docs/meddocs.html">Schema.org health and medial types</a>
-<li> Ontologies registered at <a href="http://bioportal.bioontology.org">NCBO BioPortal</a>.
-</ul>
-</ul>
+        <li>The primary challenge when nanopublishing data is to model the semantics for clarity and keep a clear
+            separation between the actual observations (measurements) from the interpretations (scientific assertions)
+            and mark-up this distinction in as unambiguous way as possible. Other considerations include economization
+            of memory usage, time-efficient querying, and avoidance of logical inconsistencies.
+        </li>
+        <li>Nanopublications should present as low a barrier as possible to the exposure of data. Hence nanopublications
+            have a minimal requirement of an assertion and provenance, but are extensible. The basic idea is that a
+            minimal nanopublication can be easily created, but the better the annotation the more likely it is that the
+            nanopublication will be found, used and cited by others. In other words, there is strong incentive for rich
+            annotation, but a low barrier to getting started.
+        </li>
+        <li> Suggested ontologies:
+            <ul>
+                <li><a href="http://code.google.com/p/semanticscience/wiki/SIO">Semanticscience Integrated Ontology</a>
+                </li>
+                <li><a href="http://www.w3.org/TR/hcls-swan/">Semantic Web Applications in Neuroscience (SWAN)
+                    Ontology</a></li>
+                <li><a href="http://www.w3.org/TR/prov-o/">PROV-O: The PROV Ontology for provenance</a></li>
+                <li><a href="http://schema.org/docs/meddocs.html">Schema.org health and medial types</a>
+                <li> Ontologies registered at <a href="http://bioportal.bioontology.org">NCBO BioPortal</a>.
+            </ul>
+    </ul>
 
 </section>
 
 
 <section>
-<h3>Nanopublication Collections</h3>
+    <h3>Nanopublication Collections</h3>
 
-<i>(this is work in progress and under discussion; the schema has to be adapted to support this)</i>
+    <i>(this is work in progress and under discussion; the schema has to be adapted to support this)</i>
 
-<p>
-In some cases, in particular when exporting from existing datasets, a large number of nanopublications may have exactly the same provenance and publication information. In such cases, they can be represented more concisely as a <i>nanopublication collection</i>. A nanopublication collection has the same general structure as a nanopublication but with the following differences:
-</p>
+    <p>
+        In some cases, in particular when exporting from existing datasets, a large number of nanopublications may have
+        exactly the same provenance and publication information. In such cases, they can be represented more concisely
+        as a <i>nanopublication collection</i>. A nanopublication collection has the same general structure as a
+        nanopublication but with the following differences:
+    </p>
 
-<ul>
-<li>There are more than one assertion graph, each representing a separate nanopublication.</li>
-<li>All assertion graph URIs have to end with either <code>?assertion</code> or <code>?a</code>, where <code>?</code> stands for a non-letter character (i.e. a number or a special character).</li>
-<li>The URI of the collection is typed as a <code>NanopublicationCollection</code> (instead of <code>Nanopublication</code>) in the head graph.</li>
-<li>Instead of a <code>hasAssertion</code>-relation referring to a single assertion graph, there is a <code>hasAssertionSet</code>-relation to a URI that represents the <i>set of assertion graphs</i>.</li>
-<li><code>hasCollectionProvenance</code> and <code>hasCollectionPubInfo</code> are used to refer to the provenance and publication information from the head graph, instead of <code>hasProvenance</code> and <code>hasPublicationInfo</code></li>
-<li>The assertion set URI is linked to all assertion URIs in the head graph with the relation <code>hasMember</code>.</li>
-</ul>
+    <ul>
+        <li>There are more than one assertion graph, each representing a separate nanopublication.</li>
+        <li>All assertion graph URIs have to end with either <code>?assertion</code> or <code>?a</code>, where
+            <code>?</code> stands for a non-letter character (i.e. a number or a special character).
+        </li>
+        <li>The URI of the collection is typed as a <code>NanopublicationCollection</code> (instead of <code>Nanopublication</code>)
+            in the head graph.
+        </li>
+        <li>Instead of a <code>hasAssertion</code>-relation referring to a single assertion graph, there is a <code>hasAssertionSet</code>-relation
+            to a URI that represents the <i>set of assertion graphs</i>.
+        </li>
+        <li><code>hasCollectionProvenance</code> and <code>hasCollectionPubInfo</code> are used to refer to the
+            provenance and publication information from the head graph, instead of <code>hasProvenance</code> and <code>hasPublicationInfo</code>
+        </li>
+        <li>The assertion set URI is linked to all assertion URIs in the head graph with the relation
+            <code>hasMember</code>.
+        </li>
+    </ul>
 
-<p>
-This is an example of a nanopublication collection:
-</p>
+    <p>
+        This is an example of a nanopublication collection:
+    </p>
 
-<pre class="example">
+    <pre class="example">
 @prefix : &lt;http://example.org/dataset1#&gt; .
 @prefix ex: &lt;http://example.org/&gt; .
 @prefix np:  &lt;http://www.nanopub.org/nschema#&gt; .
@@ -234,25 +308,40 @@ This is an example of a nanopublication collection:
 }
 </pre>
 
-<p>
-Collections are basically just a shorthand for representing nanopublications.
-The individual nanopublications can be extracted from a collection by applying the following well-defined rules for each of the assertion URIs:
-</p>
+    <p>
+        Collections are basically just a shorthand for representing nanopublications.
+        The individual nanopublications can be extracted from a collection by applying the following well-defined rules
+        for each of the assertion URIs:
+    </p>
 
-<ul>
-<li>The nanopublication URI equals the assertion URI after removing the final <code>a</code> or <code>assertion</code>, and after removing the last character of the resulting string if this last character is either a hash sign (<code>#</code>) or a dot (<code>.</code>).</li>
-<li>The head URI of the nanopublication equals the assertion URI with the final <code>a</code> or <code>assertion</code> replaced by <code>head</code>, and analogously for the provenance and publication information URI with <code>prov</code> and <code>info</code>.</li>
-<li>The head graph contains the four mandatory triples, typing it as an <code>Nanopublication</code> and linking to the assertion, provenance, and publication information graphs.</li>
-<li>The assertion graph is identical to the respective assertion graph of the collection (and has therefore the same URI).</li>
-<li>The provenance graph contains all triples of the collection's provenance graph plus an additional triple "[assertion set URI] <code>hasMember</code> [assertion URI]".</li>
-<li>The publication information graph contains all triples of the collection's publication information graph plus an additional triple "[collection URI] <code>hasMember</code> [nanopublication URI]".</li>
-</ul>
+    <ul>
+        <li>The nanopublication URI equals the assertion URI after removing the final <code>a</code> or
+            <code>assertion</code>, and after removing the last character of the resulting string if this last character
+            is either a hash sign (<code>#</code>) or a dot (<code>.</code>).
+        </li>
+        <li>The head URI of the nanopublication equals the assertion URI with the final <code>a</code> or <code>assertion</code>
+            replaced by <code>head</code>, and analogously for the provenance and publication information URI with
+            <code>prov</code> and <code>info</code>.
+        </li>
+        <li>The head graph contains the four mandatory triples, typing it as an <code>Nanopublication</code> and linking
+            to the assertion, provenance, and publication information graphs.
+        </li>
+        <li>The assertion graph is identical to the respective assertion graph of the collection (and has therefore the
+            same URI).
+        </li>
+        <li>The provenance graph contains all triples of the collection's provenance graph plus an additional triple
+            "[assertion set URI] <code>hasMember</code> [assertion URI]".
+        </li>
+        <li>The publication information graph contains all triples of the collection's publication information graph
+            plus an additional triple "[collection URI] <code>hasMember</code> [nanopublication URI]".
+        </li>
+    </ul>
 
-<p>
-The second nanopublication of the above example would therefore look as follows:
-</p>
+    <p>
+        The second nanopublication of the above example would therefore look as follows:
+    </p>
 
-<pre class="example">
+    <pre class="example">
 :2head {
     :2 a np:Nanopublication ; np:hasAssertion :2a ;
         np:hasProvenance :2prov ; np:hasPublicationInfo :2info .

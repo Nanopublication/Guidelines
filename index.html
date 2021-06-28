@@ -1,174 +1,235 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<!-- trigger regeneration by this edit-->
-<title>Nanopublication Guidelines</title>
-<meta http-equiv='Content-Type' content='text/html;charset=utf-8' />
-<!-- 
-      === NOTA BENE ===
-      For the three scripts below, if your spec resides on dev.w3 you can check them
-      out in the same tree and use relative links so that they'll work offline,
+    <!-- trigger regeneration by this edit-->
+    <title>Nanopublication Guidelines</title>
+    <meta http-equiv='Content-Type' content='text/html;charset=utf-8'/>
+    <!--
+          === NOTA BENE ===
+          For the three scripts below, if your spec resides on dev.w3 you can check them
+          out in the same tree and use relative links so that they'll work offline,
+         -->
+    <!--  <script src="js/jquery/jquery-1.7.2.min.js"></script> -->
+    <!--     <script src='http://github.com/cowboy/jquery-replacetext/raw/master/jquery.ba-replacetext.js'></script>
      -->
-<!--  <script src="js/jquery/jquery-1.7.2.min.js"></script> -->
-<!--     <script src='http://github.com/cowboy/jquery-replacetext/raw/master/jquery.ba-replacetext.js'></script>
- -->
 
 
-<script src='js/respec.js'></script>
-<!-- <script src='http://www.openphacts.org/specs/2012/WD-datadesc-20121019/js/respec.js'></script> -->
-<!--     <script src='js/jquery/jquery-1.7.2.min.js'></script> -->
+    <script src='js/respec.js'></script>
+    <!-- <script src='http://www.openphacts.org/specs/2012/WD-datadesc-20121019/js/respec.js'></script> -->
+    <!--     <script src='js/jquery/jquery-1.7.2.min.js'></script> -->
 
-<script class='remove'>
-  var respecConfig = {
-    // specification status (e.g. WD, LCWD, NOTE, etc.). If in doubt use ED.
+    <script class='remove'>
+        var respecConfig = {
+            // specification status (e.g. WD, LCWD, NOTE, etc.). If in doubt use ED.
 
-    // the specification's short name, as in http://www.w3.org/TR/short-name/
-    //shortName : "v1.95",
+            // the specification's short name, as in http://www.w3.org/TR/short-name/
+            //shortName : "v1.95",
 
-    // if your specification has a subtitle that goes below the main
-    // formal title, define it here
-    // subtitle   :  "an excellent document",
+            // if your specification has a subtitle that goes below the main
+            // formal title, define it here
+            // subtitle   :  "an excellent document",
 
-    // if you wish the publication date to be other than today, set this
-    // publishDate:  "2012-04-07",
+            // if you wish the publication date to be other than today, set this
+            // publishDate:  "2012-04-07",
 
-    // if the specification's copyright date is a range of years, specify
-    // the start date here:
-    // copyrightStart: "2009"
+            // if the specification's copyright date is a range of years, specify
+            // the start date here:
+            // copyrightStart: "2009"
 
-    // if there is a previously published draft, uncomment this and set its YYYY-MM-DD date
-    // and its maturity status
-    // previousPublishDate:  "1977-03-15",
-    // previousMaturity:  "WD",
+            // if there is a previously published draft, uncomment this and set its YYYY-MM-DD date
+            // and its maturity status
+            // previousPublishDate:  "1977-03-15",
+            // previousMaturity:  "WD",
 
-    // if there a publicly available Editor's Draft, this is the link
-    edDraftURI : "http://nanopub.org/guidelines/working_draft",
+            // if there a publicly available Editor's Draft, this is the link
+            edDraftURI: "http://nanopub.org/guidelines/working_draft",
 
-    // if this is a LCWD, uncomment and set the end of its review period
-    // lcEnd: "2009-08-05",
+            // if this is a LCWD, uncomment and set the end of its review period
+            // lcEnd: "2009-08-05",
 
-    // if you want to have extra CSS, append them to this list
-    // it is recommended that the respec.css stylesheet be kept
-      extraCSS : [ "http://dev.w3.org/2009/dap/ReSpec.js/css/respec.css",
-                   "css/common.css"],
+            // if you want to have extra CSS, append them to this list
+            // it is recommended that the respec.css stylesheet be kept
+            extraCSS: ["http://dev.w3.org/2009/dap/ReSpec.js/css/respec.css",
+                "css/common.css"],
 
-    // editors, add as many as you like
-    // only "name" is required
-    editors : [ 
-      {name: "Paul Groth", url: "http://www.few.vu.nl/~pgroth/", company:"VU University Amsterdam", companyURL:"http://www.vu.nl"},
-      {name: "Erik Schultes", url: "", company:"LUMC", companyURL:"http://www.lumc.nl"},
-      {name: "Mark Thompson", url: "", company:"LUMC", companyURL:"http://www.lumc.nl"},  
-      {name: "Zuotian Tatum", url: "", company:"LUMC", companyURL:"http://www.lumc.nl"},
-          {name: "Michel Dumontier", url: "http://dumontierlab.com", company: "Stanford University", companyURL: "http://stanford.edu" },
-      {name: "Tobias Kuhn", url: "http://www.tkuhn.org/", company: "VU University Amsterdam", companyURL: "http://vu.nl/" },
-    {name: "Christine Chichester", url: "", company:"Swiss Institute of Bioinformatics (SIB)", companyURL:"http://www.isb-sib.ch/"},
-    ],
-    
-    authors: [
-    { name: "Alasdair J G Gray", url: "http://www.alasdairjggray.co.uk/",
-                company: "Heriot-Watt University", companyURL: "http://www.hw.ac.uk/" },
-    {name: "Kees Burger", url: "", company:"NBIC", companyURL:"http://www.nbic.nl"},
-    {name: "Spyros Kotoulas", url: "", company:"VU University Amsterdam", companyURL:"http://www.vu.nl"},
-    {name: "Antonis Loizou", url: "", company:"VU University Amsterdam", companyURL:"http://www.vu.nl"},
-    {name: "Valery Tkachenko", url: "", company:"RSC", companyURL:"http://www.rsc.org"},
-    {name: "Andra Waagmeester", url: "", company:"Maastricht University", companyURL:"http://www.maastrichtuniversity.nl"},
-    {name: "Sune Askjaer", url: "", company:"Lundbeck, ", companyURL:"www.lundbeck.com"},
-    {name: "Steve Pettifer", url: "", company:"University of Manchester", companyURL:"http://www.manchester.ac.uk"},
-    {name: "Lee Harland", url: "", company:"Pfizer/CD", companyURL:"http://connecteddiscovery.com"},
-    {name: "Carina Haupt", url: "", company:"Uni Bonn / Fraunhofer", companyURL:"http://www3.uni-bonn.de/die-universitaet/events-und-veranstaltungen/deutschlandfest/angebote_stadtgebiet/fraunhofer-institute-im-b-it"},
-    {name: "Colin Batchelor", url: "", company:"RSC", companyURL:"http://www.rsc.org"},
-    {name: "Miguel Vazquez", url: "", company:"CNIO", companyURL:"http://www.cnio.es"},
-    {name: "José María Fernández", url: "", company:"CNIO", companyURL:"http://www.cnio.es"},
-    {name: "Jahn Saito", url: "", company:"Maastricht University", companyURL:"http://www.maastrichtuniversity.nl/"},
-    {name: "Andrew Gibson", url: "", company:"LUMC", companyURL:"http://www.lumc.nl"},
-    {name: "Louis Wich", url: "", company:"DTU", companyURL:"http://www.dtu.dk"},
-    {name: "Jesse van Dam", url: "", company: "Wageningen UR", companyURL: "https://www.wageningenur.nl/" },
-    {name: "Mark Wilkinson", url: "http://wilkinsonlab.info", company:"Technical University of Madrid", companyURL:"http://upm.es"},
-    ],
+            // editors, add as many as you like
+            // only "name" is required
+            editors: [
+                {
+                    name: "Paul Groth",
+                    url: "http://www.few.vu.nl/~pgroth/",
+                    company: "VU University Amsterdam",
+                    companyURL: "http://www.vu.nl"
+                },
+                {name: "Erik Schultes", url: "", company: "LUMC", companyURL: "http://www.lumc.nl"},
+                {name: "Mark Thompson", url: "", company: "LUMC", companyURL: "http://www.lumc.nl"},
+                {name: "Zuotian Tatum", url: "", company: "LUMC", companyURL: "http://www.lumc.nl"},
+                {
+                    name: "Michel Dumontier",
+                    url: "http://dumontierlab.com",
+                    company: "Stanford University",
+                    companyURL: "http://stanford.edu"
+                },
+                {
+                    name: "Tobias Kuhn",
+                    url: "http://www.tkuhn.org/",
+                    company: "VU University Amsterdam",
+                    companyURL: "http://vu.nl/"
+                },
+                {
+                    name: "Christine Chichester",
+                    url: "",
+                    company: "Swiss Institute of Bioinformatics (SIB)",
+                    companyURL: "http://www.isb-sib.ch/"
+                },
+            ],
+
+            authors: [
+                {
+                    name: "Alasdair J G Gray", url: "http://www.alasdairjggray.co.uk/",
+                    company: "Heriot-Watt University", companyURL: "http://www.hw.ac.uk/"
+                },
+                {name: "Kees Burger", url: "", company: "NBIC", companyURL: "http://www.nbic.nl"},
+                {name: "Spyros Kotoulas", url: "", company: "VU University Amsterdam", companyURL: "http://www.vu.nl"},
+                {name: "Antonis Loizou", url: "", company: "VU University Amsterdam", companyURL: "http://www.vu.nl"},
+                {name: "Valery Tkachenko", url: "", company: "RSC", companyURL: "http://www.rsc.org"},
+                {
+                    name: "Andra Waagmeester",
+                    url: "",
+                    company: "Maastricht University",
+                    companyURL: "http://www.maastrichtuniversity.nl"
+                },
+                {name: "Sune Askjaer", url: "", company: "Lundbeck, ", companyURL: "www.lundbeck.com"},
+                {
+                    name: "Steve Pettifer",
+                    url: "",
+                    company: "University of Manchester",
+                    companyURL: "http://www.manchester.ac.uk"
+                },
+                {name: "Lee Harland", url: "", company: "Pfizer/CD", companyURL: "http://connecteddiscovery.com"},
+                {
+                    name: "Carina Haupt",
+                    url: "",
+                    company: "Uni Bonn / Fraunhofer",
+                    companyURL: "http://www3.uni-bonn.de/die-universitaet/events-und-veranstaltungen/deutschlandfest/angebote_stadtgebiet/fraunhofer-institute-im-b-it"
+                },
+                {name: "Colin Batchelor", url: "", company: "RSC", companyURL: "http://www.rsc.org"},
+                {name: "Miguel Vazquez", url: "", company: "CNIO", companyURL: "http://www.cnio.es"},
+                {name: "José María Fernández", url: "", company: "CNIO", companyURL: "http://www.cnio.es"},
+                {
+                    name: "Jahn Saito",
+                    url: "",
+                    company: "Maastricht University",
+                    companyURL: "http://www.maastrichtuniversity.nl/"
+                },
+                {name: "Andrew Gibson", url: "", company: "LUMC", companyURL: "http://www.lumc.nl"},
+                {name: "Louis Wich", url: "", company: "DTU", companyURL: "http://www.dtu.dk"},
+                {name: "Jesse van Dam", url: "", company: "Wageningen UR", companyURL: "https://www.wageningenur.nl/"},
+                {
+                    name: "Mark Wilkinson",
+                    url: "http://wilkinsonlab.info",
+                    company: "Technical University of Madrid",
+                    companyURL: "http://upm.es"
+                },
+            ],
 
 
-    // authors, add as many as you like. 
-    // This is optional, uncomment if you have authors as well as editors.
-    // only "name" is required. Same format as editors.
+            // authors, add as many as you like.
+            // This is optional, uncomment if you have authors as well as editors.
+            // only "name" is required. Same format as editors.
 
-    //authors:  [
-    //    { name: "Your Name", url: "http://example.org/",
-    //      company: "Your Company", companyURL: "http://example.com/" },
-    //],
+            //authors:  [
+            //    { name: "Your Name", url: "http://example.org/",
+            //      company: "Your Company", companyURL: "http://example.com/" },
+            //],
 
-    // name of the WG
-    //wg : "In Charge Of This Document Working Group",
+            // name of the WG
+            //wg : "In Charge Of This Document Working Group",
 
-    // URI of the public WG page
-    //wgURI : "http://example.org/really-cool-wg",
+            // URI of the public WG page
+            //wgURI : "http://example.org/really-cool-wg",
 
-    // name (without the @w3c.org) of the public mailing to which comments are due
-    wgPublicList : "spec-writers-anonymous",
+            // name (without the @w3c.org) of the public mailing to which comments are due
+            wgPublicList: "spec-writers-anonymous",
 
-    // URI of the patent status for this WG, for Rec-track documents
-    // !!!! IMPORTANT !!!!
-    // This is important for Rec-track documents, do not copy a patent URI from a random
-    // document unless you know what you're doing. If in doubt ask your friendly neighbourhood
-    // Team Contact.
-    wgPatentURI : "",
-    orguri:               "http://www.nanopub.org/",//"http://www.openphacts.org/specs/",
-    orgicon:              "<a href='http://www.nanopub.org/'><img height='70' src='figures/logo.svg' alt='nanopublication logo'/></a>",
-    customorg:            "Nanopublications",
-    customcss:            "./css/ops.css",
-    specStatus:           "WD",
-    shortName:            "guidelines",
+            // URI of the patent status for this WG, for Rec-track documents
+            // !!!! IMPORTANT !!!!
+            // This is important for Rec-track documents, do not copy a patent URI from a random
+            // document unless you know what you're doing. If in doubt ask your friendly neighbourhood
+            // Team Contact.
+            wgPatentURI: "",
+            orguri: "http://www.nanopub.org/",//"http://www.openphacts.org/specs/",
+            orgicon: "<a href='http://www.nanopub.org/'><img height='70' src='figures/logo.svg' alt='nanopublication logo'/></a>",
+            customorg: "Nanopublications",
+            customcss: "./css/ops.css",
+            specStatus: "WD",
+            shortName: "guidelines",
 //    publishDate:   "2013-12-15",
-    previousMaturity: "WD",
-    previousPublishDate:  "2012-04-30",
-    previousURI : "http://www.nanopub.org/guidelines/1.8",
-    copyrightStart:       "2013",
-    overrideCopyright:    "<p class='copyright'>This document is licensed under a <a class='subfoot' href='http://creativecommons.org/licenses/sa-by/3.0/' rel='license'>Creative Commons ShareAlike Attribution 3.0 License</a>.</p>",
-  };
-</script>
-<script type="text/turtle">
+            previousMaturity: "WD",
+            previousPublishDate: "2012-04-30",
+            previousURI: "http://www.nanopub.org/guidelines/1.8",
+            copyrightStart: "2013",
+            overrideCopyright: "<p class='copyright'>This document is licensed under a <a class='subfoot' href='http://creativecommons.org/licenses/sa-by/3.0/' rel='license'>Creative Commons ShareAlike Attribution 3.0 License</a>.</p>",
+        };
+    </script>
+    <script type="text/turtle">
 @prefix prov: <http://www.w3.org/ns/prov#> .
 <http://www.nanopub.org/2013/WD-guidelines-20131215/> prov:wasDerivedFrom <https://github.com/Nanopublication/Guidelines/commit/6d7ec9f4b87f6dcc6694fbe0b87146c142c76bb5>.
-</script>
+
+    </script>
 </head>
 
 <body>
-  <section id='abstract'>
+<section id='abstract'>
     <p>This document specifies the general format of nanopublications.</p>
-  </section>
+</section>
 
-  <section>
+<section>
     <h3>Introduction</h3>
-<p>
-Good descriptions of data are essential to finding, understanding and ultimately reusing data.
-Here, we describe nanopublications [1,2,3], a community-driven approach to representing structured data along with its provenance as small self-contained and citable entities. A nanopublication consists of an assertion, the provenance of the assertion (simply called "provenance"), and the provenance of the whole nanopublication (called "publication info"). Nanopublication are implemented in and aligned with Semantic Web technologies, such as RDF, OWL, and SPARQL. The different levels of provenance enable users to assess the trustworthiness of data and provides a mechanism by which authors and institutions may be acknowledged for their contribution to the global knowledge graph. Nanopublications may be used to expose quantitative and qualitative data, as well as hypotheses, claims, negative results, and opinions that usually go unpublished. With nanopublications, it is possible to disseminate individual data as independent publications with or without an accompanying research article.
-</p>
+    <p>
+        Good descriptions of data are essential to finding, understanding and ultimately reusing data.
+        Here, we describe nanopublications [1,2,3], a community-driven approach to representing structured data along
+        with its provenance as small self-contained and citable entities. A nanopublication consists of an assertion,
+        the provenance of the assertion (simply called "provenance"), and the provenance of the whole nanopublication
+        (called "publication info"). Nanopublication are implemented in and aligned with Semantic Web technologies, such
+        as RDF, OWL, and SPARQL. The different levels of provenance enable users to assess the trustworthiness of data
+        and provides a mechanism by which authors and institutions may be acknowledged for their contribution to the
+        global knowledge graph. Nanopublications may be used to expose quantitative and qualitative data, as well as
+        hypotheses, claims, negative results, and opinions that usually go unpublished. With nanopublications, it is
+        possible to disseminate individual data as independent publications with or without an accompanying research
+        article.
+    </p>
 
-<p>
-This document describes the structure of a nanopublication. It offers guidelines in their composition, implementation, and use. Related code can be found on <a href="https://github.com/Nanopublication/">Github</a>.
-</p>
+    <p>
+        This document describes the structure of a nanopublication. It offers guidelines in their composition,
+        implementation, and use. Related code can be found on <a href="https://github.com/Nanopublication/">Github</a>.
+    </p>
 
-  </section>
-  <section id="conformance">
-        <!-- This includes standard text about conformance -->
-    </section>
+</section>
+<section id="conformance">
+    <!-- This includes standard text about conformance -->
+</section>
 
 
 <section>
 
-<h3>Basic Elements</h3>
+    <h3>Basic Elements</h3>
 
-<p>
-Each of the three parts of a nanopublication (i.e. the assertion, provenance, and publication info) is represented as an <a href="https://www.w3.org/RDF/">RDF</a> graph [4]. An RDF graph is a collection of RDF triples, which comprise of subject-predicate-object tuples.
-We recommend using <a href="http://www.w3.org/TR/trig/">TriG</a> syntax for writing nanopublications. 
-The <strong>assertion graph</strong> of the nanopublication contains such statements that form the main claim of the nanopublications. Examples of assertions include: 
-</p>
+    <p>
+        Each of the three parts of a nanopublication (i.e. the assertion, provenance, and publication info) is
+        represented as an <a href="https://www.w3.org/RDF/">RDF</a> graph [4]. An RDF graph is a collection of RDF
+        triples, which comprise of subject-predicate-object tuples.
+        We recommend using <a href="http://www.w3.org/TR/trig/">TriG</a> syntax for writing nanopublications.
+        The <strong>assertion graph</strong> of the nanopublication contains such statements that form the main claim of
+        the nanopublications. Examples of assertions include:
+    </p>
 
-<pre class='example'>
+    <pre class='example'>
 :assertion {
   ex:trastuzumab ex:is-indicated-for ex:breast-cancer .
 }
 </pre>
-<pre class='example'>
+    <pre class='example'>
 :assertion {
   ex:BRCA1-gene ex:is-involved-in ex:breast-cancer .
   ex:BRCA1-gene ex:encodes ex:BRCA1-protein .
@@ -176,35 +237,43 @@ The <strong>assertion graph</strong> of the nanopublication contains such statem
 }
 </pre>
 
- 
-<p>
-The <strong>provenance graph</strong> of the nanopublication contains one or more RDF triples that provide information about the <strong>assertion</strong>. The provenance graph of a nanopublication MUST contain a link to the assertion graph identifier. Provenance means "how this came to be" and may include any statement that discusses how the assertion was generated, who generated it, when was it generated, where was the assertion obtained from, and any other similar information. Examples of assertional provenance include:
 
-</p>
+    <p>
+        The <strong>provenance graph</strong> of the nanopublication contains one or more RDF triples that provide
+        information about the <strong>assertion</strong>. The provenance graph of a nanopublication MUST contain a link
+        to the assertion graph identifier. Provenance means "how this came to be" and may include any statement that
+        discusses how the assertion was generated, who generated it, when was it generated, where was the assertion
+        obtained from, and any other similar information. Examples of assertional provenance include:
 
-<pre class='example'>
+    </p>
+
+    <pre class='example'>
 :provenance {
   :assertion prov:wasDerivedFrom :experiment . 
   :assertion prov:wasAttributedTo orcid:0000-0003-3934-0072 .
 }
 </pre>
 
-<p>
-The <strong>publication information graph</strong> contains one or more RDF triples that offer provenance information regarding the nanopublication itself. In this case, the subject of the triples in the publicationInfo graph MUST be the nanopublication URI and SHOULD contain attribution and timestamp. Examples of the nanopublication provenance include: 
-</p>
+    <p>
+        The <strong>publication information graph</strong> contains one or more RDF triples that offer provenance
+        information regarding the nanopublication itself. In this case, the subject of the triples in the
+        publicationInfo graph MUST be the nanopublication URI and SHOULD contain attribution and timestamp. Examples of
+        the nanopublication provenance include:
+    </p>
 
-<pre class='example'>
+    <pre class='example'>
 :pubinfo {
   : dct:creator orcid:0000-0003-0183-6910 .
   : dct:created "2020-07-10T10:20:22.382+02:00"^^xsd:dateTime  .
 }
 </pre>
 
-<p>
-The nanopublication itself has its own identifier (here denoted by <code>:</code>) and is linked to its parts via triples in an additional <strong>head graph</strong>:
-</p>
+    <p>
+        The nanopublication itself has its own identifier (here denoted by <code>:</code>) and is linked to its parts
+        via triples in an additional <strong>head graph</strong>:
+    </p>
 
-<pre class='example'>
+    <pre class='example'>
 :Head {
   : a np:Nanopublication .
   : np:hasAssertion :assertion .
@@ -217,13 +286,14 @@ The nanopublication itself has its own identifier (here denoted by <code>:</code
 
 <section>
 
-<h3>Nanopublication Ontology</h3>
+    <h3>Nanopublication Ontology</h3>
 
-<p>
-The structure of a nanopublication is defined by the following ontology using the Web Ontology Language (OWL).  The namespace <code><a href="http://www.nanopub.org/nschema">http://www.nanopub.org/nschema</a></code>.
-</p>
+    <p>
+        The structure of a nanopublication is defined by the following ontology using the Web Ontology Language (OWL).
+        The namespace <code><a href="http://www.nanopub.org/nschema">http://www.nanopub.org/nschema</a></code>.
+    </p>
 
-<pre>
+    <pre>
 @prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;.
 @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;.
 @prefix rdfg: &lt;http://www.w3.org/2004/03/trix/rdfg-1/&gt;.
@@ -252,28 +322,36 @@ np:hasPublicationInfo rdfs:range np:PublicationInfo.
 
 
 <section>
-<h3>Well-formed Nanopublications</h3>
+    <h3>Well-formed Nanopublications</h3>
 
-<p>A nanopublication MUST comply with all of the following criteria to be considered well-formed:</p>
+    <p>A nanopublication MUST comply with all of the following criteria to be considered well-formed:</p>
 
-<ul>
-<li>A nanopublication consists of a set of RDF quads (i.e. subject-predicate-object + context)</li>
-<li>The context (i.e. graph) of each triple has to be specified as a valid URI (i.e. no null values)</li>
-<li>There is exactly one quad of the form '[N] rdf:type np:Nanopublication [H]', which identifies [N] as the nanopublication URI, and [H] as the head URI</li>
-<li>Given the nanopublication URI [N] and its head URI [H], there is exactly one quad of the form '[N] np:hasAssertion [A] [H]', which identifies [A] as the assertion URI</li>
-<li>Given the nanopublication URI [N] and its head URI [H], there is exactly one quad of the form '[N] np:hasProvenance [P] [H]', which identifies [P] as the provenance URI</li>
-<li>Given the nanopublication URI [N] and its head URI [H], there is exactly one quad of the form '[N] np:hasPublicationInfo [I] [H]', which identifies [I] as the publication information URI</li>
-<li>The URIs for [N], [H], [A], [P], [I] must all be different</li>
-<li>All triples must be placed in one of [H] or [A] or [P] or [I]</li>
-<li>Triples in [P] have at least one reference to [A]</li>
-<li>Triples in [I] have at least one reference to [N]</li>
-</ul>
+    <ul>
+        <li>A nanopublication consists of a set of RDF quads (i.e. subject-predicate-object + context)</li>
+        <li>The context (i.e. graph) of each triple has to be specified as a valid URI (i.e. no null values)</li>
+        <li>There is exactly one quad of the form '[N] rdf:type np:Nanopublication [H]', which identifies [N] as the
+            nanopublication URI, and [H] as the head URI
+        </li>
+        <li>Given the nanopublication URI [N] and its head URI [H], there is exactly one quad of the form '[N]
+            np:hasAssertion [A] [H]', which identifies [A] as the assertion URI
+        </li>
+        <li>Given the nanopublication URI [N] and its head URI [H], there is exactly one quad of the form '[N]
+            np:hasProvenance [P] [H]', which identifies [P] as the provenance URI
+        </li>
+        <li>Given the nanopublication URI [N] and its head URI [H], there is exactly one quad of the form '[N]
+            np:hasPublicationInfo [I] [H]', which identifies [I] as the publication information URI
+        </li>
+        <li>The URIs for [N], [H], [A], [P], [I] must all be different</li>
+        <li>All triples must be placed in one of [H] or [A] or [P] or [I]</li>
+        <li>Triples in [P] have at least one reference to [A]</li>
+        <li>Triples in [I] have at least one reference to [N]</li>
+    </ul>
 
-<p>
-This is an example of a well-formed nanopublication in TriG notation:
-</p>
+    <p>
+        This is an example of a well-formed nanopublication in TriG notation:
+    </p>
 
-<pre class="example">
+    <pre class="example">
 @prefix : &lt;http://example.org/pub1/&gt; .
 @prefix ex: &lt;http://example.org/&gt; .
 @prefix np: &lt;http://www.nanopub.org/nschema#&gt; .
@@ -309,13 +387,13 @@ This is an example of a well-formed nanopublication in TriG notation:
 
 <section>
 
-<h3>Query Template</h3>
+    <h3>Query Template</h3>
 
-<p>
-To extract an entire nanopublication from a triple store, the following SPARQL query template can be used:
-</p>
+    <p>
+        To extract an entire nanopublication from a triple store, the following SPARQL query template can be used:
+    </p>
 
-<pre class="example">
+    <pre class="example">
 prefix np: &lt;http://www.nanopub.org/nschema#&gt;
 prefix : &lt;...&gt;
 select ?G ?S ?P ?O where {
@@ -329,15 +407,16 @@ select ?G ?S ?P ?O where {
 
 
 <section>
-<h3>Integrity Key</h3>
+    <h3>Integrity Key</h3>
 
-<p>
-The goal of the integrity key is to establish an identifier that can be used to check if a nanopublication has changed, thus enforcing the immutability of nanopublications.
-Trusty URIs [5] are the recommended way of assigning integrity keys to nanopublications.
-This is the exemplary nanopublication from Section 5 after generating and attaching a trusty URI:
-</p>
+    <p>
+        The goal of the integrity key is to establish an identifier that can be used to check if a nanopublication has
+        changed, thus enforcing the immutability of nanopublications.
+        Trusty URIs [5] are the recommended way of assigning integrity keys to nanopublications.
+        This is the exemplary nanopublication from Section 5 after generating and attaching a trusty URI:
+    </p>
 
-<pre class="example">
+    <pre class="example">
 @prefix this: &lt;http://example.org/pub1/RA-0Yc_l8rK3_Ts8y7kPuZvg6FqzaOSSq0yMSS9Sg4R9I&gt; .
 @prefix sub: &lt;http://example.org/pub1/RA-0Yc_l8rK3_Ts8y7kPuZvg6FqzaOSSq0yMSS9Sg4R9I#&gt; .
 @prefix ex: &lt;http://example.org/&gt; .
@@ -373,17 +452,26 @@ sub:pubinfo {
 
 
 <section><h3>Further Information</h3>
-Please check <a href="http://www.nanopub.org">http://www.nanopub.org</a> for further guides and community information. 
+    Please check <a href="http://www.nanopub.org">http://www.nanopub.org</a> for further guides and community
+    information.
 </section>
 
 <section><h3>References</h3>
-<ul>
-<li>[1] Paul Groth, Andrew Gibson, and Jan Velterop. <a href="https://doi.org/10.3233/ISU-2010-0613">The Anatomy of a Nanopublication</a>. Information Services & Use 30: 51-56. 2010.
-<li>[2] Barend Mons et al. <a href="https://doi.org/10.1038/ng0411-281">The value of data</a>. Commentary, Nature Genetics 43: 281-283. 2011.
-<li>[3] Tobias Kuhn, Paolo Emilio Barbano, Mate Levente Nagy, and Michael Krauthammer. <a href="http://www.tkuhn.ch/pub/kuhn2013eswc.pdf">Broadening the Scope of Nanopublications</a>. In Proceedings of the 10th Extended Semantic Web Conference (ESWC). Springer, 2013.
-<li>[4] Jeremy J. Carroll, Christian Bizer, Pat Hayes, and Patrick Stickler. <a href="https://doi.org/10.1145/1060745.1060835">Named graphs, provenance and trust</a>. In Proceedings of the 14th international conference on World Wide Web. 2005.
-<li>[5] Tobias Kuhn and Michel Dumontier. <a href="https://doi.org/10.1007/978-3-319-07443-6_27">Trusty URIs: Verifiable, Immutable, and Permanent Digital Artifacts for Linked Data</a>. In Proceedings of the 11th Extended Semantic Web Conference (ESWC). Springer, 2014.
-</ul>
+    <ul>
+        <li>[1] Paul Groth, Andrew Gibson, and Jan Velterop. <a href="https://doi.org/10.3233/ISU-2010-0613">The Anatomy
+            of a Nanopublication</a>. Information Services & Use 30: 51-56. 2010.
+        <li>[2] Barend Mons et al. <a href="https://doi.org/10.1038/ng0411-281">The value of data</a>. Commentary,
+            Nature Genetics 43: 281-283. 2011.
+        <li>[3] Tobias Kuhn, Paolo Emilio Barbano, Mate Levente Nagy, and Michael Krauthammer. <a
+                href="http://www.tkuhn.ch/pub/kuhn2013eswc.pdf">Broadening the Scope of Nanopublications</a>. In
+            Proceedings of the 10th Extended Semantic Web Conference (ESWC). Springer, 2013.
+        <li>[4] Jeremy J. Carroll, Christian Bizer, Pat Hayes, and Patrick Stickler. <a
+                href="https://doi.org/10.1145/1060745.1060835">Named graphs, provenance and trust</a>. In Proceedings of
+            the 14th international conference on World Wide Web. 2005.
+        <li>[5] Tobias Kuhn and Michel Dumontier. <a href="https://doi.org/10.1007/978-3-319-07443-6_27">Trusty URIs:
+            Verifiable, Immutable, and Permanent Digital Artifacts for Linked Data</a>. In Proceedings of the 11th
+            Extended Semantic Web Conference (ESWC). Springer, 2014.
+    </ul>
 </section>
 
 
