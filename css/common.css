@@ -1,0 +1,24 @@
+div.figure {
+	float: center;
+	width: 75%;
+	border: thin silver solid;
+	margin: 0.5em;
+	padding: 0.5em;
+}
+
+div.figure p {
+	text-align: center;
+	font-style: italic;
+	font-size: smaller;
+	text-indent: 0;
+}
+
+td.datatable {
+	background-color: lightblue;
+}
+
+th.datatable {
+	background-color: darkblue;
+	color: white;
+	font-weight: bold;
+}
