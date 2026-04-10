@@ -1,0 +1,18 @@
+name: Notify `nanopub-website` repo
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@e69ef5462fd455e02edcaf4dd7708eda96b9eda0 # v7.0.0
+        with:
+          github-token: ${{ secrets.PAT }}
+          script: |
+            await github.rest.repos.createDispatchEvent({
+              owner: 'Nanopublication',
+              repo: 'nanopub-website',
+              event_type: 'upstream-push',
+            })
